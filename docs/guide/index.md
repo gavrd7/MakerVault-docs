@@ -6,7 +6,7 @@
 Learn to install MakerVault, record what you own and bring your projects, files and 3D printing together. Start with one project. Add the rest when you need it.
 
 [Start here](getting-started/before-you-begin.md){ .md-button .md-button--primary }
-[Follow a first project](getting-started/first-project.md){ .md-button }
+[Follow the guided workflow](getting-started/first-project.md){ .md-button }
 </div>
 
 !!! info "Current release: v0.9.0.2 · Before v1"
@@ -39,6 +39,12 @@ Back up the database, uploaded files and encryption key. Learn the update and re
 </div>
 </div>
 
+## Learn by doing
+
+The quickest way to understand how MakerVault's records relate to one another is the [guided newcomer workflow](getting-started/first-project.md). It walks through one small project from catalogue lookup and physical inventory to a BOM, files, optional wiring, a printable model, a retained printed part and a Maker Tag.
+
+You can stop after the core project/BOM/file steps if you do not use 3D printing or tags.
+
 ## What MakerVault does
 
 MakerVault is a self-hosted workshop management application. You open it in a web browser; your own server stores the data. You can use it without a printer integration or cloud account.
@@ -58,7 +64,7 @@ Catalogue records are shared reference information. Personal workspaces are sepa
 ## Choose your route
 
 - **New to self-hosting?** Read *Before you begin*, *Install MakerVault* and *First sign-in*, in that order.
-- **Someone has already installed it for you?** Start with [First sign-in](getting-started/first-sign-in.md), then the guided project.
+- **Someone has already installed it for you?** Start with [First sign-in](getting-started/first-sign-in.md), then follow the [guided newcomer workflow](getting-started/first-project.md).
 - **Already comfortable with Docker?** Use the installation settings table and [configuration reference](reference/configuration.md).
 - **Want a domain name or single sign-on?** Finish the normal setup first, then visit [reverse proxies](advanced/reverse-proxy.md) and [OIDC](advanced/oidc.md).
 
