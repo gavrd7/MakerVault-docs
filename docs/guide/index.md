@@ -81,8 +81,8 @@ That separation is what lets MakerVault grow from a simple parts list into a use
   <div id="guide-search-results" class="guide-search__results" data-guide-search-results></div>
 </div>
 
-!!! info "Current release: v0.9.0.2 · Before v1"
-    The guide overview and integration status were reconciled with the merged v0.9.0.2 implementation on 2 October 2026. K1/K2 monitoring and camera playback have owner confirmation. Clean-install, recovery, upgrade and broader hardware acceptance remain separate v1 work. See [scope and verification](reference/about.md).
+!!! info "Current release: v1.0.0-rc.1 · Release candidate"
+    The guide reflects the v1 release-candidate feature set, including managed recovery, native HTTPS with the MakerVault Local CA, account hardening and accessibility work. Representative off-server recovery has been completed successfully; the remaining stable-v1 gate is the final fresh-install acceptance pass. See [scope and verification](reference/about.md).
 
 <div class="guide-grid" markdown>
 <div class="guide-card" markdown>
@@ -145,5 +145,5 @@ Use the interactive search above or the search icon in the header to find a feat
 
 <figure markdown>
   ![MakerVault dashboard showing workspace totals and live-printer information.](assets/screenshots/dashboard-overview.png)
-  <figcaption>MakerVault v0.9 dashboard.</figcaption>
+  <figcaption>MakerVault v1 release-candidate dashboard.</figcaption>
 </figure>
