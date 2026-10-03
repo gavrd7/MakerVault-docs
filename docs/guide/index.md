@@ -9,6 +9,40 @@ Learn to install MakerVault, record what you own and bring your projects, files 
 [Follow the guided workflow](getting-started/first-project.md){ .md-button }
 </div>
 
+<div class="guide-search" data-guide-search role="search" aria-label="Search the MakerVault guide">
+  <div class="guide-search__heading">
+    <div>
+      <span class="guide-search__eyebrow">Find help quickly</span>
+      <h2>What are you trying to do?</h2>
+    </div>
+    <kbd>/</kbd>
+  </div>
+  <label class="guide-search__field">
+    <span class="sr-only">Search the MakerVault guide</span>
+    <span class="guide-search__icon" aria-hidden="true">⌕</span>
+    <input
+      type="search"
+      autocomplete="off"
+      placeholder="Try “backup”, “CFS”, “OIDC”, “.env” or an error message…"
+      data-guide-search-input
+      aria-controls="guide-search-results"
+      aria-autocomplete="list"
+    >
+  </label>
+  <div class="guide-search__chips" aria-label="Popular searches">
+    <button type="button" data-guide-search-query="install">Install</button>
+    <button type="button" data-guide-search-query=".env">.env</button>
+    <button type="button" data-guide-search-query="backup restore">Backup & restore</button>
+    <button type="button" data-guide-search-query="3D printing">3D printing</button>
+    <button type="button" data-guide-search-query="OIDC">OIDC</button>
+    <button type="button" data-guide-search-query="troubleshooting">Troubleshooting</button>
+  </div>
+  <p class="guide-search__status" data-guide-search-status aria-live="polite">
+    Loading the guide search…
+  </p>
+  <div id="guide-search-results" class="guide-search__results" data-guide-search-results></div>
+</div>
+
 !!! info "Current release: v0.9.0.2 · Before v1"
     The guide overview and integration status were reconciled with the merged v0.9.0.2 implementation on 2 October 2026. K1/K2 monitoring and camera playback have owner confirmation. Clean-install, recovery, upgrade and broader hardware acceptance remain separate v1 work. See [scope and verification](reference/about.md).
 
@@ -68,7 +102,7 @@ Catalogue records are shared reference information. Personal workspaces are sepa
 - **Already comfortable with Docker?** Use the installation settings table and [configuration reference](reference/configuration.md).
 - **Want a domain name or single sign-on?** Finish the normal setup first, then visit [reverse proxies](advanced/reverse-proxy.md) and [OIDC](advanced/oidc.md).
 
-Use the search box to find a feature or error. Each chapter can also be read as Markdown in GitHub.
+Use the interactive search above or the search icon in the header to find a feature, setting or error. Each chapter can also be read as Markdown in GitHub.
 
 
 <figure markdown>

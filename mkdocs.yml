@@ -31,6 +31,7 @@ theme:
     - navigation.top
     - search.suggest
     - search.highlight
+    - search.share
     - content.code.copy
     - content.action.edit
     - toc.follow
@@ -49,6 +50,8 @@ markdown_extensions:
       anchor_linenums: true
 extra_css:
   - assets/guide.css
+extra_javascript:
+  - assets/guide-search.js
 extra:
   generator: false
 copyright: MakerVault · Guide for v0.9.0.2 · Pre-v1 documentation
