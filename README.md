@@ -2,7 +2,7 @@
 
 Public documentation for **MakerVault** — a self-hosted electronics inventory, project, file and 3D-printing workspace.
 
-The MakerVault application repository remains private. This repository contains the public user guide and the MkDocs/GitHub Pages configuration used to publish it.
+The MakerVault application source is published separately at [gavrd7/MakerVault](https://github.com/gavrd7/MakerVault). This repository contains the public user guide and the MkDocs/GitHub Pages configuration used to publish it.
 
 ## What is MakerVault?
 
@@ -73,4 +73,4 @@ Public screenshots are sanitised before publication to remove private addresses,
 
 ## Application source
 
-The MakerVault application source is intentionally kept in a separate private repository. This documentation repository does not contain the application itself.
+The MakerVault application source is available publicly at **https://github.com/gavrd7/MakerVault**. This documentation repository remains separate so the guide, screenshots and GitHub Pages site can be maintained and published independently from the application source.

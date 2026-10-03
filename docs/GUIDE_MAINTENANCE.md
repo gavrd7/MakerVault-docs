@@ -19,7 +19,7 @@ Open the local address printed by MkDocs (normally `http://127.0.0.1:8000`). Dep
 
 ## Publishing with GitHub Pages
 
-GitHub Pages publishes this public documentation repository at `https://gavrd7.github.io/MakerVault-docs/`. The MakerVault application repository remains private and is not exposed by the documentation site.
+GitHub Pages publishes this documentation repository at `https://gavrd7.github.io/MakerVault-docs/`. The MakerVault application source is public separately at `https://github.com/gavrd7/MakerVault`.
 
 The included `guide.yml` workflow validates documentation pull requests. Pushes to `main` build the site, package the Pages artifact and deploy it automatically.
 
