@@ -23,9 +23,9 @@ The main reason to use MakerVault is to make your workshop easier to understand 
 
 ## Current edition
 
-This guide documents **MakerVault v0.9.0.2**.
+This guide documents **MakerVault v1.0.0-rc.1**.
 
-It covers the current pre-v1 application, including:
+It covers the current v1 release candidate, including:
 
 - beginner-friendly Docker installation and `.env` configuration;
 - Docker volumes, bind mounts, backups and restore;
@@ -36,9 +36,11 @@ It covers the current pre-v1 application, including:
 - Maker Tags and Interactive Wiring;
 - user accounts, MFA, passkeys, local sign-up, password recovery and storage quotas;
 - Spoolman, Creality, SimplyPrint and manufacturer-specific printer integrations;
-- advanced reverse-proxy, HTTPS and OpenID Connect configuration.
+- reverse-proxy HTTPS plus MakerVault's native HTTPS/Local CA certificate wizard;
+- OpenID Connect configuration and SMTP-backed account recovery;
+- managed v3 backup/recovery, including TLS identity and replacement-host recovery.
 
-The application is still pre-v1, so documentation will continue to evolve with MakerVault releases.
+The application is currently at the v1 release-candidate stage. Final v1.0.0 remains subject to the remaining release acceptance checks.
 
 ## Read the guide
 
