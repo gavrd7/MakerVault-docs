@@ -42,6 +42,6 @@ Keep Docker-managed named volumes for the simplest first setup. If you already o
 
 ## Repository access
 
-The repository used for this edition is private. You need access to `gavrd7/MakerVault` to clone it. A GitHub 404 or permission error may mean your account has not been granted access. GitHub Pages can host a public manual without making the application repository public; publication and application access are separate decisions.
+MakerVault's application source is public at [gavrd7/MakerVault](https://github.com/gavrd7/MakerVault). You can clone it over HTTPS without a GitHub account. A GitHub account is only needed for actions such as opening issues, contributing changes or using authenticated GitHub features.
 
 **Ready?** Continue to [Install MakerVault](install.md).
