@@ -4,6 +4,23 @@ Public documentation for **MakerVault** — a self-hosted electronics inventory,
 
 The MakerVault application repository remains private. This repository contains the public user guide and the MkDocs/GitHub Pages configuration used to publish it.
 
+## What is MakerVault?
+
+**MakerVault** is a self-hosted workshop management application for electronics, maker projects and 3D printing. It is intended to replace the collection of spreadsheets, folders, bookmarks and disconnected tools that often build up around a home workshop.
+
+At its core, MakerVault connects:
+
+- **catalogue data** for boards and components;
+- **physical inventory** for the items you actually own;
+- **projects and BOMs** for what you are building and what each build requires;
+- **files, revisions and wiring diagrams** for the digital side of a project;
+- **printers, filament, spools, models and print history** for 3D-printing workflows;
+- **printed parts and Maker Tags** for linking finished physical objects back to their records.
+
+MakerVault runs on your own server using Docker and is accessed through a normal web browser. Your structured data is stored in PostgreSQL and your files remain with your installation. Optional integrations can add live printer status, camera feeds, filament synchronisation, OIDC sign-in and other capabilities, but the core application does not depend on a cloud service.
+
+The main reason to use MakerVault is to make your workshop easier to understand later. It helps answer practical questions such as **“Do I already own this part?”**, **“Where did I put it?”**, **“Which revision did I print?”**, **“What is allocated to this project?”** and **“Which files and wiring belong to this build?”**
+
 ## Current edition
 
 This guide documents **MakerVault v0.9.0.2**.

@@ -9,6 +9,44 @@ Learn to install MakerVault, record what you own and bring your projects, files 
 [Follow the guided workflow](getting-started/first-project.md){ .md-button }
 </div>
 
+## What is MakerVault?
+
+MakerVault is a **self-hosted workshop management application for makers, electronics projects and 3D printing**. It gives you one place to keep track of the things you own, the things you are building, the files that belong to those projects and the physical output from them.
+
+Instead of keeping board details in browser bookmarks, stock counts in a spreadsheet, project notes in one folder, STL files in another and printer information somewhere else, MakerVault links those records together while keeping each type of information distinct.
+
+<div class="guide-grid" markdown>
+<div class="guide-card" markdown>
+### What it manages
+Boards and components, physical inventory, projects and BOMs, files and revisions, wiring diagrams, printers, filament and spools, models, print history, printed parts and physical Maker Tags.
+</div>
+<div class="guide-card" markdown>
+### How it works
+MakerVault runs on your own server with Docker and is used through a normal web browser. PostgreSQL stores structured records, private files stay with your installation, and optional integrations can connect supported printers and filament services.
+</div>
+<div class="guide-card" markdown>
+### Why use it
+It reduces the friction of answering questions such as *Where did I put that board?*, *Do I already own this part?*, *Which file belongs to this project?*, *What filament is loaded?* and *What did I use to build this?*
+</div>
+<div class="guide-card" markdown>
+### You stay in control
+MakerVault is designed to be useful without requiring a cloud account. Start with inventory and projects, then enable features such as printer monitoring, cameras, OIDC, Spoolman or Maker Tags only when they are useful to you.
+</div>
+</div>
+
+### The basic idea
+
+MakerVault separates **reference information** from **your physical things** and **your work**:
+
+- the **Catalogue** describes what a board or component *is*;
+- **Inventory** records the individual items or quantities you actually *own*;
+- a **Project** describes what you are building and its requirements;
+- a **BOM allocation** reserves real inventory for that project without silently changing the stock total;
+- **Files, models and wiring** preserve the digital context of the build;
+- **Print history, printed parts and Maker Tags** connect digital work back to physical objects where you choose to track them.
+
+That separation is what lets MakerVault grow from a simple parts list into a useful history of your workshop without turning everything into one large spreadsheet.
+
 <div class="guide-search" data-guide-search role="search" aria-label="Search the MakerVault guide">
   <div class="guide-search__heading">
     <div>
