@@ -55,3 +55,194 @@ body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSyst
     border-radius: 8px;
   }
 }
+
+
+/* Interactive homepage search */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.guide-search {
+  margin: 0 0 1.5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 16px;
+  background: var(--md-default-bg-color);
+  box-shadow: var(--md-shadow-z1);
+}
+
+.guide-search__heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: .8rem;
+}
+
+.guide-search__heading h2 {
+  margin: .1rem 0 0;
+  font-size: 1.15rem;
+}
+
+.guide-search__eyebrow {
+  color: var(--md-accent-fg-color);
+  font-size: .62rem;
+  font-weight: 750;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.guide-search__heading kbd {
+  min-width: 1.8rem;
+  padding: .1rem .35rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  color: var(--md-default-fg-color--light);
+  background: var(--md-code-bg-color);
+  font: inherit;
+  font-size: .72rem;
+  text-align: center;
+}
+
+.guide-search__field {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  padding: .1rem .85rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 10px;
+  background: var(--md-code-bg-color);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.guide-search__field:focus-within {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--md-accent-fg-color) 18%, transparent);
+}
+
+.guide-search__icon {
+  color: var(--md-default-fg-color--light);
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.guide-search__field input {
+  width: 100%;
+  min-width: 0;
+  padding: .75rem 0;
+  border: 0;
+  outline: 0;
+  color: var(--md-default-fg-color);
+  background: transparent;
+  font: inherit;
+  font-size: .82rem;
+}
+
+.guide-search__field input::placeholder {
+  color: var(--md-default-fg-color--lighter);
+}
+
+.guide-search__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  margin-top: .75rem;
+}
+
+.guide-search__chips button {
+  padding: .3rem .6rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 999px;
+  color: var(--md-default-fg-color--light);
+  background: transparent;
+  font: inherit;
+  font-size: .68rem;
+  cursor: pointer;
+}
+
+.guide-search__chips button:hover,
+.guide-search__chips button:focus-visible {
+  border-color: var(--md-accent-fg-color);
+  color: var(--md-accent-fg-color);
+  outline: 0;
+}
+
+.guide-search__status {
+  margin: .7rem 0 0;
+  color: var(--md-default-fg-color--light);
+  font-size: .68rem;
+}
+
+.guide-search__results {
+  margin-top: .75rem;
+}
+
+.guide-search-result-list {
+  display: grid;
+  gap: .45rem;
+  max-height: 27rem;
+  overflow-y: auto;
+}
+
+.md-typeset .guide-search-result {
+  display: grid;
+  gap: .18rem;
+  padding: .72rem .8rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 10px;
+  color: var(--md-default-fg-color);
+  background: var(--md-default-bg-color);
+  text-decoration: none;
+}
+
+.md-typeset .guide-search-result:hover,
+.md-typeset .guide-search-result.is-active {
+  border-color: var(--md-accent-fg-color);
+  background: color-mix(in srgb, var(--md-accent-fg-color) 7%, var(--md-default-bg-color));
+}
+
+.guide-search-result strong {
+  color: var(--md-default-fg-color);
+  font-size: .78rem;
+}
+
+.guide-search-result__snippet {
+  color: var(--md-default-fg-color--light);
+  font-size: .7rem;
+  line-height: 1.45;
+}
+
+.guide-search-result mark {
+  padding: 0 .08em;
+  border-radius: 2px;
+  color: inherit;
+  background: color-mix(in srgb, var(--md-accent-fg-color) 24%, transparent);
+}
+
+@media (max-width: 600px) {
+  .guide-search {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .guide-search__heading kbd {
+    display: none;
+  }
+
+  .guide-search__field input {
+    font-size: .78rem;
+  }
+
+  .guide-search__chips {
+    gap: .35rem;
+  }
+}
