@@ -1,16 +1,39 @@
 # MakerVault User Guide
 
-Public documentation for **MakerVault** — a self-hosted electronics inventory, projects, files and 3D-printing workspace.
+Public documentation for **MakerVault** — a self-hosted electronics inventory, project, file and 3D-printing workspace.
 
-The MakerVault application repository remains private. This repository contains only the public documentation source and its MkDocs/GitHub Pages build configuration.
+The MakerVault application repository remains private. This repository contains the public user guide and the MkDocs/GitHub Pages configuration used to publish it.
 
 ## Current edition
 
-The documentation is being refreshed for **MakerVault v0.9.0.2**. The v0.7.0.1 guide was the original publication baseline; this refresh mirrors the current guide source from MakerVault and adds documentation for post-v0.7 features including Universal Search, Maker Tags, Interactive Wiring, live printer monitoring, printed parts and v0.9 camera feeds.
+This guide documents **MakerVault v0.9.0.2**.
+
+It covers the current pre-v1 application, including:
+
+- beginner-friendly Docker installation and `.env` configuration;
+- Docker volumes, bind mounts, backups and restore;
+- Dashboard, Universal Search, Board Catalogue, Components and Inventory;
+- Projects, BOM allocation, Files and versioned assets;
+- 3D Printing, filament/spools, model library, 3D viewer, print history and Printed Parts;
+- live printer monitoring, optional controls and camera feeds;
+- Maker Tags and Interactive Wiring;
+- user accounts, MFA, passkeys, local sign-up, password recovery and storage quotas;
+- Spoolman, Creality, SimplyPrint and manufacturer-specific printer integrations;
+- advanced reverse-proxy, HTTPS and OpenID Connect configuration.
+
+The application is still pre-v1, so documentation will continue to evolve with MakerVault releases.
 
 ## Read the guide
 
-https://gavrd7.github.io/MakerVault-docs/
+**https://gavrd7.github.io/MakerVault-docs/**
+
+## Repository layout
+
+- `docs/guide/` — public guide source
+- `docs/guide/assets/` — guide styling, logo and sanitised screenshots
+- `mkdocs.yml` — navigation and Material for MkDocs configuration
+- `scripts/check_guide_links.py` — generated-site link and fragment validation
+- `.github/workflows/guide.yml` — validation and GitHub Pages deployment workflow
 
 ## Build locally
 
@@ -23,8 +46,12 @@ python scripts/check_guide_links.py
 python -m mkdocs serve
 ```
 
-See [docs/GUIDE_MAINTENANCE.md](docs/GUIDE_MAINTENANCE.md) for maintenance and publishing notes.
+See [docs/GUIDE_MAINTENANCE.md](docs/GUIDE_MAINTENANCE.md) for maintenance and publishing guidance.
 
 ## Screenshots
 
-The v0.9 screenshot set is prepared separately from the application source. Public copies are sanitised to remove private addresses, account details and local network endpoints before publication.
+Public screenshots are sanitised before publication to remove private addresses, account details, credentials and local-network endpoints while retaining useful example data.
+
+## Application source
+
+The MakerVault application source is intentionally kept in a separate private repository. This documentation repository does not contain the application itself.
