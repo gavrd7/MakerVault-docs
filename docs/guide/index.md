@@ -81,8 +81,8 @@ That separation is what lets MakerVault grow from a simple parts list into a use
   <div id="guide-search-results" class="guide-search__results" data-guide-search-results></div>
 </div>
 
-!!! info "Current release: v1.0.0-rc.1 · Release candidate"
-    The guide reflects the v1 release-candidate feature set, including managed recovery, native HTTPS with the MakerVault Local CA, account hardening and accessibility work. Representative off-server recovery has been completed successfully; the remaining stable-v1 gate is the final fresh-install acceptance pass. See [scope and verification](reference/about.md).
+!!! info "Current release: v1.0.0 · Stable"
+    MakerVault v1.0.0 is the first stable release. The v1 acceptance gates include representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS with the MakerVault Local CA, deployment preflight and final green CI. Experimental printer adapters remain labelled according to their hardware-validation status. See [scope and verification](reference/about.md).
 
 <div class="guide-grid" markdown>
 <div class="guide-card" markdown>

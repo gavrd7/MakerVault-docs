@@ -23,9 +23,9 @@ The main reason to use MakerVault is to make your workshop easier to understand 
 
 ## Current edition
 
-This guide documents **MakerVault v1.0.0-rc.1**.
+This guide documents **MakerVault v1.0.0**.
 
-It covers the current v1 release candidate, including:
+It covers the stable v1 release, including:
 
 - beginner-friendly Docker installation and `.env` configuration;
 - Docker volumes, bind mounts, backups and restore;
@@ -40,7 +40,7 @@ It covers the current v1 release candidate, including:
 - OpenID Connect configuration and SMTP-backed account recovery;
 - managed v3 backup/recovery, including TLS identity and replacement-host recovery.
 
-The application is currently at the v1 release-candidate stage. Final v1.0.0 remains subject to the remaining release acceptance checks.
+MakerVault v1.0.0 is the first stable release. The mandatory v1 acceptance checks were completed on 3 October 2026, including representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS/Local CA validation and final green CI.
 
 ## Read the guide
 
