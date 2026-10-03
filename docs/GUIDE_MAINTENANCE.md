@@ -66,7 +66,7 @@ For a task page, use: goal; prerequisites/permissions; numbered procedure; expec
 - Test enabled integration directions with representative services/hardware and record limitations.
 - Verify proxy/OIDC instructions with the chosen supported example providers.
 - Add sanitised screenshots for initial setup, inventory, BOM allocation, versions, printing and account storage. Use consistent viewport/data, descriptive alt text and no credentials.
-- Decide whether to archive pre-v1 docs or introduce versioned documentation; avoid multiple divergent copies before needed.
+- Decide when stable releases need archived/versioned documentation; avoid multiple divergent copies until there is a concrete maintenance need.
 - Verify published Pages URLs, search and accessibility. Never publish `.env`, backups or real users' private screenshots.
 
 The current edition is source-reviewed, build-validated and deployed through GitHub Pages. Hardware integration acceptance remains separate from documentation CI; record completed acceptance evidence in release notes rather than implying the documentation build exercised the application.

@@ -8,6 +8,14 @@ The repository's `.env.example` is the full deployment reference. This table cov
 | --- | --- |
 | `MAKERVAULT_BIND_ADDRESS` | `0.0.0.0` for LAN access; `127.0.0.1` for the documented same-host proxy |
 | `MAKERVAULT_PORT` | Browser-facing host port; default `8765` |
+| `MAKERVAULT_HTTPS_ENABLED` | Native HTTPS mode: `auto` waits for a certificate, `true` requires one immediately, `false` disables the listener |
+| `MAKERVAULT_HTTPS_BIND_ADDRESS` | Native HTTPS bind address; default `0.0.0.0` |
+| `MAKERVAULT_HTTPS_PORT` | Native HTTPS host port; default `8443` |
+| `MAKERVAULT_TLS_CERT_FILE` | Server certificate path inside the container; default `/app/keys/tls/cert.pem` |
+| `MAKERVAULT_TLS_KEY_FILE` | Server private-key path inside the container; default `/app/keys/tls/key.pem` |
+| `MAKERVAULT_HTTPS_SELF_SIGNED` | Advanced startup-generated self-signed leaf certificate; the GUI Local CA workflow is preferred for trusted LAN clients |
+| `MAKERVAULT_HTTPS_SELF_SIGNED_NAMES` | Optional comma-separated names/IPs for startup self-signed generation |
+| `HTTPS_WEB_CONCURRENCY` | Worker count for the native HTTPS listener; normally keep the default `1` |
 | `DJANGO_SECRET_KEY` | Strong stable application secret; keep private |
 | `DJANGO_ALLOWED_HOSTS` | Comma-separated accepted hostnames/IPs; no schemes/ports |
 | `DJANGO_CSRF_TRUSTED_ORIGINS` | Full trusted origins including scheme and non-default port |
@@ -21,7 +29,8 @@ The repository's `.env.example` is the full deployment reference. This table cov
 | `ALLOW_LOCAL_REGISTRATION` | Default `false`; controls local self-registration |
 | `MAKERVAULT_ADMIN_*` | Optional bootstrapped superuser; a configured password is applied at startup |
 | `MAKERVAULT_LEGACY_OWNER_USERNAME` | Resolves ambiguous pre-v0.7 private ownership |
-| `MEDIA_STORAGE` / `KEY_STORAGE` | Uploads and matching encryption key storage |
+| `MEDIA_STORAGE` / `KEY_STORAGE` | Uploads and matching encryption key storage; native HTTPS identity is kept under `KEY_STORAGE/tls` |
+| `BACKUP_STORAGE` | Managed `.mvbackup` bundles and validation metadata |
 | `POSTGRES_STORAGE` / `REDIS_STORAGE` | Database and queue/cache persistence |
 | `MAKERVAULT_STORAGE_KEY_FILE` | Default `/app/keys/private_storage.key` |
 | `MAKERVAULT_STORAGE_KEY` | Advanced alternative key source; protect and back up the actual value |

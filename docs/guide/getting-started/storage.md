@@ -32,7 +32,7 @@ Docker's [volumes guide](https://docs.docker.com/engine/storage/volumes/) and [b
 | `REDIS_STORAGE` | Background queue/cache state | `/data` |
 | `BACKUP_STORAGE` | Managed `.mvbackup` recovery bundles and validation metadata | `/app/backups` |
 
-Your source folder, containing `compose.yaml` and `.env`, is separate. Keeping a copy of the source folder alone does not back up these five data locations.
+Your source folder, containing `compose.yaml` and `.env`, is separate. Keeping a copy of the source folder alone does not back up these persistent data locations.
 
 ## Option A: keep the named-volume defaults
 
@@ -89,7 +89,7 @@ Use full absolute paths beginning with `/`. Avoid `~`, relative paths and spaces
 
 With `MEDIA_STORAGE=/srv/makervault/media`, Docker makes that host folder available **inside the app container as `/app/media`**. These are two views of the same data. Files do not need to be manually copied between them.
 
-Likewise, the host's `/srv/makervault/keys/private_storage.key` is seen by the app as `/app/keys/private_storage.key`. Leave:
+Likewise, the host's `/srv/makervault/keys/private_storage.key` is seen by the app as `/app/keys/private_storage.key`. Native HTTPS material is kept alongside it under `/srv/makervault/keys/tls/` (seen as `/app/keys/tls/`), so it automatically follows the same named-volume or bind-mount choice. Leave:
 
 ```dotenv
 MAKERVAULT_STORAGE_KEY_FILE=/app/keys/private_storage.key
