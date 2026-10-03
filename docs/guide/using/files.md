@@ -34,3 +34,9 @@ Private uploads are encrypted at rest. The server must retain its matching encry
 Check the message, your remaining quota, free host disk space and any reverse-proxy size limit. A model-analysis failure and a file-upload failure are different: a file may be stored successfully even if its geometry cannot be analysed. Do not assume increasing a single Django memory setting removes every application/proxy limit.
 
 [Models and the 3D viewer →](models.md)
+
+
+<figure markdown>
+  ![Files and assets library showing STL and 3MF files with view, download and version controls.](../assets/screenshots/files-library.png)
+  <figcaption>The Files library handles standalone and project-linked assets.</figcaption>
+</figure>

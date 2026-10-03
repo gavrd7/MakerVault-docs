@@ -2,6 +2,29 @@
 
 **Goal:** check your account and make the application ready for everyday use.
 
+
+<figure markdown>
+  ![MakerVault sign-in screen with password and passkey options.](../assets/screenshots/account-login.png)
+  <figcaption>The MakerVault sign-in screen.</figcaption>
+</figure>
+
+<figure markdown>
+  ![MakerVault local account sign-up page with username, email and password fields.](../assets/screenshots/account-sign-up.png)
+  <figcaption>When local self-registration is enabled, new users can create an account from the Sign Up page.</figcaption>
+</figure>
+
+If your administrator has enabled local self-registration, choose **Sign up** from the sign-in page, enter a username, email address and password, then follow any email-verification instructions for the installation. If self-registration is disabled, the administrator must create or provision your account instead.
+
+<figure markdown>
+  ![MakerVault security page showing authenticator app, security key and recovery-code options.](../assets/screenshots/account-mfa.png)
+  <figcaption>MFA and recovery options are managed from Account & Security.</figcaption>
+</figure>
+
+<figure markdown>
+  ![Change Password page showing current and new password fields and password requirements.](../assets/screenshots/account-password.png)
+  <figcaption>Local-account passwords can be changed from Account & Security.</figcaption>
+</figure>
+
 1. Open the address supplied by your administrator and sign in. If you installed it yourself, use the superuser created during installation.
 2. Check the username, timezone and currency in the page header. The displayed currency is not an automatic currency-conversion service.
 3. Open **Account & Security**. Review your password and the available MFA options. An authenticator adds a second sign-in step; save any recovery codes somewhere safe before depending on it. Passkey availability depends on a suitable secure browser origin, normally HTTPS.

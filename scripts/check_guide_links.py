@@ -5,7 +5,7 @@ from urllib.parse import unquote, urlsplit
 import sys
 
 root = Path("site").resolve()
-base = "/MakerVault/"
+base = "/MakerVault-docs/"
 
 class Page(HTMLParser):
     def __init__(self, content):
