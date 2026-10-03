@@ -1,6 +1,6 @@
 # Optional printer controls
 
-MakerVault v0.7.3.2 adds optional **Pause**, **Resume** and **Cancel print** actions. Every existing and newly added live source starts with controls disabled.
+MakerVault provides optional **Pause**, **Resume** and **Cancel print** actions for supported live sources. Controls are disabled by default on every existing and newly added source.
 
 ## Supported sources
 

@@ -1,6 +1,6 @@
 # Creality local monitoring and CFS
 
-**Optional · Local-first · Read-only by default; optional controls from v0.7.3.2**
+**Optional · Local-first · Read-only by default; optional controls on supported sources**
 
 MakerVault has two complementary Creality integrations:
 
@@ -18,7 +18,7 @@ Neither path requires a Creality Cloud login. Compatibility still depends on the
 5. Once connected, MakerVault can display the fields the printer reports, including print state, filename, progress, elapsed/remaining time, layer counts, nozzle/bed/chamber temperatures, errors and whether CFS is present.
 6. Scheduled polling then follows the connection's configured interval.
 
-The current adapter uses the local Creality WebSocket service on port 9999. Monitoring has owner confirmation on K2 and K1; K1 monitoring was also tested through Moonraker. Other models and firmware remain experimental. Optional Pause, Resume and confirmed Cancel are available from v0.7.3.2 and require a per-source opt-in. Controls still need K2 hardware testing. See [Optional printer controls](printer-controls.md). Heater, movement and raw G-code controls are not exposed.
+The current adapter uses the local Creality WebSocket service on port 9999. Monitoring has owner confirmation on K2 and K1; K1 monitoring was also tested through Moonraker. Other models and firmware remain experimental. Optional Pause, Resume and confirmed Cancel are available for supported live sources and require a per-source opt-in. Controls still need K2 hardware testing. See [Optional printer controls](printer-controls.md). Heater, movement and raw G-code controls are not exposed.
 
 ## CFS set up
 

@@ -17,3 +17,41 @@ body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSyst
 [data-md-color-scheme="slate"] .guide-hero .eyebrow { color: #59cfbc; }
 @media(max-width:600px) { .guide-grid { grid-template-columns:1fr; } .guide-hero { padding:1.2rem; } .guide-hero h1 { font-size:1.7rem; } }
 @media print { .md-header,.md-sidebar,.md-footer,.md-top { display:none; } .md-content { margin:0; } .guide-hero { background:none; } }
+
+
+/* Guide screenshots */
+.md-typeset figure {
+  margin: 1.5rem 0 2rem;
+}
+
+.md-typeset figure > p {
+  margin: 0;
+}
+
+.md-typeset figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 12px;
+  box-shadow: var(--md-shadow-z1);
+  background: var(--md-default-bg-color);
+}
+
+.md-typeset figcaption {
+  margin-top: .55rem;
+  color: var(--md-default-fg-color--light);
+  font-size: .72rem;
+  line-height: 1.45;
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .md-typeset figure {
+    margin: 1.1rem 0 1.5rem;
+  }
+
+  .md-typeset figure img {
+    border-radius: 8px;
+  }
+}
