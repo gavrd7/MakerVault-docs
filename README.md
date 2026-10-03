@@ -1,12 +1,28 @@
-# MakerVault User Guide
+<p align="center">
+  <img src="docs/guide/assets/makervault-logo.jpg" alt="MakerVault logo" width="180">
+</p>
 
-Public documentation for **MakerVault** — a self-hosted electronics inventory, project, file and 3D-printing workspace.
+<h1 align="center">MakerVault User Guide</h1>
 
-The MakerVault application source is published separately at [gavrd7/MakerVault](https://github.com/gavrd7/MakerVault). This repository contains the public user guide and the MkDocs/GitHub Pages configuration used to publish it.
+<p align="center">
+  Public documentation for <strong>MakerVault</strong> — a self-hosted workspace for electronics inventory, projects, files and 3D printing.
+</p>
+
+<p align="center">
+  <strong>Guide for MakerVault v1.0.0</strong>
+</p>
+
+<p align="center">
+  <a href="https://gavrd7.github.io/MakerVault-docs/">Read the guide</a> ·
+  <a href="https://github.com/gavrd7/MakerVault">Application source</a> ·
+  <a href="docs/guide/getting-started/install.md">Installation</a>
+</p>
+
+---
 
 ## What is MakerVault?
 
-**MakerVault** is a self-hosted workshop management application for electronics, maker projects and 3D printing. It is intended to replace the collection of spreadsheets, folders, bookmarks and disconnected tools that often build up around a home workshop.
+**MakerVault** is a self-hosted workshop management application for electronics, maker projects and 3D printing. It brings together the information that often ends up scattered across spreadsheets, folders, slicers, notes and bookmarks.
 
 At its core, MakerVault connects:
 
@@ -19,13 +35,15 @@ At its core, MakerVault connects:
 
 MakerVault runs on your own server using Docker and is accessed through a normal web browser. Your structured data is stored in PostgreSQL and your files remain with your installation. Optional integrations can add live printer status, camera feeds, filament synchronisation, OIDC sign-in and other capabilities, but the core application does not depend on a cloud service.
 
-The main reason to use MakerVault is to make your workshop easier to understand later. It helps answer practical questions such as **“Do I already own this part?”**, **“Where did I put it?”**, **“Which revision did I print?”**, **“What is allocated to this project?”** and **“Which files and wiring belong to this build?”**
+<p align="center">
+  <img src="docs/guide/assets/screenshots/dashboard-overview.png" alt="MakerVault dashboard overview" width="92%">
+</p>
 
-## Current edition
+<p align="center"><em>The MakerVault dashboard brings projects, inventory, printing and workshop activity together.</em></p>
 
-This guide documents **MakerVault v1.0.0**.
+## What the guide covers
 
-It covers the stable v1 release, including:
+This guide documents the stable **MakerVault v1.0.0** release, including:
 
 - beginner-friendly Docker installation and `.env` configuration;
 - Docker volumes, bind mounts, backups and restore;
@@ -42,9 +60,16 @@ It covers the stable v1 release, including:
 
 MakerVault v1.0.0 is the first stable release. The mandatory v1 acceptance checks were completed on 3 October 2026, including representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS/Local CA validation and final green CI.
 
-## Read the guide
+## Repositories
 
-**https://gavrd7.github.io/MakerVault-docs/**
+The application and its documentation are kept separate so each can be maintained cleanly.
+
+| Repository | Purpose |
+| --- | --- |
+| [gavrd7/MakerVault](https://github.com/gavrd7/MakerVault) | Application source, Docker deployment, backend/frontend code and release history |
+| [gavrd7/MakerVault-docs](https://github.com/gavrd7/MakerVault-docs) | Public guide source, sanitised screenshots, MkDocs configuration and GitHub Pages publishing |
+
+The published guide is available at **https://gavrd7.github.io/MakerVault-docs/**.
 
 ## Repository layout
 
@@ -67,10 +92,12 @@ python -m mkdocs serve
 
 See [docs/GUIDE_MAINTENANCE.md](docs/GUIDE_MAINTENANCE.md) for maintenance and publishing guidance.
 
-## Screenshots
+## Screenshots and privacy
 
 Public screenshots are sanitised before publication to remove private addresses, account details, credentials and local-network endpoints while retaining useful example data.
 
-## Application source
+The guide is designed so screenshots complement the written instructions rather than replace them, keeping it usable when small UI details change.
 
-The MakerVault application source is available publicly at **https://github.com/gavrd7/MakerVault**. This documentation repository remains separate so the guide, screenshots and GitHub Pages site can be maintained and published independently from the application source.
+## Licence and attribution
+
+MakerVault software is licensed **AGPL-3.0-or-later** in the main application repository. Third-party media keeps its original licence and provenance; application media attribution is available in MakerVault's **About** page where applicable.
