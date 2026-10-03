@@ -60,7 +60,7 @@ nav:
       - Configure your .env file: getting-started/environment.md
       - Choose your storage: getting-started/storage.md
       - First sign-in: getting-started/first-sign-in.md
-      - Your first project: getting-started/first-project.md
+      - Guided newcomer workflow: getting-started/first-project.md
   - Using MakerVault:
       - Find your way around: using/navigation.md
       - Boards and components: using/catalogue.md
