@@ -53,4 +53,4 @@ Private inventory, projects, files, printers and spools belong to their creator.
 
 You do not need Spoolman, SimplyPrint, a printer connection, OIDC or a reverse proxy to begin organising your own local workshop. Add integrations only when there is existing data or equipment you want to connect.
 
-**Next:** [Your first project](first-project.md).
+**Next:** [Follow the guided newcomer workflow](first-project.md).
