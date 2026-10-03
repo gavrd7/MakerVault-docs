@@ -19,18 +19,18 @@ Open the local address printed by MkDocs (normally `http://127.0.0.1:8000`). Dep
 
 ## Publishing with GitHub Pages
 
-GitHub Pages is appropriate for a static manual; it does not run MakerVault itself. The repository is private at the time this guide was prepared. Pages from private repositories requires an eligible GitHub plan. Pages sites are ordinarily public even when the source repository is private; check your intended visibility before publishing.
+GitHub Pages publishes this public documentation repository at `https://gavrd7.github.io/MakerVault-docs/`. The MakerVault application repository remains private and is not exposed by the documentation site.
 
-The included `guide.yml` workflow builds documentation for documentation PRs/main changes and uploads a preview artifact. Deployment happens only when explicitly run with `publish=true` from `main`. It does not automatically publish on merge.
+The included `guide.yml` workflow validates documentation pull requests. Pushes to `main` build the site, package the Pages artifact and deploy it automatically.
 
-1. Review and merge the documentation PR.
-2. In repository **Settings → Pages**, choose **GitHub Actions** as the build source (if the account/repository supports it).
-3. Review the `github-pages` environment's deployment protection rules and intended public content.
-4. Open **Actions → MakerVault user guide → Run workflow**, choose `main`, and enable **Publish to GitHub Pages**.
-5. Open the URL reported by the deploy job. For this repository the expected project-site URL is `https://gavrd7.github.io/MakerVault-docs/` unless Pages/custom-domain settings change it.
-6. Test navigation, search, code copying and a narrow/mobile viewport on the published site.
+1. Make documentation changes on a short-lived branch.
+2. Open a pull request and wait for the strict MkDocs build and link checker to pass.
+3. Review the rendered content and any new screenshots.
+4. Merge the reviewed pull request into `main`.
+5. Confirm the **MakerVault user guide** workflow completes both the build and deploy jobs successfully.
+6. Open `https://gavrd7.github.io/MakerVault-docs/` and check navigation, search, code copying and a narrow/mobile viewport.
 
-If Pages is unavailable for the private repository, a separate public documentation repository is an alternative. Copy only the documentation source/build assets, update `repo_url`, `edit_uri` and `site_url`, and review before making that repository public. Do not change the application repository's visibility just to host the guide.
+A manual workflow dispatch is available if the site needs to be republished without a content change.
 
 Official reference: https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages
 
@@ -41,7 +41,7 @@ Official reference: https://docs.github.com/en/pages/getting-started-with-github
 3. Add a navigation entry in `mkdocs.yml` for a new chapter.
 4. Run the strict build and link checker.
 5. Preview the page, check mobile layout and update the source/version note when revalidating an edition.
-6. Open a PR. Publish the reviewed edition through the manual workflow.
+6. Open a PR. Merge the reviewed edition to `main`; the Pages workflow publishes it automatically.
 
 For a task page, use: goal; prerequisites/permissions; numbered procedure; expected result; common failures; relevant next link. Keep beginner paths concrete. Place optional infrastructure complexity in Advanced features. Do not describe planned adapters as available.
 
@@ -69,4 +69,4 @@ For a task page, use: goal; prerequisites/permissions; numbered procedure; expec
 - Decide whether to archive pre-v1 docs or introduce versioned documentation; avoid multiple divergent copies before needed.
 - Verify published Pages URLs, search and accessibility. Never publish `.env`, backups or real users' private screenshots.
 
-The initial edition is source-reviewed and build-validated; live deployment and hardware integration acceptance remain separate checks. Record completed acceptance evidence in release notes rather than implying the documentation build exercised the application.
+The current edition is source-reviewed, build-validated and deployed through GitHub Pages. Hardware integration acceptance remains separate from documentation CI; record completed acceptance evidence in release notes rather than implying the documentation build exercised the application.
