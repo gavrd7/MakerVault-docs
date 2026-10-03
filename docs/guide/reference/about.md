@@ -20,7 +20,7 @@ K1/K2 monitoring and camera playback have owner confirmation, including acceptan
 
 ## Sources
 
-- [MakerVault repository](https://github.com/gavrd7/MakerVault)
+- [MakerVault documentation repository](https://github.com/gavrd7/MakerVault-docs)
 - [Docker Engine installation](https://docs.docker.com/engine/install/)
 - [Docker Compose](https://docs.docker.com/compose/)
 - [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)
