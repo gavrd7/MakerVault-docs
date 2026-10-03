@@ -150,7 +150,7 @@ The HTTPS settings are not “extra protection” switches to turn on before you
 | --- | --- |
 | Locale/time | `TZ` is the container timezone; `DJANGO_TIME_ZONE` is the app timezone. Normally keep them the same, e.g. `Europe/London`. `DJANGO_LANGUAGE_CODE=en-gb` selects British English. Currency/measurement settings express preferences; they do not convert existing money amounts. |
 | Container permissions | `PUID` and `PGID` identify the Linux user/group for app storage, especially bind mounts. `UMASK=0022` controls permissions on newly created files/directories; it is not a user ID. Keep it and `FIX_PERMISSIONS=true` unless you deliberately manage ownership yourself. See [storage choices](storage.md). |
-| Storage | Five separate locations hold media, keys, database, Redis data and managed recovery bundles. Set these before entering real data. They do not identify the source-code folder. |
+| Storage | Separate locations hold media, private-file keys, database, Redis data, managed recovery bundles and optional native-TLS identity. Set these before entering real data. They do not identify the source-code folder. |
 | Registration/admin | Keep `ALLOW_LOCAL_REGISTRATION=false` for accounts created by an administrator. Leave `MAKERVAULT_ADMIN_PASSWORD` empty when using interactive `createsuperuser`. A non-empty bootstrap password is applied at startup, so it can override later password changes. |
 | Legacy owner | Leave `MAKERVAULT_LEGACY_OWNER_USERNAME` blank on a new installation. It is for ambiguous ownership during upgrades from before v0.7. |
 | OIDC | External single sign-on. Leave `OIDC_ENABLED=false` and credentials empty until following [OIDC setup](../advanced/oidc.md). Client credentials come from your provider, not the Python generator above. |
@@ -190,7 +190,7 @@ Keep your existing `.env`. Compare it with the new `.env.example` and read the r
 | New server IP/hostname | Allowed hosts, trusted origins, bookmark and any proxy/provider callback URLs |
 | New browser-facing port | `MAKERVAULT_PORT`, origins and bookmark |
 | New timezone/currency preference | Corresponding locale values; verify displayed results |
-| Enabling HTTPS | Follow the proxy chapter as a complete setup |
+| Enabling HTTPS | Follow the HTTPS/reverse-proxy chapter; choose reverse-proxy TLS or the optional native 8443 listener deliberately |
 | Moving stored data | Back up and restore to the new location; changing a path is not migration |
 | Normal app update | Preserve secrets and storage paths; review new example settings |
 
