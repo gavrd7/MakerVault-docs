@@ -46,3 +46,9 @@ Use the actual issuer/server URL required by the provider; the placeholder is no
 Use a separate private browser window. Select the provider, authenticate and confirm the resulting MakerVault username. Verify its editing rights, private workspace and quota. Assign the needed local group/permissions deliberately. Sign out and test sign-in again before asking others to rely on it.
 
 If authentication fails, check the exact redirect URI, issuer, client credentials, HTTPS/proxy settings and both services' error messages. Keep client secrets and login tokens out of shared logs. If the provider is unavailable, use your retained local administrator account to recover configuration.
+
+
+<figure markdown>
+  ![Identity providers page for adding GUI-managed OpenID Connect providers.](../assets/screenshots/account-oidc.png)
+  <figcaption>OIDC providers can be managed in the application as well as bootstrapped from environment settings.</figcaption>
+</figure>

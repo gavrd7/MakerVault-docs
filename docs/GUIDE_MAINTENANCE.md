@@ -1,6 +1,6 @@
 # Maintaining and publishing the user guide
 
-The user guide is a documentation-only addition. It uses Markdown under `docs/guide`, Material for MkDocs and a separate `mkdocs.yml`. Existing engineering notes under `docs/` are not included in the public build. No application settings, volumes or runtime services are changed.
+The user guide documents the current release. It uses Markdown under `docs/guide`, Material for MkDocs and a separate `mkdocs.yml`. Existing engineering notes under `docs/` are not included in the public build. No application settings, volumes or runtime services are changed.
 
 ## Local preview and validation
 
@@ -19,16 +19,18 @@ Open the local address printed by MkDocs (normally `http://127.0.0.1:8000`). Dep
 
 ## Publishing with GitHub Pages
 
-GitHub Pages is appropriate for a static manual; it does not run MakerVault itself. The documentation repository is public and exists specifically so the user guide can be published without changing the private MakerVault application repository.
+GitHub Pages is appropriate for a static manual; it does not run MakerVault itself. The repository is private at the time this guide was prepared. Pages from private repositories requires an eligible GitHub plan. Pages sites are ordinarily public even when the source repository is private; check your intended visibility before publishing.
 
-The included `guide.yml` workflow validates documentation pull requests. Pushes to `main` build and publish the public site automatically once GitHub Pages is configured to use GitHub Actions. A manual workflow dispatch is also available for a republish.
+The included `guide.yml` workflow builds documentation for documentation PRs/main changes and uploads a preview artifact. Deployment happens only when explicitly run with `publish=true` from `main`. It does not automatically publish on merge.
 
-1. In **Settings → Pages**, choose **GitHub Actions** as the build source.
-2. Review the `github-pages` environment's deployment protection rules and intended public content.
-3. Merge reviewed documentation changes into `main`. The workflow will build and deploy the site automatically.
-4. To republish without a content change, open **Actions → MakerVault user guide → Run workflow** and choose `main`.
-5. Open the URL reported by the deploy job. The expected project-site URL is `https://gavrd7.github.io/MakerVault-docs/` unless Pages/custom-domain settings change it.
+1. Review and merge the documentation PR.
+2. In repository **Settings → Pages**, choose **GitHub Actions** as the build source (if the account/repository supports it).
+3. Review the `github-pages` environment's deployment protection rules and intended public content.
+4. Open **Actions → MakerVault user guide → Run workflow**, choose `main`, and enable **Publish to GitHub Pages**.
+5. Open the URL reported by the deploy job. For this repository the expected project-site URL is `https://gavrd7.github.io/MakerVault-docs/` unless Pages/custom-domain settings change it.
 6. Test navigation, search, code copying and a narrow/mobile viewport on the published site.
+
+If Pages is unavailable for the private repository, a separate public documentation repository is an alternative. Copy only the documentation source/build assets, update `repo_url`, `edit_uri` and `site_url`, and review before making that repository public. Do not change the application repository's visibility just to host the guide.
 
 Official reference: https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages
 
@@ -64,7 +66,7 @@ For a task page, use: goal; prerequisites/permissions; numbered procedure; expec
 - Test enabled integration directions with representative services/hardware and record limitations.
 - Verify proxy/OIDC instructions with the chosen supported example providers.
 - Add sanitised screenshots for initial setup, inventory, BOM allocation, versions, printing and account storage. Use consistent viewport/data, descriptive alt text and no credentials.
-- Decide whether to archive v0.7 docs or introduce versioned documentation; avoid multiple divergent copies before needed.
+- Decide whether to archive pre-v1 docs or introduce versioned documentation; avoid multiple divergent copies before needed.
 - Verify published Pages URLs, search and accessibility. Never publish `.env`, backups or real users' private screenshots.
 
 The initial edition is source-reviewed and build-validated; live deployment and hardware integration acceptance remain separate checks. Record completed acceptance evidence in release notes rather than implying the documentation build exercised the application.

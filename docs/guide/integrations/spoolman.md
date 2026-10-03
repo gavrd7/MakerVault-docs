@@ -40,3 +40,9 @@ Material and colour alone are insufficient evidence that two entries represent t
 ## Connection problems
 
 Check Spoolman's availability, its URL/port and network access from the MakerVault host/container. A working browser connection from your laptop does not prove the container can reach it. Read the last integration error before changing mappings or repeatedly importing.
+
+
+<figure markdown>
+  ![3D Printing integration settings showing Spoolman, SimplyPrint, Creality CFS and planned multi-material adapters.](../assets/screenshots/printing-integrations.png)
+  <figcaption>Integration settings distinguish configured adapters from planned placeholders.</figcaption>
+</figure>

@@ -2,6 +2,27 @@
 
 **Goal:** find or create an accurate description of a product before recording the units you own.
 
+
+<figure markdown>
+  ![Board Catalogue with filters, a board list and the ESP32 detail panel.](../assets/screenshots/catalogue-board-overview.png)
+  <figcaption>Board Catalogue and detail panel.</figcaption>
+</figure>
+
+<figure markdown>
+  ![Board detail panel showing core and technical specifications.](../assets/screenshots/catalogue-board-details-1.png)
+  <figcaption>Structured board specifications.</figcaption>
+</figure>
+
+<figure markdown>
+  ![Lower board detail panel showing interfaces, wireless capabilities and compatibility.](../assets/screenshots/catalogue-board-details-2.png)
+  <figcaption>Additional technical fields, compatibility and source links.</figcaption>
+</figure>
+
+<figure markdown>
+  ![Components catalogue showing reusable component definitions and a component detail panel.](../assets/screenshots/catalogue-components.png)
+  <figcaption>Components catalogue.</figcaption>
+</figure>
+
 ## Find a board
 
 1. Open **Board Catalogue** and search for the model or family.

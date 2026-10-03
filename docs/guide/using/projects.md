@@ -40,3 +40,14 @@ Use **＋ Repository** for a Git repository URL and its relevant context. MakerV
 ## Costs
 
 Project views combine relevant purchase-cost and BOM information. Treat these as recorded planning/stock figures. They are not a full accounting ledger, exchange-rate calculation or automatically reconciled invoice total. Avoid counting the same purchase twice when interpreting separate cost summaries.
+
+
+<figure markdown>
+  ![Projects page with project cards and the selected project workspace.](../assets/screenshots/projects-overview.png)
+  <figcaption>Projects collect build information, files, inventory and BOMs.</figcaption>
+</figure>
+
+<figure markdown>
+  ![Add BOM item dialog for a custom project requirement.](../assets/screenshots/projects-add-bom-item.png)
+  <figcaption>A BOM line can reference catalogue data or a custom item.</figcaption>
+</figure>

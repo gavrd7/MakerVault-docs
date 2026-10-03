@@ -20,3 +20,9 @@ Enrichment is designed to preserve populated information rather than overwrite e
 If nothing runs, inspect the application logs and container health. Celery worker and Beat run inside the application container in this deployment; you do not need to create separate worker services for the standard Compose setup.
 
 [Troubleshooting →](../reference/troubleshooting.md)
+
+
+<figure markdown>
+  ![Library updates settings showing catalogue coverage and maintenance scheduling.](../assets/screenshots/settings-library-updates.png)
+  <figcaption>Library updates report catalogue coverage and control scheduled maintenance.</figcaption>
+</figure>

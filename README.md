@@ -1,16 +1,14 @@
 # MakerVault User Guide
 
-This repository publishes the public user documentation for **MakerVault**, a self-hosted makerspace inventory, project and 3D-printing management application.
+Public documentation for **MakerVault** — a self-hosted electronics inventory, projects, files and 3D-printing workspace.
 
-The application source remains in the private `gavrd7/MakerVault` repository. This repository intentionally contains only documentation source and the files required to build the documentation website.
+The MakerVault application repository remains private. This repository contains only the public documentation source and its MkDocs/GitHub Pages build configuration.
 
-## Current documentation edition
+## Current edition
 
-The initial public guide is the **v0.7.0.1 documentation baseline**, originally reviewed and merged in MakerVault PR #31 on 29 September 2026. MakerVault has continued to evolve since that edition, so newer application features may not yet be documented here.
+The documentation is being refreshed for **MakerVault v0.9.0.2**. The v0.7.0.1 guide was the original publication baseline; this refresh mirrors the current guide source from MakerVault and adds documentation for post-v0.7 features including Universal Search, Maker Tags, Interactive Wiring, live printer monitoring, printed parts and v0.9 camera feeds.
 
 ## Read the guide
-
-Once GitHub Pages is enabled and the deployment workflow has completed, the guide is published at:
 
 https://gavrd7.github.io/MakerVault-docs/
 
@@ -20,20 +18,13 @@ https://gavrd7.github.io/MakerVault-docs/
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install -r docs/requirements.txt
+python -m mkdocs build --strict
+python scripts/check_guide_links.py
 python -m mkdocs serve
 ```
 
-For a strict validation build:
+See [docs/GUIDE_MAINTENANCE.md](docs/GUIDE_MAINTENANCE.md) for maintenance and publishing notes.
 
-```bash
-python -m mkdocs build --strict
-python scripts/check_guide_links.py
-```
+## Screenshots
 
-## Documentation maintenance
-
-See [docs/GUIDE_MAINTENANCE.md](docs/GUIDE_MAINTENANCE.md) for editing, validation and publishing guidance.
-
-## Licence
-
-Documentation is provided as part of the MakerVault project. Application licensing and third-party notices are maintained with the MakerVault application project.
+The v0.9 screenshot set is prepared separately from the application source. Public copies are sanitised to remove private addresses, account details and local network endpoints before publication.

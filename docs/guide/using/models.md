@@ -38,3 +38,9 @@ MakerVault analyses geometry locally and does not slice or repair the model. Con
 Compatible 3MF packages may contain printer/process/filament profiles, layer height, nozzle, infill, wall counts, supports and brim settings. MakerVault reads available saved metadata; it does not calculate missing settings or ensure they match your printer now. Not every 3MF contains the same fields.
 
 Re-analyse existing files when new analysis fields become available, using the analysis action where offered. A saved file remains useful even when analysis has limited information.
+
+
+<figure markdown>
+  ![MakerVault 3D viewer displaying a 3MF model with plate selection, grid, axes and wireframe controls.](../assets/screenshots/model-viewer.png)
+  <figcaption>The local STL/3MF viewer.</figcaption>
+</figure>

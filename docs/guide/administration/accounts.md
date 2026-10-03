@@ -13,7 +13,14 @@
 
 A group grants actions, not ownership of another person's workspace. The default Editor group includes view/add/change core permissions and inventory deletion; it does not grant every delete action. A button may be absent because a specific permission is missing.
 
-Local self-registration is disabled by default. Enabling `ALLOW_LOCAL_REGISTRATION` is a separate administrative decision. OIDC provisioning is configured separately and does not mean a new identity should automatically become an administrator.
+Local self-registration is controlled by `ALLOW_LOCAL_REGISTRATION`. When it is enabled, the sign-in area exposes a **Create account** / **Sign up** path; when it is disabled, administrators provision accounts instead. OIDC provisioning is configured separately and does not mean a new identity should automatically become an administrator.
+
+<figure markdown>
+  ![Users and storage settings showing account-onboarding readiness, SMTP recovery status and administrative controls.](../assets/screenshots/account-onboarding.png)
+  <figcaption>The Account onboarding panel shows whether local sign-up and email-based password recovery are ready for users.</figcaption>
+</figure>
+
+The **Settings → Users & storage** page provides an account-onboarding status panel for administrators. Use it to confirm whether self-service sign-up is available, whether email recovery is configured, and to send a test email before publishing access instructions.
 
 ## What is shared?
 
@@ -41,3 +48,14 @@ Usage includes retained files/versions and private images. Lowering a quota does
 **Purge private data** removes that user's private workspace but preserves the account. **Delete account** removes the account and its private data. These require typing the exact username and have no ordinary undo. The UI blocks self-disable/self-purge/self-delete.
 
 Confirm the user and make a restorable backup before either destructive operation. Shared catalogue information is not that user's private workspace to purge.
+
+
+<figure markdown>
+  ![Users and storage settings showing quota policy, storage breakdown and account controls.](../assets/screenshots/admin-users-storage.png)
+  <figcaption>Administrators can manage quotas and account state without browsing another user's private files.</figcaption>
+</figure>
+
+<figure markdown>
+  ![MakerVault Django administration interface.](../assets/screenshots/django-admin.png)
+  <figcaption>The Django administration interface is reserved for administrative records and permissions.</figcaption>
+</figure>

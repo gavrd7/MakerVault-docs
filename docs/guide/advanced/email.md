@@ -21,6 +21,15 @@ The example uses STARTTLS on port 587. Do not assume changing the port to 465 en
 
 Recreate the app with `sudo docker compose up -d`. Ensure the sending domain/address is authorised at the mail provider and that the host permits outbound SMTP. Test a password-reset request on an account you control; verify receipt and the correct HTTPS hostname in the link.
 
+## Verify account recovery
+
+After recreating the app, open **Settings → Users & storage** as a superuser. The **Account onboarding** panel shows whether email recovery is available and exposes a **Send test email** action. Use this before relying on password-reset links for other users.
+
+<figure markdown>
+  ![MakerVault account-onboarding panel showing local sign-up readiness, email recovery and a test-email action.](../assets/screenshots/account-onboarding.png)
+  <figcaption>Use the onboarding status panel to verify SMTP-backed recovery before publishing sign-in guidance.</figcaption>
+</figure>
+
 ## Recover a local password without email
 
 An authorised server operator can reset a local password interactively:
@@ -32,3 +41,9 @@ sudo docker compose exec makervault python manage.py changepassword USERNAME
 Replace `USERNAME`. The prompt avoids putting the new password in shell history. This is not a general MFA-bypass procedure. Use saved MFA recovery codes or the authentication provider's supported recovery process as applicable.
 
 If `MAKERVAULT_ADMIN_PASSWORD` remains configured, startup can reset that configured administrator's password again. Clear the bootstrap password after the initial setup if you want later interactive password changes to persist across restarts. The beginner guide avoids that bootstrap method.
+
+
+<figure markdown>
+  ![Account email-address management using a sanitised example address.](../assets/screenshots/account-email.png)
+  <figcaption>Email addresses and verification state are managed from Account & Security.</figcaption>
+</figure>

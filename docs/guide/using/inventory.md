@@ -40,3 +40,9 @@ Open the record and use **Release from allocation** when available. Choose the s
 To delete an inventory row, release all BOM allocations first and use **Delete** if your account has that permission. Deletion removes the record; use a suitable lifecycle status instead when you want to retain a history of a retired or unavailable item.
 
 [Projects and BOMs →](projects.md)
+
+
+<figure markdown>
+  ![Inventory table showing generated IDs, quantities, allocation, status, project and location.](../assets/screenshots/inventory-overview.png)
+  <figcaption>Physical inventory keeps owned items separate from shared catalogue definitions.</figcaption>
+</figure>
