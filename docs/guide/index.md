@@ -85,8 +85,8 @@ That separation is what lets MakerVault grow from a simple parts list into a use
   <div id="guide-search-results" class="guide-search__results" data-guide-search-results></div>
 </div>
 
-!!! info "Current release: v1.0.2 · Stable"
-    MakerVault v1.0.2 is the current stable patch release. It includes first-class Windows Docker Desktop/WSL2 installation guidance and the printed-part validation/project-assignment fix, together with the v1.0.1 filament catalogue and K2 same-origin camera improvements. The v1 acceptance gates include representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS with the MakerVault Local CA, deployment preflight and final green CI. Experimental printer adapters remain labelled according to their hardware-validation status. See [scope and verification](reference/about.md).
+!!! info "Current release: v1.0.3 · Stable"
+    MakerVault v1.0.3 is the current stable patch release. It expands FDM/FFF printer catalogue coverage with curated supplemental Creality models where OrcaSlicer has gaps, while retaining the v1.0.2 Windows Docker Desktop/WSL2 guidance and printed-part validation/project-assignment fix together with the v1.0.1 filament catalogue and K2 same-origin camera improvements. The v1 acceptance gates include representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS with the MakerVault Local CA, deployment preflight and final green CI. Experimental printer adapters remain labelled according to their hardware-validation status. See [scope and verification](reference/about.md).
 
 <div class="guide-grid" markdown>
 <div class="guide-card" markdown>
