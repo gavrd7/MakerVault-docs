@@ -34,6 +34,18 @@ Spool IDs are generated automatically. Two identical reels should be two spool r
 
 Weight fields refer to filament amounts; do not put the combined plastic-reel-and-filament scale reading into a filament-only remaining-weight field without accounting for the empty spool.
 
+## Match a filament to catalogue data
+
+Catalogue matching is optional. A manually created filament remains fully usable when it is **Unmatched**.
+
+Open **Filament details** for a saved product and choose **Match catalogue**. MakerVault ranks candidates using manufacturer, material, product-name aliases and colour information. The catalogue merges SpoolmanDB with verified supplemental manufacturer-backed records, so a result may come from more than one source. Review the source and technical values before applying a match.
+
+A match can fill missing density, nominal/spool weight, nozzle/bed temperatures, drying information, colour metadata and source links. Incoming decimal values are rounded to MakerVault's stored precision before validation, and scheduled enrichment does not silently replace deliberate manual corrections.
+
+After matching, use **Rematch catalogue** to choose another record or **Unmatch catalogue** to remove the link. New reversible matches restore the saved pre-match values when unmatched; older matches without a snapshot keep their current descriptive values rather than guessing. Spool Inventory shows **✓ Matched** or **Unmatched** for the shared filament product behind each physical spool.
+
+The filament colour swatch and the square candidate-selection tick are deliberately separate controls.
+
 ## Locations and slots
 
 Create reusable printing locations such as a room, shelf or dry box. Update the placement when moving a spool. A discovered slot may display a material and colour before it has a physical spool linked.

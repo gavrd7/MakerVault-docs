@@ -33,7 +33,7 @@ If Creality Cloud works but these local URLs fail, the local `mjpg_streamer` ser
 
 HTTP snapshot and MJPEG sources are shown as **refreshed live images**, approximately one image per second after each request completes. MJPEG sources yield one bounded JPEG frame per request. This first pass does not relay a continuous high-frame-rate MJPEG stream. It avoids holding a web worker for the lifetime of an open viewer.
 
-## Creality K2 family — experimental WebRTC
+## Creality K2 family — experimental same-origin relay
 
 Add the camera under the **Creality local** integration and choose the K2 preset:
 
@@ -41,9 +41,9 @@ Add the camera under the **Creality local** integration and choose the K2 preset
 
 MakerVault requests the printer's read-only video session token over its configured Creality WebSocket connection. Firmware advertising video encryption uses the token-protected signalling route on HTTP port 80; legacy firmware uses the configured port-8000 route. Tokens are kept on the server for negotiation and are not returned to the browser or saved in diagnostics.
 
-The viewer negotiates video only and requires an H.264-capable WebRTC browser. It never requests access to your phone or computer's camera/microphone. Codec, ICE and firmware differences still require testing on each model/firmware; monitoring success is not playback validation.
+MakerVault negotiates the printer-side WebRTC video internally; the browser receives HLS/fMP4 from MakerVault and does not establish a WebRTC session with the printer. It never requests access to your phone or computer's camera/microphone. Printer codec, signalling and firmware differences still require testing on each model/firmware; monitoring success is not playback validation.
 
-**The browser must reach the printer's network, normally via LAN or VPN.** MakerVault proxies signalling, but does not relay WebRTC media and does not configure a TURN server. Accessing MakerVault remotely through HTTPS alone will not make the printer's video network reachable. Close other printer camera viewers if the printer permits only one session. Use Reconnect after a connection failure.
+MakerVault terminates the K2 compatibility path inside the application container. Its loopback-only go2rtc helper ingests the printer stream and MakerVault serves authenticated same-origin HLS/fMP4 to the browser. Plain HTTP on the normal application port works on a LAN, and HTTPS through a reverse proxy uses that same origin. No dedicated camera media port, TURN server or direct browser-to-printer route is required. Close other printer camera viewers if the printer permits only one session. Use Reconnect after a connection failure.
 
 ## Providers and extension framework
 
@@ -51,7 +51,7 @@ Discovery providers produce the same validated source contract: name, playback m
 
 | Integration | Discovery / native route | Current boundary |
 | --- | --- | --- |
-| Creality | K1 direct/Helper Script presets; K2 WebRTC signalling | Hardware/firmware testing pending |
+| Creality | K1 direct/Helper Script presets; K2 internal WebRTC ingestion → same-origin HLS/fMP4 | K1/K2 playback owner-tested; broader firmware/browser matrix still experimental |
 | Moonraker / Klipper; Elegoo, QIDI, Sovol, Snapmaker, Voron profiles | Moonraker webcam configuration | HTTP snapshots/MJPEG only; Klipper needs an external camera service |
 | OctoPrint | Default webcam settings, including orientation | Falls back to usable stream when the configured snapshot is localhost; does not fetch MakerVault localhost |
 | Prusa | PrusaLink `GET /api/v1/cameras`, then `GET /api/v1/cameras/{camera_id}/snap` | Experimental; only PrusaLink versions exposing this API; API-key authentication; reads latest stored image, does not trigger captures or import Connect cloud cameras |
@@ -60,7 +60,7 @@ Discovery providers produce the same validated source contract: name, playback m
 | SimplyPrint | Manual local feed; alternative local integration where supported | Cloud camera access not implemented |
 | Other | Manual HTTP source | No guessed manufacturer endpoints |
 
-For printers exposing Moonraker or OctoPrint alongside a manufacturer interface, add that live integration to the same printer and set up its camera there. Camera viewing does not require enabling printer controls. The owner confirmed K1 and K2 camera playback and accepted the compact automatic preview layout on 2 October 2026. Exact source route, firmware and browser were not supplied with that confirmation. Other manufacturers and remaining lifecycle/security checks remain pending in issue #37.
+For printers exposing Moonraker or OctoPrint alongside a manufacturer interface, add that live integration to the same printer and set up its camera there. Camera viewing does not require enabling printer controls. The owner confirmed K1 and K2 camera playback and accepted the compact automatic preview layout on 2 October 2026; the K2 same-origin relay was also accepted in hands-on testing on 4 October 2026. Broader firmware/browser/account-isolation coverage remains part of the experimental validation boundary. Other manufacturers and remaining lifecycle/security checks remain pending in issue #37.
 
 ## Security and troubleshooting
 
@@ -74,7 +74,7 @@ If discovery is empty, configure the exact snapshot/MJPEG URL manually. Unsuppor
 
 ## Hardware checklist
 
-- Test all three K1 direct/Fluidd/Mainsail routes through Creality and Moonraker; test K2 WebRTC independently and record firmware/browser.
+- Test all three K1 direct/Fluidd/Mainsail routes through Creality and Moonraker; test K2 same-origin playback independently across representative firmware/browsers and record the combination.
 - Confirm an image or video actually appears, and verify orientation and fullscreen at desktop and mobile sizes.
 - Scroll previews off-screen/on-screen, hide/show the tab, change the configured camera and leave the page; verify playback is released and printer monitoring continues.
 - Test printer offline/reconnect and camera authentication errors.
