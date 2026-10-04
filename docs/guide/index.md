@@ -18,7 +18,7 @@ Instead of keeping board details in browser bookmarks, stock counts in a spreads
 <div class="guide-grid" markdown>
 <div class="guide-card" markdown>
 ### What it manages
-Boards and components, physical inventory, projects and BOMs, files and revisions, wiring diagrams, printers, filament and spools, models, print history, printed parts and physical Maker Tags.
+Boards and components, physical inventory, projects and BOMs, files and revisions, wiring diagrams, printers, catalogue-matched filament products and physical spools, models, print history, printed parts and physical Maker Tags.
 </div>
 <div class="guide-card" markdown>
 ### How it works
@@ -86,7 +86,7 @@ That separation is what lets MakerVault grow from a simple parts list into a use
 </div>
 
 !!! info "Current release: v1.0.0 · Stable"
-    MakerVault v1.0.0 is the first stable release. The v1 acceptance gates include representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS with the MakerVault Local CA, deployment preflight and final green CI. Experimental printer adapters remain labelled according to their hardware-validation status. See [scope and verification](reference/about.md).
+    MakerVault v1.0.0 is the current tagged stable release. This guide also tracks accepted post-v1 fixes being prepared for the next patch release, including richer filament catalogue matching and the K2 same-origin camera path. The v1 acceptance gates include representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS with the MakerVault Local CA, deployment preflight and final green CI. Experimental printer adapters remain labelled according to their hardware-validation status. See [scope and verification](reference/about.md).
 
 <div class="guide-grid" markdown>
 <div class="guide-card" markdown>
