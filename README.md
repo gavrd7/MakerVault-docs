@@ -35,6 +35,8 @@ At its core, MakerVault connects:
 
 MakerVault runs on your own server using Docker and is accessed through a normal web browser. Your structured data is stored in PostgreSQL and your files remain with your installation. Optional integrations can add live printer status, camera feeds, filament synchronisation, OIDC sign-in and other capabilities, but the core application does not depend on a cloud service.
 
+Filament catalogue matching is optional: MakerVault can merge SpoolmanDB with verified supplemental manufacturer-backed records and authoritative technical data, while manual filament products remain usable when unmatched. K2 camera playback is relayed through MakerVault's own origin, so reverse-proxy deployments do not need a separately published camera media port.
+
 ## Development and validation model
 
 MakerVault is an **AI-coded project**. The application codebase has been produced entirely through AI systems working under human direction rather than by a human programmer writing the implementation by hand.
@@ -52,14 +54,14 @@ Support and future development therefore depend on the capabilities of the avail
 
 ## What the guide covers
 
-This guide documents the stable **MakerVault v1.0.0** release, including:
+This guide documents the stable **MakerVault v1.0.0** release and also tracks accepted post-v1 fixes being prepared for the next patch release, including:
 
 - beginner-friendly Docker installation from the pre-built GHCR image, an optional build-it-yourself path, and `.env` configuration;
 - Docker volumes, bind mounts, backups and restore;
 - Dashboard, Universal Search, Board Catalogue, Components and Inventory;
 - Projects, BOM allocation, Files and versioned assets;
-- 3D Printing, filament/spools, model library, 3D viewer, print history and Printed Parts;
-- live printer monitoring, optional controls and camera feeds;
+- 3D Printing, merged filament catalogue matching, physical spools, model library, 3D viewer, print history and Printed Parts;
+- live printer monitoring, optional controls and camera feeds, including the K2 same-origin camera compatibility path;
 - Maker Tags and Interactive Wiring;
 - user accounts, MFA, passkeys, local sign-up, password recovery and storage quotas;
 - Spoolman, Creality, SimplyPrint and manufacturer-specific printer integrations;
