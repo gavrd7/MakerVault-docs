@@ -2,7 +2,7 @@
 
 ## Version and scope
 
-This guide is anchored to **MakerVault v1.0.0**, the current tagged stable release, and also tracks accepted post-v1 fixes being prepared for the next patch release. Those post-v1 changes include richer filament catalogue matching/enrichment and the K2 same-origin camera compatibility path. The guide documents implemented behaviour while retaining explicit validation boundaries for experimental hardware adapters.
+This guide describes **MakerVault v1.0.1**, the current stable patch release. v1.0.1 adds richer filament catalogue matching/enrichment and the K2 same-origin camera compatibility path on top of v1.0.0. The guide documents implemented behaviour while retaining explicit validation boundaries for experimental hardware adapters.
 
 The primary deployment route is Linux with the supplied Docker Compose configuration. Platform-specific NAS/Portainer and Windows/macOS installation walkthroughs are outside this edition's verified scope. No measured minimum hardware specification is claimed.
 
