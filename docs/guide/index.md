@@ -85,8 +85,8 @@ That separation is what lets MakerVault grow from a simple parts list into a use
   <div id="guide-search-results" class="guide-search__results" data-guide-search-results></div>
 </div>
 
-!!! info "Current release: v1.0.0 · Stable"
-    MakerVault v1.0.0 is the current tagged stable release. This guide also tracks accepted post-v1 fixes being prepared for the next patch release, including richer filament catalogue matching and the K2 same-origin camera path. The v1 acceptance gates include representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS with the MakerVault Local CA, deployment preflight and final green CI. Experimental printer adapters remain labelled according to their hardware-validation status. See [scope and verification](reference/about.md).
+!!! info "Current release: v1.0.1 · Stable"
+    MakerVault v1.0.1 is the current stable patch release. It includes richer filament catalogue matching/enrichment and the K2 same-origin camera path introduced after v1.0.0. The v1 acceptance gates include representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS with the MakerVault Local CA, deployment preflight and final green CI. Experimental printer adapters remain labelled according to their hardware-validation status. See [scope and verification](reference/about.md).
 
 <div class="guide-grid" markdown>
 <div class="guide-card" markdown>
