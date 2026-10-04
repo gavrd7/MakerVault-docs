@@ -54,7 +54,7 @@ Support and future development therefore depend on the capabilities of the avail
 
 This guide documents the stable **MakerVault v1.0.0** release, including:
 
-- beginner-friendly Docker installation and `.env` configuration;
+- beginner-friendly Docker installation from the pre-built GHCR image, an optional build-it-yourself path, and `.env` configuration;
 - Docker volumes, bind mounts, backups and restore;
 - Dashboard, Universal Search, Board Catalogue, Components and Inventory;
 - Projects, BOM allocation, Files and versioned assets;
@@ -75,10 +75,10 @@ The application and its documentation are kept separate so each can be maintaine
 
 | Repository | Purpose |
 | --- | --- |
-| [gavrd7/MakerVault](https://github.com/gavrd7/MakerVault) | Application source, Docker deployment, backend/frontend code and release history |
+| [gavrd7/MakerVault](https://github.com/gavrd7/MakerVault) | Application source, Docker deployment, GHCR publishing workflow, backend/frontend code and release history |
 | [gavrd7/MakerVault-docs](https://github.com/gavrd7/MakerVault-docs) | Public guide source, sanitised screenshots, MkDocs configuration and GitHub Pages publishing |
 
-The published guide is available at **https://gavrd7.github.io/MakerVault-docs/**.
+The published guide is available at **https://gavrd7.github.io/MakerVault-docs/**. Normal MakerVault deployments pull `ghcr.io/gavrd7/makervault:latest`; users who prefer to compile it themselves can use the source-build Compose override documented in the installation guide.
 
 ## Repository layout
 
