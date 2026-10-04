@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>Guide for MakerVault v1.0.0</strong>
+  <strong>Guide for MakerVault v1.0.1</strong>
 </p>
 
 <p align="center">
@@ -54,7 +54,7 @@ Support and future development therefore depend on the capabilities of the avail
 
 ## What the guide covers
 
-This guide documents the stable **MakerVault v1.0.0** release and also tracks accepted post-v1 fixes being prepared for the next patch release, including:
+This guide documents the stable **MakerVault v1.0.1** release, including:
 
 - beginner-friendly Docker installation from the pre-built GHCR image, an optional build-it-yourself path, and `.env` configuration;
 - Docker volumes, bind mounts, backups and restore;
@@ -69,7 +69,7 @@ This guide documents the stable **MakerVault v1.0.0** release and also tracks ac
 - OpenID Connect configuration and SMTP-backed account recovery;
 - managed v3 backup/recovery, including TLS identity and replacement-host recovery.
 
-MakerVault v1.0.0 is the first stable release. The mandatory v1 acceptance checks were completed on 3 October 2026, including representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS/Local CA validation and final green CI.
+MakerVault v1.0.1 is the current stable patch release, building on the first v1.0.0 release. The mandatory v1 acceptance checks were completed on 3 October 2026, including representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS/Local CA validation and final green CI.
 
 ## Repositories
 
