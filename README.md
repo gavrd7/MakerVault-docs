@@ -35,6 +35,15 @@ At its core, MakerVault connects:
 
 MakerVault runs on your own server using Docker and is accessed through a normal web browser. Your structured data is stored in PostgreSQL and your files remain with your installation. Optional integrations can add live printer status, camera feeds, filament synchronisation, OIDC sign-in and other capabilities, but the core application does not depend on a cloud service.
 
+## Development and validation model
+
+MakerVault is an **AI-coded project**. The application codebase has been produced entirely through AI systems working under human direction rather than by a human programmer writing the implementation by hand.
+
+The human maintainer is responsible for the feature ideas, product direction and design decisions, and also performs the hands-on acceptance checks, bug discovery and practical testing used to decide whether changes are ready to merge and release.
+
+Support and future development therefore depend on the capabilities of the available AI tooling, the quality of reproducible reports, and human validation of the resulting changes. AI-generated code and automated CI are not treated as substitutes for real-world testing.
+
+
 <p align="center">
   <img src="docs/guide/assets/screenshots/dashboard-overview.png" alt="MakerVault dashboard overview" width="92%">
 </p>
