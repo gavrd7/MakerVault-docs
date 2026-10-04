@@ -47,6 +47,10 @@ MakerVault separates **reference information** from **your physical things** and
 
 That separation is what lets MakerVault grow from a simple parts list into a useful history of your workshop without turning everything into one large spreadsheet.
 
+
+!!! info "How MakerVault is developed"
+    MakerVault is coded entirely through AI systems under human direction. Feature ideas, product decisions, hands-on acceptance checks, bug finding and practical testing are performed by the human maintainer. Support and future fixes therefore depend on the capabilities of the available AI tooling plus reproducible reports and human validation. See [scope and verification](reference/about.md) for more detail.
+
 <div class="guide-search" data-guide-search role="search" aria-label="Search the MakerVault guide">
   <div class="guide-search__heading">
     <div>
