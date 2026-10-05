@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>Guide for MakerVault v1.0.2</strong>
+  <strong>Guide for MakerVault v1.0.3</strong>
 </p>
 
 <p align="center">
@@ -54,7 +54,7 @@ Support and future development therefore depend on the capabilities of the avail
 
 ## What the guide covers
 
-This guide documents the stable **MakerVault v1.0.2** release, including:
+This guide documents the stable **MakerVault v1.0.3** release, including:
 
 - beginner-friendly Docker installation from the pre-built GHCR image on Linux, Docker Desktop or WSL2, plus an optional build-it-yourself path and `.env` configuration;
 - Docker volumes, bind mounts, backups and restore;
@@ -69,7 +69,7 @@ This guide documents the stable **MakerVault v1.0.2** release, including:
 - OpenID Connect configuration and SMTP-backed account recovery;
 - managed v3 backup/recovery, including TLS identity and replacement-host recovery.
 
-MakerVault v1.0.2 is the current stable patch release, adding first-class Windows Docker Desktop/WSL2 installation guidance and the printed-part validation/project-assignment fix on top of v1.0.1. The mandatory v1 acceptance checks were completed on 3 October 2026, including representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS/Local CA validation and final green CI.
+MakerVault v1.0.3 is the current stable patch release, expanding the FDM/FFF printer catalogue with curated supplemental Creality models where OrcaSlicer has gaps, while retaining the v1.0.2 Windows Docker Desktop/WSL2 guidance and printed-part validation/project-assignment fix plus the v1.0.1 filament catalogue and K2 camera improvements. The mandatory v1 acceptance checks were completed on 3 October 2026, including representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS/Local CA validation and final green CI.
 
 ## Repositories
 
