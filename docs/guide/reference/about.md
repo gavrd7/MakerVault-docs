@@ -2,7 +2,7 @@
 
 ## Version and scope
 
-This guide describes **MakerVault v1.0.3**, the current stable patch release. v1.0.3 expands the FDM/FFF printer catalogue with curated supplemental Creality models where OrcaSlicer has gaps, without treating catalogue presence as live-integration support or adding resin/HALOT printers. It retains v1.0.2's Windows Docker Desktop/WSL2 guidance and printed-part creation fix and builds on v1.0.1's richer filament catalogue matching/enrichment and K2 same-origin camera compatibility path. The guide documents implemented behaviour while retaining explicit validation boundaries for experimental hardware adapters.
+This guide describes **MakerVault v1.0.4**, the current stable patch release. v1.0.4 adds project priorities, optional deadlines, attention ranking, deadline highlighting, quick completion and project deletion controls. It builds on v1.0.3's Creality FDM catalogue expansion while retaining the earlier Windows deployment, printed-part, filament catalogue and K2 camera improvements. The guide documents implemented behaviour while retaining explicit validation boundaries for experimental hardware adapters.
 
 Linux with the supplied Docker Compose configuration remains the preferred always-on server deployment. Windows users can also follow the documented Docker Desktop, Docker Desktop + WSL2 integration, or direct WSL2 Docker Engine routes. NAS/Portainer and macOS remain platform-adaptation cases rather than fully validated walkthroughs. No measured minimum hardware specification is claimed.
 
