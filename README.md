@@ -20,6 +20,10 @@
 
 ---
 
+## Planned v1.0.5 update (not released)
+
+The next planned release consolidates personal account and server security settings in MakerVault, introduces administrator-managed **Admin / Supervisor / User / Viewer** roles, and adds `python3 scripts/generate_env_secrets.py` for safe two-secret setup. The secure first-run administrator wizard remains a separate draft ([PR #80](https://github.com/gavrd7/MakerVault/pull/80)); development-image publishing is tracked separately ([PR #81](https://github.com/gavrd7/MakerVault/pull/81)). Until the release is published, **v1.0.4 remains stable**. See [application PR #78](https://github.com/gavrd7/MakerVault/pull/78).
+
 ## What is MakerVault?
 
 **MakerVault** is a self-hosted workshop management application for electronics, maker projects and 3D printing. It brings together the information that often ends up scattered across spreadsheets, folders, slicers, notes and bookmarks.
