@@ -27,13 +27,13 @@ If your administrator has enabled local self-registration, choose **Create accou
 
 ## Secure your account
 
-For the upcoming v1.0.5 interface, open **Settings → User Account** to review password, email, two-factor authentication and Connected accounts. Existing v1.0.4 installations continue using **Account & Security**.
+For the v1.0.5 interface, open **Settings → User Account** to review password, email, two-factor authentication and Connected accounts. Existing v1.0.4 installations continue using **Account & Security**.
 
 An authenticator app adds a second sign-in step. Security keys can provide another strong factor, and recovery codes give you a way back into the account if the normal second factor is unavailable. Store recovery codes somewhere safe before depending on MFA.
 
 <figure markdown>
   ![MakerVault security page showing authenticator app, security key and recovery-code options.](../assets/screenshots/account-mfa.png)
-  <figcaption>MFA, security keys and recovery codes are managed in the account security workflow, reached from Settings → User Account in the planned v1.0.5 interface.</figcaption>
+  <figcaption>MFA, security keys and recovery codes are managed in the account security workflow, reached from Settings → User Account in the v1.0.5 interface.</figcaption>
 </figure>
 
 For a local account, use **Password** in Account & Security when you need to change the password. Passkey availability depends on a suitable secure browser origin, normally HTTPS.
