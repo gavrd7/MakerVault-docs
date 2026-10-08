@@ -2,9 +2,23 @@
 
 **Goal:** check your account and make the application ready for everyday use.
 
+## First administrator on a new installation (v1.0.5)
+
+When there is no administrator, opening MakerVault's normal web address automatically redirects to the first-run administrator setup wizard. A server-generated, single-use token is required so an unauthenticated visitor cannot claim the administrator account. The token expires after 30 minutes.
+
+From the installation directory on the Docker host, run:
+
+```bash
+sudo docker compose exec -u makervault makervault python manage.py first_run_token
+```
+
+If the installation uses a custom Compose project name or additional Compose files, include the same `-p` and `-f` flags used when starting MakerVault. Never share or screenshot the token. Enter it in the setup page, then choose an administrator username, email and password, and enter the password a second time to confirm it. The **Show passwords** option can help verify both entries before submitting.
+
+Leave `MAKERVAULT_ADMIN_PASSWORD` blank in `.env` if you want the wizard; setting it can create the administrator automatically at startup. Once an administrator exists, the wizard is disabled and MakerVault shows its normal sign-in page. If you make a mistake with the password, use [administrator password recovery](../administration/accounts.md#recover-an-administrator-password-from-the-server) rather than reinstalling or deleting any data.
+
 ## Sign in
 
-Open the address supplied by your administrator. If you installed MakerVault yourself, use the superuser account created during installation.
+Open the address supplied by your administrator. If you installed MakerVault yourself, use the administrator account created during the first-run wizard (or an existing administrator account).
 
 <figure markdown>
   ![MakerVault sign-in screen with password and passkey options.](../assets/screenshots/account-login.png)
@@ -36,7 +50,7 @@ An authenticator app adds a second sign-in step. Security keys can provide anoth
   <figcaption>MFA, security keys and recovery codes are managed in the account security workflow, reached from Settings → User Account in the v1.0.5 interface.</figcaption>
 </figure>
 
-For a local account, use **Password** in Account & Security when you need to change the password. Passkey availability depends on a suitable secure browser origin, normally HTTPS.
+For a local account, use the password controls under **Settings → User Account** when you need to change your password. Older v1.0.4 installations use **Account & Security**. Passkey availability depends on a suitable secure browser origin, normally HTTPS.
 
 <figure markdown>
   ![Change Password page showing current and new password fields and password requirements.](../assets/screenshots/account-password.png)
@@ -45,7 +59,7 @@ For a local account, use **Password** in Account & Security when you need to cha
 
 ## Missing buttons or empty pages?
 
-A new account does not automatically gain editing rights. An administrator can assign the **Editor** group. Viewer accounts can read the records available to their own account but cannot create or edit them. The Settings menu is shown to staff, and **Users & storage** requires a superuser.
+A new account does not automatically gain editing rights. An administrator can assign an appropriate **Admin / Supervisor / User / Viewer** role. Viewer access is read-only, while other capabilities depend on the assigned role and resource permissions. Administration settings are restricted to authorised roles.
 
 Private inventory, projects, files, printers and spools belong to their creator. Signing in with a second account normally gives you a separate workspace, even when the shared catalogues contain the same products.
 
