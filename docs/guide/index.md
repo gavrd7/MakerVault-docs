@@ -9,6 +9,8 @@ Learn to install MakerVault, record what you own and bring your projects, files 
 [Follow the guided workflow](getting-started/first-project.md){ .md-button }
 </div>
 
+**Coming in v1.0.5 (still under review):** unified User Account / Security settings, role-based administration, and safe automatic generation of the two required `.env` secrets. This guide continues to identify v1.0.4 as the latest published release until release day.
+
 ## What is MakerVault?
 
 MakerVault is a **self-hosted workshop management application for makers, electronics projects and 3D printing**. It gives you one place to keep track of the things you own, the things you are building, the files that belong to those projects and the physical output from them.
