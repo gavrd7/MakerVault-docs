@@ -9,7 +9,7 @@ Learn to install MakerVault, record what you own and bring your projects, files 
 [Follow the guided workflow](getting-started/first-project.md){ .md-button }
 </div>
 
-**Coming in v1.0.5 (still under review):** unified User Account / Security settings, role-based administration, and safe automatic generation of the two required `.env` secrets. This guide continues to identify v1.0.4 as the latest published release until release day.
+**New in v1.0.5:** unified User Account / Security settings, role-based administration, first-run administrator setup and safe `.env` secret generation. The current stable image is v1.0.5.
 
 ## What is MakerVault?
 
@@ -88,7 +88,7 @@ That separation is what lets MakerVault grow from a simple parts list into a use
 </div>
 
 !!! info "Current release: v1.0.5 · Stable"
-    MakerVault v1.0.5 is the current stable release. It adds project priorities, optional deadlines, attention ranking, deadline highlighting, quick completion and project deletion controls, while retaining the v1.0.3 Creality FDM catalogue expansion and earlier v1 improvements. The v1 acceptance gates include representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS with the MakerVault Local CA, deployment preflight and final green CI. Experimental printer adapters remain labelled according to their hardware-validation status. See [scope and verification](reference/about.md).
+    MakerVault v1.0.5 is the current stable release. It adds first-run administrator setup, integrated account and security pages, role-based administration and background catalogue startup, while retaining v1.0.4's project priorities and deadline improvements. The v1 acceptance gates include representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS with the MakerVault Local CA, deployment preflight and final green CI. Experimental printer adapters remain labelled according to their hardware-validation status. See [scope and verification](reference/about.md).
 
 <div class="guide-grid" markdown>
 <div class="guide-card" markdown>
