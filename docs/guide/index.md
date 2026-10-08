@@ -87,8 +87,8 @@ That separation is what lets MakerVault grow from a simple parts list into a use
   <div id="guide-search-results" class="guide-search__results" data-guide-search-results></div>
 </div>
 
-!!! info "Current release: v1.0.4 · Stable"
-    MakerVault v1.0.4 is the current stable patch release. It adds project priorities, optional deadlines, attention ranking, deadline highlighting, quick completion and project deletion controls, while retaining the v1.0.3 Creality FDM catalogue expansion and earlier v1 improvements. The v1 acceptance gates include representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS with the MakerVault Local CA, deployment preflight and final green CI. Experimental printer adapters remain labelled according to their hardware-validation status. See [scope and verification](reference/about.md).
+!!! info "Current release: v1.0.5 · Stable"
+    MakerVault v1.0.5 is the current stable release. It adds project priorities, optional deadlines, attention ranking, deadline highlighting, quick completion and project deletion controls, while retaining the v1.0.3 Creality FDM catalogue expansion and earlier v1 improvements. The v1 acceptance gates include representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS with the MakerVault Local CA, deployment preflight and final green CI. Experimental printer adapters remain labelled according to their hardware-validation status. See [scope and verification](reference/about.md).
 
 <div class="guide-grid" markdown>
 <div class="guide-card" markdown>
