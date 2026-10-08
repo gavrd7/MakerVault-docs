@@ -57,7 +57,7 @@ You can pin a specific release later with `MAKERVAULT_IMAGE` if you prefer not t
 
 ### v1.0.5 setup helper
 
-The main repository already includes `python3 scripts/generate_env_secrets.py` (added after v1.0.4). It creates `.env` from the example if needed and generates only `DJANGO_SECRET_KEY` and `POSTGRES_PASSWORD` when absent or placeholders, preserving user-defined settings and existing secrets. Use it when installing from a checkout that contains that script; this is not a reason to assume the published v1.0.4 image includes future application features.
+The main repository already includes `python3 scripts/generate_env_secrets.py` (added after v1.0.4). It creates `.env` from the example if needed and generates only `DJANGO_SECRET_KEY` and `POSTGRES_PASSWORD` when absent or placeholders, preserving user-defined settings and existing secrets. Use it when installing from a checkout that contains the script. Version 1.0.5 includes the first-run administrator wizard and related application improvements.
 
 ## 3. Create your configuration
 
