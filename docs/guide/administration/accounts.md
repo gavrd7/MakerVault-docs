@@ -28,6 +28,35 @@ Shared catalogue/reference records describe products. Personal inventory, projec
 
 The normal administration summary exposes aggregate counts and storage, not a cross-user project/file browser. Nevertheless, the server operator controls the database, code, backups and storage key. Encryption at rest is not end-to-end encryption against that operator.
 
+
+## Recover an administrator password from the server
+
+If an administrator cannot sign in because they forgot or mistyped their password during first-run setup, the server operator can reset it **without deleting the account, database or Docker volumes**. This requires shell access to the MakerVault host; it is not available to visitors through the web interface.
+
+Run the following from your MakerVault installation directory. For a standard Compose deployment:
+
+```bash
+sudo docker compose exec -u makervault makervault python manage.py changepassword YOUR_ADMIN_USERNAME
+```
+
+Replace `YOUR_ADMIN_USERNAME` with the **MakerVault login username** (not the container user specified by `-u makervault`). Follow the password and confirmation prompts; the password is not echoed.
+
+If you cannot remember the username, list administrator usernames without displaying password hashes:
+
+```bash
+sudo docker compose exec -u makervault makervault python manage.py shell -c "from django.contrib.auth import get_user_model; print(list(get_user_model().objects.filter(is_superuser=True).values_list('username', flat=True)))"
+```
+
+**Custom Compose project names or multiple Compose files:** supply the same `-p` and `-f` arguments used when launching MakerVault. For example, the separate PR #80 test installation uses:
+
+```bash
+cd ~/MakerVault-PR80
+sudo docker compose -p makervault-pr80 -f compose.yaml -f compose.build.yaml \
+  exec -u makervault makervault python manage.py changepassword YOUR_ADMIN_USERNAME
+```
+
+Do not use `createsuperuser` to recover an existing account, and do not reset the database or remove Docker volumes. If the service is not running, check `sudo docker compose ps` with the same project and file options before trying again.
+
 ## Set quotas
 
 As a superuser, open **Settings → Users & storage**. Review each account's status, aggregate record counts and usage.
