@@ -54,7 +54,7 @@ extra_javascript:
   - assets/guide-search.js
 extra:
   generator: false
-copyright: MakerVault · Guide for v1.0.2 · Stable release
+copyright: MakerVault · Guide for v1.0.5 · Stable release
 nav:
   - Welcome: index.md
   - Getting started:
