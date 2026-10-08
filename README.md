@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>Guide for MakerVault v1.0.4</strong>
+  <strong>Guide for MakerVault v1.0.5</strong>
 </p>
 
 <p align="center">
@@ -20,9 +20,9 @@
 
 ---
 
-## Planned v1.0.5 update (not released)
+## What's new in v1.0.5
 
-The next planned release consolidates personal account and server security settings in MakerVault, introduces administrator-managed **Admin / Supervisor / User / Viewer** roles, and adds `python3 scripts/generate_env_secrets.py` for safe two-secret setup. The secure first-run administrator wizard remains a separate draft ([PR #80](https://github.com/gavrd7/MakerVault/pull/80)); development-image publishing is tracked separately ([PR #81](https://github.com/gavrd7/MakerVault/pull/81)). Until the release is published, **v1.0.4 remains stable**. See [application PR #78](https://github.com/gavrd7/MakerVault/pull/78).
+Version 1.0.5 introduces unified personal account and instance security settings, administrator-managed **Admin / Supervisor / User / Viewer** roles, safe `.env` secret generation, a browser-based first-run administrator wizard, and quicker initial access while catalogues initialize in the background. Development images can also be published separately from stable release tags.
 
 ## What is MakerVault?
 
@@ -58,7 +58,7 @@ Support and future development therefore depend on the capabilities of the avail
 
 ## What the guide covers
 
-This guide documents the stable **MakerVault v1.0.4** release, including:
+This guide documents the stable **MakerVault v1.0.5** release, including:
 
 - beginner-friendly Docker installation from the pre-built GHCR image on Linux, Docker Desktop or WSL2, plus an optional build-it-yourself path and `.env` configuration;
 - Docker volumes, bind mounts, backups and restore;
