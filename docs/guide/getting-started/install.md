@@ -13,6 +13,9 @@ MakerVault supports two image routes:
 
 Both routes use the same Compose stack, `.env`, database and persistent storage.
 
+!!! info "Upcoming v1.0.5 first-run experience"
+    The first-run wizard in application PR #80 automatically opens when there is no administrator, after essential startup checks. Obtain a short-lived token locally with `sudo docker compose exec -u makervault makervault python manage.py first_run_token`, then create the administrator in the browser. Leave `MAKERVAULT_ADMIN_PASSWORD` empty to use the wizard. This is **not yet available in the published v1.0.4 image**. See [First sign-in](first-sign-in.md#first-administrator-on-a-new-installation-planned-v105) for the complete steps. Starter catalogue seeding and OrcaSlicer enrichment run in the background instead of delaying the web interface.
+
 ## 1. Install Docker and the basic tools
 
 Follow Docker's official instructions for your installed distribution: [Debian](https://docs.docker.com/engine/install/debian/) or [Ubuntu](https://docs.docker.com/engine/install/ubuntu/). Choose Docker Engine with the **Compose plugin**. The Buildx plugin is also required if you want to build MakerVault locally.
