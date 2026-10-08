@@ -6,10 +6,10 @@
 
 1. Sign in as a superuser and open **Administration**.
 2. Open **Users** and add a user with a unique username and strong initial password.
-3. Save, then edit the user's permissions/groups.
-4. Add **Editor** for everyday creation/editing, or **Viewer** for read-only access to records the account is allowed to see.
-5. Keep **Active** enabled. Grant **Staff status** only if administrative access is needed, and **Superuser status** only for a full administrator.
-6. Ask the person to sign in and change their initial password through **Account & Security**.
+3. Save the user, then open **Settings → Users & storage** to assign the appropriate role.
+4. Choose Admin, Supervisor, User or Viewer using the role selector.
+5. Keep **Active** enabled. Admin is reserved for trusted full-instance administrators.
+6. Ask the person to sign in and change their initial password through **Settings → User Account**.
 
 A group grants actions, not ownership of another person's workspace. The default Editor group includes view/add/change core permissions and inventory deletion; it does not grant every delete action. A button may be absent because a specific permission is missing.
 
@@ -58,4 +58,15 @@ Confirm the user and make a restorable backup before either destructive operatio
 <figure markdown>
   ![MakerVault Django administration interface.](../assets/screenshots/django-admin.png)
   <figcaption>The Django administration interface is reserved for administrative records and permissions.</figcaption>
-</figure>
+</figure>## Change user roles
+
+A superuser can change roles under **Settings → Users & storage → Users** at any time:
+
+- **Admin:** full instance administration, security, OIDC, HTTPS, backups and user management.
+- **Supervisor:** operational settings (library updates and printing integrations), but no server-wide security or administration.
+- **User:** personal account settings and regular workspace access.
+- **Viewer:** read-only workspace access and personal account settings.
+
+Legacy Editor and Viewer group permissions remain supported. Access to server-wide settings is checked by the backend, not just hidden in the interface. A user should reload the app after a role change to refresh navigation.
+
+
