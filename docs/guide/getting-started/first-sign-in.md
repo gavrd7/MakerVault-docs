@@ -2,6 +2,22 @@
 
 **Goal:** check your account and make the application ready for everyday use.
 
+## First administrator on a new installation (planned v1.0.5)
+
+When **no administrator exists**, visiting MakerVault's normal web address automatically opens the first-run setup wizard. The operator must first obtain a one-time token from the server; a visitor cannot claim the administrator account without it. The token is valid for 30 minutes.
+
+From the installation directory on the Docker host, run:
+
+```bash
+sudo docker compose exec -u makervault makervault python manage.py first_run_token
+```
+
+If your installation uses a custom Compose project name or multiple files, include the same `-p` and `-f` options you used when starting MakerVault. **Do not share the token or include it in screenshots.** Enter it in the browser wizard, then create the administrator with a username, email address, password and matching confirmation. Use **Show passwords** to inspect both entries before submitting.
+
+To use the wizard, leave `MAKERVAULT_ADMIN_PASSWORD` empty in `.env`; otherwise startup can create the administrator automatically. The original terminal-based `createsuperuser` command remains an alternative. After an administrator exists, the wizard is closed and MakerVault uses its normal sign-in process. Forgot or mistyped the password? See [administrator password recovery](../administration/accounts.md#recover-an-administrator-password-from-the-server); do not reinstall or delete your database.
+
+This flow is currently in application PR #80 and is **not present in the published v1.0.4 container**.
+
 ## Sign in
 
 Open the address supplied by your administrator. If you installed MakerVault yourself, use the superuser account created during installation.
