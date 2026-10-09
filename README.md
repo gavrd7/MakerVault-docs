@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>Guide for MakerVault v1.0.5</strong>
+  <strong>Guide for MakerVault v1.1.0</strong>
 </p>
 
 <p align="center">
@@ -20,9 +20,9 @@
 
 ---
 
-## What's new in v1.0.5
+## What's new in v1.1.0
 
-Version 1.0.5 introduces unified personal account and instance security settings, administrator-managed **Admin / Supervisor / User / Viewer** roles, safe `.env` secret generation, a browser-based first-run administrator wizard, and quicker initial access while catalogues initialize in the background. Development images can also be published separately from stable release tags.
+Version 1.1.0 strengthens automatic catalogue enrichment, including restart-safe checkpoints for boards, components, filament and images, improved printer vendor retries, safer technical-data sourcing and image-maintenance diagnostics.
 
 ## What is MakerVault?
 
@@ -58,7 +58,7 @@ Support and future development therefore depend on the capabilities of the avail
 
 ## What the guide covers
 
-This guide documents the stable **MakerVault v1.0.5** release, including:
+This guide documents the stable **MakerVault v1.1.0** release, including:
 
 - beginner-friendly Docker installation from the pre-built GHCR image on Linux, Docker Desktop or WSL2, plus an optional build-it-yourself path and `.env` configuration;
 - Docker volumes, bind mounts, backups and restore;
@@ -73,7 +73,7 @@ This guide documents the stable **MakerVault v1.0.5** release, including:
 - OpenID Connect configuration and SMTP-backed account recovery;
 - managed v3 backup/recovery, including TLS identity and replacement-host recovery.
 
-MakerVault v1.0.5 is the current stable release, adding the secure first-run wizard, updated account and role management, automatic setup secrets and faster initial access. The previous v1.0.4 release added project priorities, optional deadlines, attention ranking, deadline highlighting, quick completion and project deletion controls while retaining the v1.0.3 Creality FDM catalogue expansion and earlier v1 improvements. The mandatory v1 acceptance checks were completed on 3 October 2026, including representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS/Local CA validation and final green CI.
+MakerVault v1.1.0 is the current stable release, improving background catalogue enrichment while retaining the existing first-run wizard, account and role management. The previous v1.0.4 release added project priorities, optional deadlines, attention ranking, deadline highlighting, quick completion and project deletion controls while retaining the v1.0.3 Creality FDM catalogue expansion and earlier v1 improvements. The mandatory v1 acceptance checks were completed on 3 October 2026, including representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS/Local CA validation and final green CI.
 
 ## Repositories
 
