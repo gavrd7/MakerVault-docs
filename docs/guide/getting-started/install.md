@@ -55,9 +55,9 @@ ghcr.io/gavrd7/makervault:latest
 
 You can pin a specific release later with `MAKERVAULT_IMAGE` if you prefer not to follow `latest`.
 
-### Setup helper (introduced in v1.0.5)
+### Optional setup helper
 
-The main repository already includes `python3 scripts/generate_env_secrets.py` (added after v1.0.4). It creates `.env` from the example if needed and generates only `DJANGO_SECRET_KEY` and `POSTGRES_PASSWORD` when absent or placeholders, preserving user-defined settings and existing secrets. Use it when installing from a checkout that contains the script. The first-run administrator wizard was introduced in v1.0.5 and remains available in v1.1.0.
+The main repository already includes `python3 scripts/generate_env_secrets.py`. It creates `.env` from the example if needed and generates only `DJANGO_SECRET_KEY` and `POSTGRES_PASSWORD` when absent or placeholders, preserving user-defined settings and existing secrets. Use it when installing from a checkout that contains the script. For a new installation, the browser-based first-run administrator wizard is the recommended way to create the first administrator.
 
 ## 3. Create your configuration
 
@@ -148,7 +148,7 @@ MakerVault v1.1.0 provides a browser-based first-run setup wizard when no admini
 sudo docker compose exec -u makervault makervault python manage.py first_run_token
 ```
 
-The token expires after 30 minutes. Do not share it. Enter it in the wizard along with your chosen username, email address, password and matching password confirmation. See [First sign-in](first-sign-in.md#first-administrator-on-a-new-installation-v105) for full details, including recovery if a password is mistyped.
+The token expires after 30 minutes. Do not share it. Enter it in the wizard along with your chosen username, email address, password and matching password confirmation. See [First sign-in](first-sign-in.md#first-administrator-on-a-new-installation) for full details, including recovery if a password is mistyped.
 
 If you deliberately want terminal-based setup instead, `sudo docker compose exec makervault python manage.py createsuperuser` remains available. There is no universal default login.
 
