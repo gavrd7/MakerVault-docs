@@ -14,7 +14,7 @@ sudo docker compose exec -u makervault makervault python manage.py first_run_tok
 
 If the installation uses a custom Compose project name or additional Compose files, include the same `-p` and `-f` flags used when starting MakerVault. Never share or screenshot the token. Enter it in the setup page, then choose an administrator username, email and password, and enter the password a second time to confirm it. The **Show passwords** option can help verify both entries before submitting.
 
-Leave `MAKERVAULT_ADMIN_PASSWORD` blank in `.env` if you want the wizard; setting it can create the administrator automatically at startup. Once an administrator exists, the wizard is disabled and MakerVault shows its normal sign-in page. If you make a mistake with the password, use [administrator password recovery](../administration/accounts.md#recover-an-administrator-password-from-the-server) rather than reinstalling or deleting any data.
+Leave `MAKERVAULT_ADMIN_PASSWORD` blank in `.env` if you want the wizard; setting it can create the administrator automatically at startup. Once an administrator exists, the wizard is disabled and MakerVault shows its normal sign-in page. If you make a mistake with the password, use [administrator password recovery](../administration/accounts.md) rather than reinstalling or deleting any data.
 
 ## Sign in
 
@@ -41,16 +41,16 @@ If your administrator has enabled local self-registration, choose **Create accou
 
 ## Secure your account
 
-For the v1.0.5 interface, open **Settings → User Account** to review password, email, two-factor authentication and Connected accounts. Existing v1.0.4 installations continue using **Account & Security**.
+Open **Settings → User Account** to review password, email, two-factor authentication and Connected accounts.
 
 An authenticator app adds a second sign-in step. Security keys can provide another strong factor, and recovery codes give you a way back into the account if the normal second factor is unavailable. Store recovery codes somewhere safe before depending on MFA.
 
 <figure markdown>
   ![MakerVault security page showing authenticator app, security key and recovery-code options.](../assets/screenshots/account-mfa.png)
-  <figcaption>MFA, security keys and recovery codes are managed in the account security workflow, reached from Settings → User Account in the v1.0.5 interface.</figcaption>
+  <figcaption>MFA, security keys and recovery codes are managed in the account security workflow, reached from Settings → User Account</figcaption>
 </figure>
 
-For a local account, use the password controls under **Settings → User Account** when you need to change your password. Older v1.0.4 installations use **Account & Security**. Passkey availability depends on a suitable secure browser origin, normally HTTPS.
+For a local account, use the password controls under **Settings → User Account** when you need to change your password. Passkey availability depends on a suitable secure browser origin, normally HTTPS.
 
 <figure markdown>
   ![Change Password page showing current and new password fields and password requirements.](../assets/screenshots/account-password.png)
