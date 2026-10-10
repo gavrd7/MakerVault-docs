@@ -2,7 +2,7 @@
 
 **Goal:** check your account and make the application ready for everyday use.
 
-## First administrator on a new installation (v1.0.5)
+## First administrator on a new installation
 
 When there is no administrator, opening MakerVault's normal web address automatically redirects to the first-run administrator setup wizard. A server-generated, single-use token is required so an unauthenticated visitor cannot claim the administrator account. The token expires after 30 minutes.
 
