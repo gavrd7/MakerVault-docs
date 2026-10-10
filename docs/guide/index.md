@@ -88,7 +88,7 @@ That separation is what lets MakerVault grow from a simple parts list into a use
 </div>
 
 !!! info "Current release: v1.1.0 · Stable"
-    MakerVault v1.1.0 is the current stable release. It adds first-run administrator setup, integrated account and security pages, role-based administration and background catalogue startup, while retaining v1.0.4's project priorities and deadline improvements. The v1 acceptance gates include representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS with the MakerVault Local CA, deployment preflight and final green CI. Experimental printer adapters remain labelled according to their hardware-validation status. See [scope and verification](reference/about.md).
+    MakerVault v1.1.0 is the current stable release. It improves automated catalogue maintenance and retains first-run administrator setup, integrated account and security pages, role-based administration and background catalogue startup, while retaining v1.0.4's project priorities and deadline improvements. The v1 acceptance gates include representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS with the MakerVault Local CA, deployment preflight and final green CI. Experimental printer adapters remain labelled according to their hardware-validation status. See [scope and verification](reference/about.md).
 
 <div class="guide-grid" markdown>
 <div class="guide-card" markdown>
