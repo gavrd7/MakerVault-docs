@@ -55,9 +55,9 @@ ghcr.io/gavrd7/makervault:latest
 
 You can pin a specific release later with `MAKERVAULT_IMAGE` if you prefer not to follow `latest`.
 
-### v1.0.5 setup helper
+### Setup helper (introduced in v1.0.5)
 
-The main repository already includes `python3 scripts/generate_env_secrets.py` (added after v1.0.4). It creates `.env` from the example if needed and generates only `DJANGO_SECRET_KEY` and `POSTGRES_PASSWORD` when absent or placeholders, preserving user-defined settings and existing secrets. Use it when installing from a checkout that contains the script. Version 1.0.5 includes the first-run administrator wizard and related application improvements.
+The main repository already includes `python3 scripts/generate_env_secrets.py` (added after v1.0.4). It creates `.env` from the example if needed and generates only `DJANGO_SECRET_KEY` and `POSTGRES_PASSWORD` when absent or placeholders, preserving user-defined settings and existing secrets. Use it when installing from a checkout that contains the script. The first-run administrator wizard was introduced in v1.0.5 and remains available in v1.1.0.
 
 ## 3. Create your configuration
 
@@ -142,7 +142,7 @@ The source-build route changes only how the MakerVault application image is obta
 
 ## 5. Set up the first administrator
 
-MakerVault v1.0.5 provides a browser-based first-run setup wizard when no administrator exists. Leave `MAKERVAULT_ADMIN_PASSWORD` empty in `.env` to use it. Open MakerVault in your browser at the address shown below: the first-run wizard should appear automatically. On the Docker host, retrieve the required token:
+MakerVault v1.1.0 provides a browser-based first-run setup wizard when no administrator exists. Leave `MAKERVAULT_ADMIN_PASSWORD` empty in `.env` to use it. Open MakerVault in your browser at the address shown below: the first-run wizard should appear automatically. On the Docker host, retrieve the required token:
 
 ```bash
 sudo docker compose exec -u makervault makervault python manage.py first_run_token
