@@ -7,7 +7,9 @@
 | Printer model | Shared specifications for a machine type |
 | Owned printer | Your particular machine, with name, location and connection details |
 | Filament product | A material/product/colour definition |
-| Physical spool | One actual reel with its own weight, price and identity |
+| Filament spool | Filament stock with its own weight, price and identity |
+| Reusable spool design | Empty spool hardware specification, manufacturer or 3D-printed |
+| Physical reusable spool | One owned refillable reel, with measured tare, location, condition and optional assigned filament |
 | Slot | A position in a printer's multi-material system |
 
 ## Add your printer
@@ -81,3 +83,20 @@ Pause, Resume and confirmed Cancel are optional per-source controls for Creality
   ![Spool inventory and model library sections of the 3D Printing page.](../assets/screenshots/printing-spools-models.png)
   <figcaption>Spool inventory and model library.</figcaption>
 </figure>
+
+
+## Reusable spool hardware (v1.2.0 candidate)
+
+Reusable spool **hardware** and the **filament stock** loaded onto it are different records. Under **3D Printing → Reusable spools**, create a design for manufacturer-made or 3D-printed hardware, then add your individual physical reel. Record its measured empty (tare) weight, storage location and condition. Assign filament stock when loading a refill, and unassign it later without deleting the spool hardware; assignment history stays with the reel.
+
+Open **Browse manufacturer catalogue** to search known designs, inspect images and provenance, and add a selected design to your collection. Missing measurements remain unknown, and dryer-temperature compatibility needs evidence for the *exact* spool design and material.
+
+### Use a custom spool image
+
+In a catalogue detail view or an owned spool design, select **Add Custom Image**. Choose a file upload **or** enter a public HTTPS image URL, confirm permission to use the image and select **Add Image**. MakerVault validates and caches the image. A personal image overrides the reference image for your own account only; **Remove personal image** restores the reference image or placeholder.
+
+### Expand or correct the catalogue
+
+Use **Suggest New Model** from the catalogue or **Suggest specification correction** from an existing design's details. Supply a source URL and only the known specifications; unknown values should stay blank. An administrator's submission takes effect immediately, while other users' submissions wait for review. Admins can open **Review Suggestions** beside the suggestion button; it lists pending submissions with source links and proposed fields. Approval/rejection removes an item from the pending queue, but does not independently verify suggested specifications.
+
+General web discovery and automatic specification extraction are future enhancements, not part of v1.2.0.
