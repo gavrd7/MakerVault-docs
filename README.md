@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>Guide for MakerVault v1.1.0</strong>
+  <strong>Guide for MakerVault v1.2.0</strong>
 </p>
 
 <p align="center">
@@ -20,11 +20,11 @@
 
 ---
 
-## Planned v1.2.0 — changes since v1.1.0 (not yet released)
+## What's new in v1.2.0
 
 The next release adds **reusable spool hardware inventory** separately from filament stock: manufacturer and printable design catalogues, physical reel tare weights, condition, storage, filament assignment history, image previews and personal artwork overrides. Maker Tags can identify reusable spools and display MakerVault-branded QR labels. Admins can add or correct shared spool models directly, while non-admin suggestions wait in a dedicated review queue. Key Add action labels are now consistent across the application.
 
-All v1.2.0 functionality remains a draft release candidate; the current stable release and public guide version are still v1.1.0.
+Version 1.2.0 builds on v1.1.0 and its background catalogue-maintenance improvements.
 
 ## What's new in v1.1.0
 
