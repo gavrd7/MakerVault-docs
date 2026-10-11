@@ -31,7 +31,7 @@ A physical label or tag can outlive the object it was first attached to. Reassig
 Do not put secrets on a Maker Tag. Treat the QR/NFC/RFID value as an identifier, not as an authentication credential.
 
 
-## Branded QR labels and reusable spool tags (v1.2.0 candidate)
+## Branded QR labels and reusable spool tags
 
 Maker Tags can now target an **individual physical reusable spool**, distinct from the filament currently loaded on it. A tag remains associated with the reel as refills change, and opening the resolved identity navigates to the reusable spool record.
 
