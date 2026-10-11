@@ -11,7 +11,7 @@ Maker Tags attach a stable physical identity to an owner-scoped record. They are
 
 ## Create a tag
 
-1. Open **Maker Tags** and choose **＋ Maker Tag**.
+1. Open **Maker Tags** and choose **Add Maker Tag**.
 2. Choose the physical record the tag should identify.
 3. Select the appropriate tag/identity type and enter or scan the stable identity.
 4. Save the tag and, for QR workflows, print the generated label where appropriate.
@@ -29,3 +29,10 @@ USB/OTG keyboard-style readers can usually scan directly into the identity field
 A physical label or tag can outlive the object it was first attached to. Reassign or retire it deliberately rather than silently creating a second identity for the same tag. MakerVault retains the tag history so changes remain understandable later.
 
 Do not put secrets on a Maker Tag. Treat the QR/NFC/RFID value as an identifier, not as an authentication credential.
+
+
+## Branded QR labels and reusable spool tags (v1.2.0 candidate)
+
+Maker Tags can now target an **individual physical reusable spool**, distinct from the filament currently loaded on it. A tag remains associated with the reel as refills change, and opening the resolved identity navigates to the reusable spool record.
+
+MakerVault's printable QR label uses a small branded centre mark. Test-scan labels after printing to verify readability at your chosen size and contrast; the logo does not alter the underlying tag identifier.

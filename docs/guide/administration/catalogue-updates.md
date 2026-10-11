@@ -28,3 +28,10 @@ If nothing runs, inspect the application logs and container health. Celery worke
   ![Library updates settings showing catalogue coverage and maintenance scheduling.](../assets/screenshots/settings-library-updates.png)
   <figcaption>Library updates report catalogue coverage and control scheduled maintenance.</figcaption>
 </figure>
+
+
+## Reusable spool catalogue upkeep and review (v1.2.0 candidate)
+
+The existing library update schedule can check reusable spool source links and attempt conservative image enrichment. Unknown technical data remains unknown; source availability alone is not evidence that a measurement is correct. The catalogue coverage summary reports source, hardware data, image and dryer-limit availability.
+
+From **3D Printing → Reusable spools → Browse manufacturer catalogue**, administrators with catalogue editing permission can open **Review Suggestions** to see non-admin submissions for new spool models or corrections, review the source URLs and changed fields, then choose **Approve** or **Reject**. Processed submissions disappear from this pending-only modal but their records remain. An administrator submitting a new model or correction has it accepted immediately; this is workflow approval, not a manufacturer-verification claim. 
