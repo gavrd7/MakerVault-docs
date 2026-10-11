@@ -36,3 +36,12 @@ Do not put secrets on a Maker Tag. Treat the QR/NFC/RFID value as an identifier,
 Maker Tags can now target an **individual physical reusable spool**, distinct from the filament currently loaded on it. A tag remains associated with the reel as refills change, and opening the resolved identity navigates to the reusable spool record.
 
 MakerVault's printable QR label uses a small branded centre mark. Test-scan labels after printing to verify readability at your chosen size and contrast; the logo does not alter the underlying tag identifier.
+
+
+## Label layouts and batch printing (v1.2.1)
+
+Open a QR Maker Tag and use **Label format** to preview Compact (50 × 30 mm), Standard (70 × 50 mm), Large (100 × 70 mm), or **Custom**. Custom labels let you set width, height and QR size in millimetres. Independently choose whether to show the title, tag identity code and target type. The QR scan data stays the same when resized or when label text is hidden.
+
+For multiple labels, tick active QR tags in the Maker Tags list and choose **Print selected**, or use **Print labels** and choose all matching active QR tags. Search, status, tag type and **Target type** filters determine which tags are included. NFC/RFID-only identities and retired tags are not included in QR label batches. The selected label format and text options apply to the whole batch, arranged on A4 sheets.
+
+Always inspect the browser print preview and print at **100% scaling** when dimensional accuracy matters. Small QR codes carrying long URLs may be difficult to scan; test one before printing a full batch. Browser and printer margins can affect positioning. QR codes identify a record, but are not authentication credentials.
