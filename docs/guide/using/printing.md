@@ -85,7 +85,7 @@ Pause, Resume and confirmed Cancel are optional per-source controls for Creality
 </figure>
 
 
-## Reusable spool hardware (v1.2.0 candidate)
+## Reusable spool hardware
 
 Reusable spool **hardware** and the **filament stock** loaded onto it are different records. Under **3D Printing → Reusable spools**, create a design for manufacturer-made or 3D-printed hardware, then add your individual physical reel. Record its measured empty (tare) weight, storage location and condition. Assign filament stock when loading a refill, and unassign it later without deleting the spool hardware; assignment history stays with the reel.
 

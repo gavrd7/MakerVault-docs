@@ -30,7 +30,7 @@ If nothing runs, inspect the application logs and container health. Celery worke
 </figure>
 
 
-## Reusable spool catalogue upkeep and review (v1.2.0 candidate)
+## Reusable spool catalogue upkeep and review
 
 The existing library update schedule can check reusable spool source links and attempt conservative image enrichment. Unknown technical data remains unknown; source availability alone is not evidence that a measurement is correct. The catalogue coverage summary reports source, hardware data, image and dryer-limit availability.
 

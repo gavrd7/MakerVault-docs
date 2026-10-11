@@ -64,7 +64,7 @@ Support and future development therefore depend on the capabilities of the avail
 
 ## What the guide covers
 
-This guide documents the stable **MakerVault v1.1.0** release, including:
+This guide documents the stable **MakerVault v1.2.0** release, including:
 
 - beginner-friendly Docker installation from the pre-built GHCR image on Linux, Docker Desktop or WSL2, plus an optional build-it-yourself path and `.env` configuration;
 - Docker volumes, bind mounts, backups and restore;
@@ -79,7 +79,7 @@ This guide documents the stable **MakerVault v1.1.0** release, including:
 - OpenID Connect configuration and SMTP-backed account recovery;
 - managed v3 backup/recovery, including TLS identity and replacement-host recovery.
 
-MakerVault v1.1.0 is the current stable release, improving background catalogue enrichment while retaining the existing first-run wizard, account and role management. The previous v1.0.4 release added project priorities, optional deadlines, attention ranking, deadline highlighting, quick completion and project deletion controls while retaining the v1.0.3 Creality FDM catalogue expansion and earlier v1 improvements. The mandatory v1 acceptance checks were completed on 3 October 2026, including representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS/Local CA validation and final green CI.
+MakerVault v1.2.0 is the current stable release, introducing reusable spool hardware, catalogue review and branded QR workflows while retaining the existing first-run wizard, account and role management. Version 1.1.0 improved background catalogue enrichment. The previous v1.0.4 release added project priorities, optional deadlines, attention ranking, deadline highlighting, quick completion and project deletion controls while retaining the v1.0.3 Creality FDM catalogue expansion and earlier v1 improvements. The mandatory v1 acceptance checks were completed on 3 October 2026, including representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS/Local CA validation and final green CI.
 
 ## Repositories
 

@@ -9,7 +9,7 @@ Learn to install MakerVault, record what you own and bring your projects, files 
 [Follow the guided workflow](getting-started/first-project.md){ .md-button }
 </div>
 
-**New in v1.1.0:** more reliable background catalogue enrichment, restart-safe checkpoints and improved printer metadata retries. The current stable image is v1.1.0.
+**New in v1.2.0:** reusable spool hardware tracking, manufacturer and printable design catalogues, personal spool images, reviewed catalogue submissions and branded QR labels. The current stable image is v1.2.0.
 
 ## What is MakerVault?
 
@@ -88,7 +88,7 @@ That separation is what lets MakerVault grow from a simple parts list into a use
 </div>
 
 !!! info "Current release: v1.2.0 · Stable"
-    MakerVault v1.1.0 is the current stable release. It improves automated catalogue maintenance and retains first-run administrator setup, integrated account and security pages, role-based administration and background catalogue startup, while retaining v1.0.4's project priorities and deadline improvements. The v1 acceptance gates include representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS with the MakerVault Local CA, deployment preflight and final green CI. Experimental printer adapters remain labelled according to their hardware-validation status. See [scope and verification](reference/about.md).
+    MakerVault v1.2.0 is the current stable release. It adds reusable spool inventory and manufacturer catalogues, Maker Tags for reusable reels and branded QR labels. It retains v1.1.0's automated catalogue maintenance, first-run administrator setup, account/security management and the earlier project priority and deadline features. The v1 acceptance gates include representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS with the MakerVault Local CA, deployment preflight and final green CI. Experimental printer adapters remain labelled according to their hardware-validation status. See [scope and verification](reference/about.md).
 
 <div class="guide-grid" markdown>
 <div class="guide-card" markdown>
