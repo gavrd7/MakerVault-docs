@@ -2,7 +2,7 @@
 
 ## Version and scope
 
-This guide describes **MakerVault v1.2.1**, which improves Maker Tags with adjustable QR labels and batch printing, which adds reusable spool hardware inventory, manufacturer and printable designs, reviewed catalogue changes, Maker Tags for reusable reels and branded QR labels. It retains the v1.1.0 maintenance improvements and earlier project features.
+This guide describes **MakerVault v1.2.2**, which improves Maker Tags with adjustable QR labels and batch printing, which adds reusable spool hardware inventory, manufacturer and printable designs, reviewed catalogue changes, Maker Tags for reusable reels and branded QR labels. It retains the v1.1.0 maintenance improvements and earlier project features.
 
 Linux with the supplied Docker Compose configuration remains the preferred always-on server deployment. Windows users can also follow the documented Docker Desktop, Docker Desktop + WSL2 integration, or direct WSL2 Docker Engine routes. NAS/Portainer and macOS remain platform-adaptation cases rather than fully validated walkthroughs. No measured minimum hardware specification is claimed.
 
