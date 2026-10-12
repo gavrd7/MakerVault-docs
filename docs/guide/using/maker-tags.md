@@ -45,3 +45,12 @@ Open a QR Maker Tag and use **Label format** to preview Compact (50 × 30 mm), S
 For multiple labels, tick active QR tags in the Maker Tags list and choose **Print selected**, or use **Print labels** and choose all matching active QR tags. Search, status, tag type and **Target type** filters determine which tags are included. NFC/RFID-only identities and retired tags are not included in QR label batches. The selected label format and text options apply to the whole batch, arranged on A4 sheets.
 
 Always inspect the browser print preview and print at **100% scaling** when dimensional accuracy matters. Small QR codes carrying long URLs may be difficult to scan; test one before printing a full batch. Browser and printer margins can affect positioning. QR codes identify a record, but are not authentication credentials.
+
+
+## Record shortcuts and tag removal (v1.2.2)
+
+From an eligible inventory item, project, filament spool, physical reusable spool, printer, printed part or storage/printing location, select **Maker Tags** to open an assigned tag. If none is assigned and your role permits creation, the existing Maker Tag form opens with the current target preselected. Closing the tag view or creation form returns to the originating record.
+
+Use **Delete** from the Maker Tags list or tag details to permanently remove a tag if you have deletion permission. Confirm carefully: the MakerVault record and its history are removed and its scan link no longer resolves. This does **not** erase a physical NFC/RFID chip or the separate filament spool RFID UID. Use **Retire** instead when preserving identity history is important.
+
+The main sidebar also links directly to **Model Library**, which remains accessible from **3D Printing**. The 3D Printing overview lists a few storage/printing locations and offers **View all**, **Maker Tags**, **Edit** and **Delete** actions as permitted.
