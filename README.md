@@ -20,6 +20,10 @@
 
 ---
 
+## Upcoming v1.3.0 documentation preview
+
+A draft [Connected Devices and RFID/NFC handheld guide](docs/guide/using/connected-devices.md) covers verified HTTPS, Wi-Fi and phone setup, short-code pairing, permission scopes, heartbeats, credential revocation and UID scanning. It is staged on this documentation branch only: **v1.2.2 remains the current stable release**, and firmware v0.5.1.13 is a hardware-tested release candidate. Device screenshots are being prepared for the illustrated version.
+
 ## What's new in v1.2.2
 
 Record-level Maker Tag shortcuts across workshop assets, contextual navigation, QR/NFC/RFID tag deletion with confirmation, the Model Library sidebar entry, and storage/printing location preview, editing and deletion.
