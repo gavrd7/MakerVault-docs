@@ -40,7 +40,7 @@ The prototype was validated using printed parts and M2 screws into plastic for i
 
 ## Verified wiring — ESP32-S3 SuperMini Rev C.3
 
-These connections are checked against the physically tested **v0.5.1.13** firmware. The TFT and RC522 share the SPI clock/data pins but have different chip-selects.
+These connections were verified against the v0.5.1.13 source and retained in the physically tested **v0.5.1.14** firmware. The TFT and RC522 share the SPI clock/data pins but have different chip-selects.
 
 | Component / function | Module signal | ESP32-S3 |
 |---|---|---|
@@ -74,12 +74,12 @@ On the proven prototype the **TFT BLK backlight connects directly to 3V3** with 
 8. **Flash and perform a bench test with the case still open**, then complete final case assembly after the screen, controls and tag detection all pass.
 
 !!! warning "Flash the firmware matched to this Rev C.3 pinout"
-    Use the `MakerVault_v0523` v0.5.1.13 source with the connections above. Arduino build versions beyond the reported working toolchain have not been independently pinned, so check the complete [firmware installation guide](https://github.com/gavrd7/MakerVault-Hardware/blob/chore/public-release-readiness/firmware/rfid-terminal/FLASHING.md) before flashing. Do not substitute older experimental GPIO layouts.
+    Use the revision-matched `MakerVault_v0523` sketch with the connections above. The latest physically tested firmware is v0.5.1.14, currently in MakerVault-Hardware PR #3. Arduino build versions beyond the reported working toolchain have not been independently pinned, so check the complete [firmware installation guide](https://github.com/gavrd7/MakerVault-Hardware/blob/chore/public-release-readiness/firmware/rfid-terminal/FLASHING.md) before flashing. Do not substitute older experimental GPIO layouts.
 
 
 ## Flashing the terminal (Arduino IDE)
 
-1. Obtain the staged [v0.5.1.13 sketch folder](https://github.com/gavrd7/MakerVault-Hardware/tree/main/firmware/rfid-terminal/MakerVault_v0523). Keep the `.ino`, headers and bundled QRCode `.c/.h` files together.
+1. Obtain the [sketch source folder](https://github.com/gavrd7/MakerVault-Hardware/tree/main/firmware/rfid-terminal/MakerVault_v0523). Keep the `.ino`, headers and bundled QRCode `.c/.h` files together.
 2. Install Arduino IDE 2.x, add Espressif's ESP32 board package and select **ESP32S3 Dev Module**. The recorded successful development setup used Arduino IDE **2.3.10** and ESP32 core **3.3.12**.
 3. Set **USB CDC On Boot: Enabled**, partition **Huge APP (3MB No OTA / 1MB SPIFFS)** (for the compatible physical flash size), and Serial Monitor **115200** baud. Install the required Adafruit GFX, Adafruit ST7735, Adafruit NeoPixel and MFRC522 libraries and provide the compatible ESP32CertBundle library/header. Exact external-library versions still need a pinned build record.
 4. Plug the terminal in with a USB-C **data** cable, select its serial port, compile/verify, then upload. **Do not use Erase All Flash** on an existing configured/paired terminal; that could remove saved Wi-Fi and trust credentials.
@@ -101,9 +101,9 @@ Only after these pass, proceed to [configure Wi-Fi, HTTPS trust and secure pairi
 
 ## Flashing, networking and security
 
-The tested software baseline is **v0.5.1.13 (release candidate)**. Its physically tested functionality includes Wi-Fi setup, a local phone configuration page, certificate-verified HTTPS, eight-digit pairing, persistent pairing credentials, heartbeats and offline tag UID detection.
+The latest physically tested software baseline is **v0.5.1.14 (release candidate)**. This firmware corrects the System info, serial-startup and heartbeat version values and was compiled, flashed and functionally checked on the assembled terminal. Its physically tested functionality includes Wi-Fi setup, a local phone configuration page, certificate-verified HTTPS, eight-digit pairing, persistent pairing credentials, heartbeats and offline tag UID detection.
 
-The v0.5.1.13 source **is committed** in MakerVault-Hardware, but it contains older System info and heartbeat version strings. A draft v0.5.1.14 metadata correction exists but **has not been hardware validated**. Exact external Arduino dependency versions and a fresh clean-machine build still require verification; do not claim reproducible firmware binaries yet.
+The v0.5.1.13 source **is committed** in MakerVault-Hardware (PR #1 merged). The physically tested v0.5.1.14 version-reporting correction is in [hardware PR #3](https://github.com/gavrd7/MakerVault-Hardware/pull/3), still unmerged. Confirm MakerVault actually receives `firmware_version: 0.5.1.14` through the heartbeat API before describing that integration check as complete. External Arduino dependency versions are not yet fully pinned and a clean-machine build remains outstanding, so do not claim fully reproducible firmware binaries.
 
 Use the terminal's setup access point or LAN QR flow to configure a **2.4 GHz** Wi-Fi network, the MakerVault HTTPS URL and a private Local CA if required. Pair from **Settings → User Account → Connected Devices** using the eight-digit code shown on the terminal. Keep private keys and Wi-Fi credentials out of published source files and photographs.
 
