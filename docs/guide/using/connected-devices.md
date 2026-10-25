@@ -147,4 +147,4 @@ For firmware, wiring and build-specific details, see [MakerVault-Hardware](https
 
 ## Illustration assets
 
-Screenshots referenced above are prepared in a separate upload bundle at `docs/guide/assets/screenshots/connected-devices/` and **must be added to this draft branch before the guide is merged**. Images containing an API key, active QR or pairing code are redacted. The illustration links are intentionally not yet available on this branch.
+The 22 accompanying screenshots are committed under `docs/guide/assets/screenshots/connected-devices/`, including the four-step pairing wizard, mobile setup screens and handheld menus. Sensitive API-key, pairing-code and LAN QR details were obscured in the prepared publication images. Review the final rendered images before publishing.
