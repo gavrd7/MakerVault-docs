@@ -74,7 +74,7 @@ On the proven prototype the **TFT BLK backlight connects directly to 3V3** with 
 8. **Flash and perform a bench test with the case still open**, then complete final case assembly after the screen, controls and tag detection all pass.
 
 !!! warning "Flash the firmware matched to this Rev C.3 pinout"
-    Use the revision-matched `MakerVault_v0523` sketch with the connections above. The latest physically tested firmware is v0.5.1.14, currently in MakerVault-Hardware PR #3. Arduino build versions beyond the reported working toolchain have not been independently pinned, so check the complete [firmware installation guide](https://github.com/gavrd7/MakerVault-Hardware/blob/chore/public-release-readiness/firmware/rfid-terminal/FLASHING.md) before flashing. Do not substitute older experimental GPIO layouts.
+    Use the revision-matched `MakerVault_v0523` sketch with the connections above. The latest physically tested firmware is v0.5.1.14, merged into MakerVault-Hardware `main` via PR #3. Arduino build versions beyond the reported working toolchain have not been independently pinned, so check the complete [firmware installation guide](https://github.com/gavrd7/MakerVault-Hardware/blob/chore/public-release-readiness/firmware/rfid-terminal/FLASHING.md) before flashing. Do not substitute older experimental GPIO layouts.
 
 
 ## Flashing the terminal (Arduino IDE)
@@ -101,7 +101,7 @@ Only after these pass, proceed to [configure Wi-Fi, HTTPS trust and secure pairi
 
 ## Flashing, networking and security
 
-The latest physically tested software baseline is **v0.5.1.14 (release candidate)**. This firmware corrects the System info, serial-startup and heartbeat version values and was compiled, flashed and functionally checked on the assembled terminal. Its physically tested functionality includes Wi-Fi setup, a local phone configuration page, certificate-verified HTTPS, eight-digit pairing, persistent pairing credentials, heartbeats and offline tag UID detection.
+The latest physically tested software baseline is **v0.5.1.14 (merged and hardware-tested)**. This firmware corrects the System info, serial-startup and heartbeat version values and was compiled, flashed and functionally checked on the assembled terminal. Its physically tested functionality includes Wi-Fi setup, a local phone configuration page, certificate-verified HTTPS, eight-digit pairing, persistent pairing credentials, heartbeats and offline tag UID detection.
 
 The v0.5.1.13 source **is committed** in MakerVault-Hardware (PR #1 merged). The physically tested v0.5.1.14 version-reporting correction is in [hardware PR #3](https://github.com/gavrd7/MakerVault-Hardware/pull/3), still unmerged. Confirm MakerVault actually receives `firmware_version: 0.5.1.14` through the heartbeat API before describing that integration check as complete. External Arduino dependency versions are not yet fully pinned and a clean-machine build remains outstanding, so do not claim fully reproducible firmware binaries.
 
