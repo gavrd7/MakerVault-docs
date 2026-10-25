@@ -76,6 +76,7 @@ nav:
       - Print history and costs: using/print-history.md
       - Printed parts: using/printed-parts.md
       - Maker Tags: using/maker-tags.md
+      - Connected Devices (v1.3 preview): using/connected-devices.md
       - Interactive Wiring: using/interactive-wiring.md
   - Optional integrations:
       - Spoolman: integrations/spoolman.md
