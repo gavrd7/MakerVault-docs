@@ -18,6 +18,12 @@
   <a href="docs/guide/getting-started/install.md">Installation</a>
 </p>
 
+## Related MakerVault repositories
+
+- **[MakerVault](https://github.com/gavrd7/MakerVault)** — self-hosted application, Docker deployment and releases.
+- **[MakerVault User Guide](https://gavrd7.github.io/MakerVault-docs/)** ([documentation source](https://github.com/gavrd7/MakerVault-docs)) — installation, configuration and usage guides.
+- **[MakerVault-Hardware](https://github.com/gavrd7/MakerVault-Hardware)** — RFID/NFC handheld firmware, wiring, printable enclosure files and future connected hardware.
+
 ---
 
 ## v1.3.0 — Connected Devices and secure pairing
