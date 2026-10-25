@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>Guide for MakerVault v1.2.2</strong>
+  <strong>Guide for MakerVault v1.3.0 release candidate</strong>
 </p>
 
 <p align="center">
@@ -20,9 +20,11 @@
 
 ---
 
-## Upcoming v1.3.0 documentation preview
+## v1.3.0 — Connected Devices and secure pairing
 
-A draft [Connected Devices and RFID/NFC handheld guide](docs/guide/using/connected-devices.md) covers verified HTTPS, Wi-Fi and phone setup, short-code pairing, permission scopes, heartbeats, credential revocation and UID scanning. It is staged on this documentation branch only: **v1.2.2 remains the current stable release**, and firmware v0.5.1.13 is a hardware-tested release candidate. Device screenshots are being prepared for the illustrated version.
+The [illustrated Connected Devices and RFID/NFC handheld guide](docs/guide/using/connected-devices.md) documents verified HTTPS, Local CA trust, phone-based Wi-Fi/server setup, eight-digit pairing, device permissions, live heartbeats, unpairing/deletion and physical tag UID scanning.
+
+The application release is being prepared; **the v1.3.0 image has not yet been published**. The handheld firmware v0.5.1.13 remains a hardware-tested release candidate, with version-label correction and source publication tracked separately. MakerVault record lookup, tag writing and CFS payload decoding are not yet supported on the handheld.
 
 ## What's new in v1.2.2
 
