@@ -3,6 +3,8 @@
 !!! warning "Preview — not yet the stable release"
     This page documents the tested **v1.3.0 staging** Connected Devices workflow and the **ESP32-S3 handheld firmware v0.5.1.13 release candidate**. MakerVault **v1.2.2 remains the current stable release** until v1.3.0 is published. The tested firmware must still be committed and released separately.
 
+**Want to build the terminal?** Start with the [RFID/NFC handheld build appendix](../reference/rfid-terminal-build.md), which covers parts, printed enclosure, assembly checks and links to the [MakerVault-Hardware repository](https://github.com/gavrd7/MakerVault-Hardware).
+
 MakerVault's **Connected Devices** panel lets you approve hardware using a short-lived pairing code, assign permitted operations, monitor heartbeats and revoke access. It supports future device classes; the ESP32-S3 RFID/NFC handheld is one concrete implementation.
 
 ![MakerVault handheld terminal enclosure](../assets/screenshots/connected-devices/terminal-enclosure.jpg)
