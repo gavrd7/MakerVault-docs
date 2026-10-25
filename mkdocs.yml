@@ -105,6 +105,7 @@ nav:
       - Troubleshooting: reference/troubleshooting.md
       - Configuration: reference/configuration.md
       - Glossary: reference/glossary.md
+      - Build the RFID/NFC handheld: reference/rfid-terminal-build.md
       - About this guide: reference/about.md
 
 
