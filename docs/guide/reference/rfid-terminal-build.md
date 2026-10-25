@@ -5,7 +5,7 @@ This appendix provides a **build overview and validation checklist** for the cus
 **Firmware, enclosure designs and build resources:** [gavrd7/MakerVault-Hardware](https://github.com/gavrd7/MakerVault-Hardware).
 
 !!! info "Hardware repository availability"
-    MakerVault-Hardware is currently **private** and is planned to become public after the tested firmware source, build instructions, dependencies and licensing are finalised. Until then, the link may show a 404 to visitors without access. **Do not assume the hardware ZIP or a fully reproducible firmware build has already been published.**
+    MakerVault-Hardware is currently **private** and is planned to become public after remaining security and reproducibility checks are completed. Until then, the link may show a 404 to visitors without access. **Source, models and instructions are committed to `main`; a pinned clean-machine firmware build and public release have not yet been verified.**
 
 ## What you're building
 
@@ -32,7 +32,7 @@ The enclosure was designed for a approximately **70 × 103 × 34 mm** for the Re
 
 ## Where to obtain the enclosure files
 
-Use the **Rev3 printable files** in [MakerVault-Hardware’s enclosure folder](https://github.com/gavrd7/MakerVault-Hardware/tree/chore/public-release-readiness/hardware/rfid-terminal), now staged in the hardware public-release PR. GitHub may show a 404 until the private repository is made public. The design has evolved through several revisions, so do not combine parts from different releases without checking compatibility.
+Use the **Rev3 printable files** in [MakerVault-Hardware’s enclosure folder](https://github.com/gavrd7/MakerVault-Hardware/tree/main/hardware/rfid-terminal), now merged into the hardware repository's `main` branch. GitHub may show a 404 to readers until the private repository is made public. The design has evolved through several revisions, so do not combine parts from different releases without checking compatibility.
 
 The assembled design uses a front shell and rear shell, a flush display bezel/carrier, internal RC522 supports, a positive-retention ESP32-S3 mounting arrangement, a button carrier and an encoder knob. The reader antenna faces out through the rear plastic; the USB-C port is accessible at the bottom.
 
@@ -60,7 +60,7 @@ Supply the **RC522 VCC, TFT VCC and KY-040 +** from **3V3**, and connect their *
 
 On the proven prototype the **TFT BLK backlight connects directly to 3V3** with no external resistor. Current limiting on the specific breakout has **not been independently verified**; do not assume that every ST7735S display tolerates this wiring. Verify the exact module. Inspect all 3.3 V connections and tactile switch terminal pairs before power-on.
 
-[Complete pin-by-pin wiring diagram and electrical notes](https://github.com/gavrd7/MakerVault-Hardware/blob/chore/public-release-readiness/hardware/rfid-terminal/WIRING.md) · [Full BOM](https://github.com/gavrd7/MakerVault-Hardware/blob/chore/public-release-readiness/hardware/rfid-terminal/BOM.md)
+[Complete pin-by-pin wiring diagram and electrical notes](https://github.com/gavrd7/MakerVault-Hardware/blob/main/hardware/rfid-terminal/WIRING.md) · [Full BOM](https://github.com/gavrd7/MakerVault-Hardware/blob/main/hardware/rfid-terminal/BOM.md)
 
 ## Suggested build and inspection sequence
 
@@ -74,7 +74,7 @@ On the proven prototype the **TFT BLK backlight connects directly to 3V3** with 
 8. **Flash and perform a bench test with the case still open**, then complete final case assembly after the screen, controls and tag detection all pass.
 
 !!! warning "Flash the firmware matched to this Rev C.3 pinout"
-    Use the revision-matched `MakerVault_v0523` sketch with the connections above. The latest physically tested firmware is v0.5.1.14, merged into MakerVault-Hardware `main` via PR #3. Arduino build versions beyond the reported working toolchain have not been independently pinned, so check the complete [firmware installation guide](https://github.com/gavrd7/MakerVault-Hardware/blob/chore/public-release-readiness/firmware/rfid-terminal/FLASHING.md) before flashing. Do not substitute older experimental GPIO layouts.
+    Use the revision-matched `MakerVault_v0523` sketch with the connections above. The latest physically tested firmware is v0.5.1.14, merged into MakerVault-Hardware `main` via PR #3. Arduino build versions beyond the reported working toolchain have not been independently pinned, so check the complete [firmware installation guide](https://github.com/gavrd7/MakerVault-Hardware/blob/main/firmware/rfid-terminal/FLASHING.md) before flashing. Do not substitute older experimental GPIO layouts.
 
 
 ## Flashing the terminal (Arduino IDE)
@@ -85,7 +85,7 @@ On the proven prototype the **TFT BLK backlight connects directly to 3V3** with 
 4. Plug the terminal in with a USB-C **data** cable, select its serial port, compile/verify, then upload. **Do not use Erase All Flash** on an existing configured/paired terminal; that could remove saved Wi-Fi and trust credentials.
 5. Confirm TFT menus, encoder/select, Back/Confirm and reading known RFID/NFC tag UIDs before enclosing the electronics. Then configure Wi-Fi, verified HTTPS and secure pairing in [Connected Devices](../using/connected-devices.md).
 
-Troubleshooting and all flashing options are in the [complete firmware guide](https://github.com/gavrd7/MakerVault-Hardware/blob/chore/public-release-readiness/firmware/rfid-terminal/FLASHING.md).
+Troubleshooting and all flashing options are in the [complete firmware guide](https://github.com/gavrd7/MakerVault-Hardware/blob/main/firmware/rfid-terminal/FLASHING.md).
 
 ## Bench acceptance checklist
 
@@ -114,9 +114,9 @@ At this firmware baseline, the handheld reads physical tag identities but **does
 ## Further references
 
 - [MakerVault-Hardware — firmware, printed parts and assembly resources](https://github.com/gavrd7/MakerVault-Hardware)
-- [Pin-to-pin wiring diagram](https://github.com/gavrd7/MakerVault-Hardware/blob/chore/public-release-readiness/hardware/rfid-terminal/WIRING.md)
-- [Bill of materials](https://github.com/gavrd7/MakerVault-Hardware/blob/chore/public-release-readiness/hardware/rfid-terminal/BOM.md)
-- [Rev3 printable enclosure assembly guide](https://github.com/gavrd7/MakerVault-Hardware/blob/chore/public-release-readiness/hardware/rfid-terminal/BUILD_GUIDE.md)
-- [Firmware flashing and troubleshooting](https://github.com/gavrd7/MakerVault-Hardware/blob/chore/public-release-readiness/firmware/rfid-terminal/FLASHING.md)
+- [Pin-to-pin wiring diagram](https://github.com/gavrd7/MakerVault-Hardware/blob/main/hardware/rfid-terminal/WIRING.md)
+- [Bill of materials](https://github.com/gavrd7/MakerVault-Hardware/blob/main/hardware/rfid-terminal/BOM.md)
+- [Rev3 printable enclosure assembly guide](https://github.com/gavrd7/MakerVault-Hardware/blob/main/hardware/rfid-terminal/BUILD_GUIDE.md)
+- [Firmware flashing and troubleshooting](https://github.com/gavrd7/MakerVault-Hardware/blob/main/firmware/rfid-terminal/FLASHING.md)
 - [Connected Devices — configure and pair the finished terminal](../using/connected-devices.md)
 - [MakerVault device pairing protocol](https://github.com/gavrd7/MakerVault/blob/main/docs/CONNECTED_DEVICES_PAIRING.md)
