@@ -11,7 +11,7 @@ This appendix provides a **build overview and validation checklist** for the cus
 
 The tested prototype is a compact, portrait-format, 3D-printed handheld. You bring its rear RFID antenna to the tag; you **do not** need to set an object on top of the reader.
 
-![Completed MakerVault handheld](../assets/screenshots/connected-devices/terminal-enclosure.jpg)
+*A finished-device photograph can be added here once a verified image is committed to this repository.*
 
 The terminal has an upper front TFT display, a rotary encoder on the left, separate Back and Confirm buttons on the right, a rear-mounted RFID antenna and bottom-facing USB-C connection.
 
