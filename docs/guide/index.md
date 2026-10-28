@@ -9,7 +9,7 @@ Learn to install MakerVault, record what you own and bring your projects, files 
 [Follow the guided workflow](getting-started/first-project.md){ .md-button }
 </div>
 
-**New in v1.2.2:** custom and batch Maker Tag QR label printing, text visibility settings and target-type filters. **Previously in v1.2.0:** reusable spool hardware tracking, manufacturer and printable design catalogues, personal spool images, reviewed catalogue submissions and branded QR labels. The current stable image is v1.2.2.
+**New in v1.2.2:** custom and batch Maker Tag QR label printing, text visibility settings and target-type filters. **Previously in v1.2.0:** reusable spool hardware tracking, manufacturer and printable design catalogues, personal spool images, reviewed catalogue submissions and branded QR labels. The v1.4.0 release tag is published; consult the container release status before deploying a new image.
 
 ## What is MakerVault?
 
@@ -87,8 +87,8 @@ That separation is what lets MakerVault grow from a simple parts list into a use
   <div id="guide-search-results" class="guide-search__results" data-guide-search-results></div>
 </div>
 
-!!! info "Current release: v1.2.2 · Stable"
-    MakerVault v1.2.2 is the current stable release. It adds reusable spool inventory and manufacturer catalogues, Maker Tags for reusable reels and branded QR labels. It retains v1.1.0's automated catalogue maintenance, first-run administrator setup, account/security management and the earlier project priority and deadline features. The v1 acceptance gates include representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS with the MakerVault Local CA, deployment preflight and final green CI. Experimental printer adapters remain labelled according to their hardware-validation status. See [scope and verification](reference/about.md).
+!!! info "Current release: v1.4.0"
+    MakerVault v1.4.0 is the current published application release. It adds online RFID/NFC Maker Tag lookup, handheld registration, confirmed reassignment, and stable short IDs (with v0.6.0 terminal firmware). MakerVault v1.2.2 previously introduced reusable spool inventory and QR label enhancements. It adds reusable spool inventory and manufacturer catalogues, Maker Tags for reusable reels and branded QR labels. It retains v1.1.0's automated catalogue maintenance, first-run administrator setup, account/security management and the earlier project priority and deadline features. The v1 acceptance gates include representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS with the MakerVault Local CA, deployment preflight and final green CI. Experimental printer adapters remain labelled according to their hardware-validation status. See [scope and verification](reference/about.md).
 
 <div class="guide-grid" markdown>
 <div class="guide-card" markdown>
