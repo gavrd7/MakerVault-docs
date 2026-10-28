@@ -5,7 +5,7 @@ This appendix provides a **build overview and validation checklist** for the cus
 **Firmware, enclosure designs and build resources:** [gavrd7/MakerVault-Hardware](https://github.com/gavrd7/MakerVault-Hardware).
 
 !!! info "Hardware repository availability"
-    MakerVault-Hardware is **public**, with the released baseline on `main` and draft connected terminal work in PR #6. Until then, the link may show a 404 to visitors without access. **Source, models and instructions are committed to `main`; a pinned clean-machine firmware build and public release have not yet been verified.**
+    MakerVault-Hardware is public and includes current v0.6.0 firmware source, printable enclosure resources and earlier acceptance records. Check the release assets and build guide for installation details.
 
 ## What you're building
 
@@ -32,7 +32,7 @@ The enclosure was designed for a approximately **70 × 103 × 34 mm** for the Re
 
 ## Where to obtain the enclosure files
 
-Use the **Rev3 printable files** in [MakerVault-Hardware’s enclosure folder](https://github.com/gavrd7/MakerVault-Hardware/tree/main/hardware/rfid-terminal), now merged into the hardware repository's `main` branch. GitHub may show a 404 to readers until the private repository is made public. The design has evolved through several revisions, so do not combine parts from different releases without checking compatibility.
+Use the **Rev3 printable files** in [MakerVault-Hardware’s enclosure folder](https://github.com/gavrd7/MakerVault-Hardware/tree/main/hardware/rfid-terminal), now merged into the hardware repository's `main` branch. The design has evolved through several revisions, so do not combine parts from different releases without checking compatibility.
 
 The assembled design uses a front shell and rear shell, a flush display bezel/carrier, internal RC522 supports, a positive-retention ESP32-S3 mounting arrangement, a button carrier and an encoder knob. The reader antenna faces out through the rear plastic; the USB-C port is accessible at the bottom.
 
@@ -40,7 +40,7 @@ The prototype was validated using printed parts and M2 screws into plastic for i
 
 ## Verified wiring — ESP32-S3 SuperMini Rev C.3
 
-These connections were verified against the v0.5.1.13 source and retained in the physically tested **v0.5.1.14** firmware. The TFT and RC522 share the SPI clock/data pins but have different chip-selects.
+These connections use the tested Rev C.3 pinout retained in **v0.6.0** firmware. The TFT and RC522 share the SPI clock/data pins but have different chip-selects.
 
 | Component / function | Module signal | ESP32-S3 |
 |---|---|---|
@@ -74,12 +74,12 @@ On the proven prototype the **TFT BLK backlight connects directly to 3V3** with 
 8. **Flash and perform a bench test with the case still open**, then complete final case assembly after the screen, controls and tag detection all pass.
 
 !!! warning "Flash the firmware matched to this Rev C.3 pinout"
-    Use the revision-matched `MakerVault_v0523` sketch with the connections above. The latest physically tested firmware is v0.5.1.14, merged into MakerVault-Hardware `main` via PR #3. Arduino build versions beyond the reported working toolchain have not been independently pinned, so check the complete [firmware installation guide](https://github.com/gavrd7/MakerVault-Hardware/blob/main/firmware/rfid-terminal/FLASHING.md) before flashing. Do not substitute older experimental GPIO layouts.
+    Use the revision-matched `MakerVault_Terminal_Firmware` sketch (firmware v0.6.0) with the connections above. Do not substitute older experimental GPIO layouts.
 
 
 ## Flashing the terminal (Arduino IDE)
 
-1. Obtain the [sketch source folder](https://github.com/gavrd7/MakerVault-Hardware/tree/main/firmware/rfid-terminal/MakerVault_v0523). Keep the `.ino`, headers and bundled QRCode `.c/.h` files together.
+1. Obtain the [sketch source folder](https://github.com/gavrd7/MakerVault-Hardware/tree/main/firmware/rfid-terminal/MakerVault_Terminal_Firmware). Keep the `.ino`, headers and bundled QRCode `.c/.h` files together.
 2. Install Arduino IDE 2.x, add Espressif's ESP32 board package and select **ESP32S3 Dev Module**. The recorded successful development setup used Arduino IDE **2.3.10** and ESP32 core **3.3.12**.
 3. Set **USB CDC On Boot: Enabled**, partition **Huge APP (3MB No OTA / 1MB SPIFFS)** (for the compatible physical flash size), and Serial Monitor **115200** baud. Install the required Adafruit GFX, Adafruit ST7735, Adafruit NeoPixel and MFRC522 libraries and provide the compatible ESP32CertBundle library/header. Exact external-library versions still need a pinned build record.
 4. Plug the terminal in with a USB-C **data** cable, select its serial port, compile/verify, then upload. **Do not use Erase All Flash** on an existing configured/paired terminal; that could remove saved Wi-Fi and trust credentials.
@@ -101,9 +101,9 @@ Only after these pass, proceed to [configure Wi-Fi, HTTPS trust and secure pairi
 
 ## Flashing, networking and security
 
-The latest physically tested software baseline is **v0.5.1.14 (merged and hardware-tested)**. This firmware corrects the System info, serial-startup and heartbeat version values and was compiled, flashed and functionally checked on the assembled terminal. Its physically tested functionality includes Wi-Fi setup, a local phone configuration page, certificate-verified HTTPS, eight-digit pairing, persistent pairing credentials, heartbeats and offline tag UID detection.
+The current physically tested firmware is **v0.6.0**. The prior v0.5.1.14 maintenance baseline remains documented for historical reference. This firmware corrects the System info, serial-startup and heartbeat version values and was compiled, flashed and functionally checked on the assembled terminal. Its physically tested functionality includes Wi-Fi setup, a local phone configuration page, certificate-verified HTTPS, eight-digit pairing, persistent pairing credentials, heartbeats and offline tag UID detection.
 
-The original v0.5.1.13 source and the physically tested **v0.5.1.14** version-reporting update are both merged into MakerVault-Hardware `main` ([firmware PR #3](https://github.com/gavrd7/MakerVault-Hardware/pull/3)). The terminal's version display, serial startup version and MakerVault heartbeat reporting have been validated. External Arduino dependency versions are not yet fully pinned and an independent clean-machine build remains outstanding, so do not claim fully reproducible firmware binaries.
+The earlier v0.5.1.13 source and **v0.5.1.14** maintenance update were merged into MakerVault-Hardware `main` ([firmware PR #3](https://github.com/gavrd7/MakerVault-Hardware/pull/3)). The terminal's version display, serial startup version and MakerVault heartbeat reporting have been validated. External Arduino dependency versions are not yet fully pinned and an independent clean-machine build remains outstanding, so do not claim fully reproducible firmware binaries.
 
 Use the terminal's setup access point or LAN QR flow to configure a **2.4 GHz** Wi-Fi network, the MakerVault HTTPS URL and a private Local CA if required. Pair from **Settings → User Account → Connected Devices** using the eight-digit code shown on the terminal. Keep private keys and Wi-Fi credentials out of published source files and photographs.
 
@@ -122,8 +122,8 @@ At this firmware baseline, the handheld reads physical tag identities but **does
 - [MakerVault device pairing protocol](https://github.com/gavrd7/MakerVault/blob/main/docs/CONNECTED_DEVICES_PAIRING.md)
 
 
-## Draft firmware after the connected-MakerTag integration
+## Connected Maker Tag firmware v0.6.0
 
-The published baseline on the hardware repository's main branch retains its historical sketch name. In [hardware PR #6](https://github.com/gavrd7/MakerVault-Hardware/pull/6), the Arduino sketch and its folder have both been renamed to **`MakerVault_Terminal_Firmware`**. Obtain that branch when testing alongside application PR #150, open `firmware/rfid-terminal/MakerVault_Terminal_Firmware/MakerVault_Terminal_Firmware.ino`, and keep all the bundled `.h` and QRCode source files beside the sketch. Follow the branch's [build instructions](https://github.com/gavrd7/MakerVault-Hardware/blob/feature/connected-maker-tag-registration/firmware/rfid-terminal/BUILD.md).
+Firmware v0.6.0 uses `MakerVault_Terminal_Firmware/MakerVault_Terminal_Firmware.ino` and requires MakerVault v1.4.0 for connected Maker Tag workflows. Keep the bundled headers and QRCode source files beside the sketch.
 
 The new functionality includes online MakerTag resolution, UID registration, explicitly confirmed reassignment, cancellation from either device or browser and interrupted-session recovery. It does **not** write NDEF data or Creality CFS sectors. A fresh Verify/Compile and flashing check of the renamed sketch remain release gates; do not assume that passing tests on the historical sketch name validates packaging.
