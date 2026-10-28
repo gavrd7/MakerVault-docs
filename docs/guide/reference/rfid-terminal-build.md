@@ -5,7 +5,7 @@ This appendix provides a **build overview and validation checklist** for the cus
 **Firmware, enclosure designs and build resources:** [gavrd7/MakerVault-Hardware](https://github.com/gavrd7/MakerVault-Hardware).
 
 !!! info "Hardware repository availability"
-    MakerVault-Hardware is currently **private** and is planned to become public after remaining security and reproducibility checks are completed. Until then, the link may show a 404 to visitors without access. **Source, models and instructions are committed to `main`; a pinned clean-machine firmware build and public release have not yet been verified.**
+    MakerVault-Hardware is **public**, with the released baseline on `main` and draft connected terminal work in PR #6. Until then, the link may show a 404 to visitors without access. **Source, models and instructions are committed to `main`; a pinned clean-machine firmware build and public release have not yet been verified.**
 
 ## What you're building
 
@@ -120,3 +120,10 @@ At this firmware baseline, the handheld reads physical tag identities but **does
 - [Firmware flashing and troubleshooting](https://github.com/gavrd7/MakerVault-Hardware/blob/main/firmware/rfid-terminal/FLASHING.md)
 - [Connected Devices — configure and pair the finished terminal](../using/connected-devices.md)
 - [MakerVault device pairing protocol](https://github.com/gavrd7/MakerVault/blob/main/docs/CONNECTED_DEVICES_PAIRING.md)
+
+
+## Draft firmware after the connected-MakerTag integration
+
+The published baseline on the hardware repository's main branch retains its historical sketch name. In [hardware PR #6](https://github.com/gavrd7/MakerVault-Hardware/pull/6), the Arduino sketch and its folder have both been renamed to **`MakerVault_Terminal_Firmware`**. Obtain that branch when testing alongside application PR #150, open `firmware/rfid-terminal/MakerVault_Terminal_Firmware/MakerVault_Terminal_Firmware.ino`, and keep all the bundled `.h` and QRCode source files beside the sketch. Follow the branch's [build instructions](https://github.com/gavrd7/MakerVault-Hardware/blob/feature/connected-maker-tag-registration/firmware/rfid-terminal/BUILD.md).
+
+The new functionality includes online MakerTag resolution, UID registration, explicitly confirmed reassignment, cancellation from either device or browser and interrupted-session recovery. It does **not** write NDEF data or Creality CFS sectors. A fresh Verify/Compile and flashing check of the renamed sketch remain release gates; do not assume that passing tests on the historical sketch name validates packaging.
