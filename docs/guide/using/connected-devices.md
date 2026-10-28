@@ -1,7 +1,7 @@
 # Connected Devices and RFID/NFC handheld (v1.3.0)
 
-!!! info "Released Connected Devices; additional Maker Tag features are in draft"
-    This page covers the **released v1.3.0** Connected Devices workflow and the published handheld baseline **v0.5.1.14**. MakerVault **v1.3.0 has been published**. The connected Maker Tag additions in application PR #150 and hardware PR #6 are separate unreleased work. The tested firmware must still be committed and released separately.
+!!! info "MakerVault v1.4.0 and Terminal Firmware v0.6.0"
+    This guide covers secure device pairing (introduced in v1.3.0) and connected Maker Tag operations added in MakerVault v1.4.0 with handheld firmware v0.6.0. Physical tag-memory writing is not implemented.
 
 **Want to build the terminal?** Start with the [RFID/NFC handheld build appendix](../reference/rfid-terminal-build.md), which covers parts, printed enclosure, assembly checks and links to the [MakerVault-Hardware repository](https://github.com/gavrd7/MakerVault-Hardware).
 
@@ -12,7 +12,7 @@ MakerVault's **Connected Devices** panel lets you approve hardware using a short
 
 ## What currently works — and what does not
 
-The physical handheld has been tested for **Wi-Fi provisioning, encrypted HTTPS connection, secure pairing, persistent credentials, periodic heartbeat, status and permissions display, and reading physical RFID/NFC UIDs**. The published handheld baseline is not yet a complete MakerTag/inventory lookup station: in v0.5.1.14, scanning a UID **does not call MakerVault's tags/resolve API**, and **tag creation, association, memory writing and Creality CFS payload decoding are not implemented**. Granting `tags:write` in the web UI does not add firmware features.
+The v0.6.0 handheld supports Wi-Fi provisioning, certificate-verified HTTPS, pairing, heartbeat, local UID scanning and online Maker Tag lookup/registration/reassignment with user confirmation. Physical NFC/RFID memory writing and Creality CFS payload decoding are not implemented.
 
 ## 1. Prepare MakerVault HTTPS
 
@@ -59,7 +59,7 @@ Enter your MakerVault **HTTPS server URL**, including the correct port if requir
 
 Run **Connections → MakerVault → Test HTTPS**. It distinguishes certificate/transport verification from API authentication: a **Verified** TLS result with HTTP 401 or **Authentication failed** can be normal before pairing, whereas **Certificate rejected** means you must correct the CA, hostname, expiry or certificate chain. Do not disable certificate verification.
 
-The tested v0.5.1.13 firmware retains its API key across ordinary server-address and custom-CA changes, but has an approved-endpoint guard: it must not send an existing credential to an unapproved replacement URL. Restoring the previously approved URL restores use of the saved credential if not revoked. It does not provide a complete multi-server profile manager.
+The v0.6.0 firmware retains its API key across ordinary server-address and custom-CA changes, but has an approved-endpoint guard: it must not send an existing credential to an unapproved replacement URL. Restoring the previously approved URL restores use of the saved credential if not revoked. It does not provide a complete multi-server profile manager.
 
 ## 4. Pair the handheld securely
 
@@ -128,7 +128,7 @@ The terminal saves Wi-Fi networks and pairing data in ESP32 nonvolatile storage.
 
 NVS persistence does **not** establish hardware-backed encryption at rest; production flash encryption has **not** been verified. A full factory-reset menu and OTA updates also have **not** been confirmed in this release candidate. Updates currently use Arduino IDE/USB-C with appropriate ESP32-S3 board and partition configuration.
 
-The firmware v0.5.1.13 source has been hardware-tested but not yet published as a stable firmware release. Its **System info** label and heartbeat firmware version may still show an older version, pending correction.
+The v0.6.0 firmware has been flashed and the version display verified on physical hardware.
 
 ## 8. Troubleshooting
 
@@ -152,10 +152,10 @@ For firmware, wiring and build-specific details, see [MakerVault-Hardware](https
 The 22 accompanying screenshots are committed under `docs/guide/assets/screenshots/connected-devices/`, including the four-step pairing wizard, mobile setup screens and handheld menus. Sensitive API-key, pairing-code and LAN QR details were obscured in the prepared publication images. Review the final rendered images before publishing.
 
 
-## Connected Maker Tag operations — coordinated draft (not yet released)
+## Connected Maker Tag operations (v1.4.0)
 
 With MakerVault [PR #150](https://github.com/gavrd7/MakerVault/pull/150) and MakerVault-Hardware [PR #6](https://github.com/gavrd7/MakerVault-Hardware/pull/6), a paired terminal can resolve Maker Tags, receive browser-initiated registration requests and explicitly reassign a reusable tag to a different inventory item or spool. The user must confirm on the handheld, and reassignment asks for **a second confirmation**. The existing MakerVault ID and physical UID remain unchanged and the assignment history records the change.
 
-Grant `tags:read` for lookup and `tags:write` for browser-initiated registration, subject to the user's Maker Tag permissions. Requests are sent only to the selected paired terminal over certificate-verified HTTPS. The browser and handheld can cancel one another's pending request, and a browser refresh can resume an active registration. See [Maker Tags — connected terminal workflows](maker-tags.md#connected-rfid-terminal-workflows-pending-release-makervault-pr-150) for the step-by-step instructions.
+Grant `tags:read` for lookup and `tags:write` for browser-initiated registration, subject to the user's Maker Tag permissions. Requests are sent only to the selected paired terminal over certificate-verified HTTPS. The browser and handheld can cancel one another's pending request, and a browser refresh can resume an active registration. See [Maker Tags — connected terminal workflows](maker-tags.md#connected-rfid-terminal-workflows-v140) for the step-by-step instructions.
 
 **Release distinction:** the published v1.3.0 Connected Devices feature and released handheld baseline do not automatically include these draft additions. The hardware branch's Arduino sketch is called `MakerVault_Terminal_Firmware.ino`, inside the matching `MakerVault_Terminal_Firmware` folder. No NDEF or RFID memory writing is implemented.

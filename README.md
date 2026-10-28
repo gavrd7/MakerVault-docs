@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>Guide for MakerVault v1.3.0 release candidate</strong>
+  <strong>Guide for MakerVault v1.4.0</strong>
 </p>
 
 <p align="center">
@@ -26,11 +26,15 @@
 
 ---
 
+## v1.4.0 — Connected RFID/NFC Maker Tag management
+
+MakerVault v1.4.0 adds browser-initiated tag registration and lookup on the paired RFID/NFC handheld, on-terminal confirmation of tag reassignment, cancellation/session recovery and permanent `MV-XXXXXXXX` IDs. Compatible firmware is v0.6.0; physical NDEF/CFS tag writing is not included. See [Maker Tags](docs/guide/using/maker-tags.md) and [Connected Devices](docs/guide/using/connected-devices.md).
+
 ## v1.3.0 — Connected Devices and secure pairing
 
 The [illustrated Connected Devices and RFID/NFC handheld guide](docs/guide/using/connected-devices.md) documents verified HTTPS, Local CA trust, phone-based Wi-Fi/server setup, eight-digit pairing, device permissions, live heartbeats, unpairing/deletion and physical tag UID scanning.
 
-The application release is being prepared; **the v1.3.0 image has not yet been published**. The handheld firmware v0.5.1.13 remains a hardware-tested release candidate, with version-label correction and source publication tracked separately. MakerVault record lookup, tag writing and CFS payload decoding are not yet supported on the handheld.
+The v1.3.0 release established secure pairing, TLS trust and device management. The later v1.4.0 application and v0.6.0 firmware add online lookup and registration. Physical tag-memory writing and CFS payload decoding are not supported.
 
 ## What's new in v1.2.2
 
@@ -42,7 +46,7 @@ Maker Tags now supports custom QR label dimensions, optional title/code/target t
 
 ## What's new in v1.2.0
 
-The next release adds **reusable spool hardware inventory** separately from filament stock: manufacturer and printable design catalogues, physical reel tare weights, condition, storage, filament assignment history, image previews and personal artwork overrides. Maker Tags can identify reusable spools and display MakerVault-branded QR labels. Admins can add or correct shared spool models directly, while non-admin suggestions wait in a dedicated review queue. Key Add action labels are now consistent across the application.
+Version 1.2.0 introduced **reusable spool hardware inventory** separately from filament stock: manufacturer and printable design catalogues, physical reel tare weights, condition, storage, filament assignment history, image previews and personal artwork overrides. Maker Tags can identify reusable spools and display MakerVault-branded QR labels. Admins can add or correct shared spool models directly, while non-admin suggestions wait in a dedicated review queue. Key Add action labels are now consistent across the application.
 
 Version 1.2.0 builds on v1.1.0 and its background catalogue-maintenance improvements.
 
@@ -84,7 +88,7 @@ Support and future development therefore depend on the capabilities of the avail
 
 ## What the guide covers
 
-This guide documents the stable **MakerVault v1.2.2** release, including:
+This guide documents **MakerVault v1.4.0**, including:
 
 - beginner-friendly Docker installation from the pre-built GHCR image on Linux, Docker Desktop or WSL2, plus an optional build-it-yourself path and `.env` configuration;
 - Docker volumes, bind mounts, backups and restore;
@@ -99,7 +103,7 @@ This guide documents the stable **MakerVault v1.2.2** release, including:
 - OpenID Connect configuration and SMTP-backed account recovery;
 - managed v3 backup/recovery, including TLS identity and replacement-host recovery.
 
-MakerVault v1.2.2 is the current stable release, introducing reusable spool hardware, catalogue review and branded QR workflows while retaining the existing first-run wizard, account and role management. Version 1.1.0 improved background catalogue enrichment. The previous v1.0.4 release added project priorities, optional deadlines, attention ranking, deadline highlighting, quick completion and project deletion controls while retaining the v1.0.3 Creality FDM catalogue expansion and earlier v1 improvements. The mandatory v1 acceptance checks were completed on 3 October 2026, including representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS/Local CA validation and final green CI.
+MakerVault v1.4.0 is the latest published application release, introducing reusable spool hardware, catalogue review and branded QR workflows while retaining the existing first-run wizard, account and role management. Version 1.1.0 improved background catalogue enrichment. The previous v1.0.4 release added project priorities, optional deadlines, attention ranking, deadline highlighting, quick completion and project deletion controls while retaining the v1.0.3 Creality FDM catalogue expansion and earlier v1 improvements. The mandatory v1 acceptance checks were completed on 3 October 2026, including representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS/Local CA validation and final green CI.
 
 ## Repositories
 

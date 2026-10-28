@@ -56,10 +56,10 @@ Use **Delete** from the Maker Tags list or tag details to permanently remove a t
 The main sidebar also links directly to **Model Library**, which remains accessible from **3D Printing**. The 3D Printing overview lists a few storage/printing locations and offers **View all**, **Maker Tags**, **Edit** and **Delete** actions as permitted.
 
 
-## Connected RFID terminal workflows (pending release — MakerVault PR #150)
+## Connected RFID terminal workflows (v1.4.0)
 
-!!! info "Available in the coordinated draft, not yet the published release"
-    This workflow has been physically tested with the ESP32-S3 handheld, but requires MakerVault [PR #150](https://github.com/gavrd7/MakerVault/pull/150) together with the [hardware PR #6](https://github.com/gavrd7/MakerVault-Hardware/pull/6). Both remain draft; the current public release must not be assumed to include it.
+!!! info "Requires MakerVault v1.4.0 and terminal firmware v0.6.0"
+    A paired ESP32-S3 handheld running firmware v0.6.0 can register, resolve and reassign Maker Tags through MakerVault v1.4.0. Physical tag-memory writing is not implemented.
 
 ### Register a physical tag using the handheld
 
