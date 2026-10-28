@@ -1,6 +1,6 @@
 # Connected Devices and RFID/NFC handheld (v1.3.0)
 
-!!! warning "Preview — not yet the stable release"
+!!! info "Released Connected Devices; additional Maker Tag features are in draft"
     This page covers the **released v1.3.0** Connected Devices workflow and the published handheld baseline **v0.5.1.14**. MakerVault **v1.3.0 has been published**. The connected Maker Tag additions in application PR #150 and hardware PR #6 are separate unreleased work. The tested firmware must still be committed and released separately.
 
 **Want to build the terminal?** Start with the [RFID/NFC handheld build appendix](../reference/rfid-terminal-build.md), which covers parts, printed enclosure, assembly checks and links to the [MakerVault-Hardware repository](https://github.com/gavrd7/MakerVault-Hardware).
