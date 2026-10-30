@@ -26,9 +26,9 @@
 
 ---
 
-## v1.4.0 — Connected RFID/NFC Maker Tag management
+## v1.4.0 — Connected RFID/NFC MakerTag management
 
-MakerVault v1.4.0 adds browser-initiated tag registration and lookup on the paired RFID/NFC handheld, on-terminal confirmation of tag reassignment, cancellation/session recovery and permanent `MV-XXXXXXXX` IDs. Compatible firmware is v0.6.0; physical NDEF/CFS tag writing is not included. See [Maker Tags](docs/guide/using/maker-tags.md) and [Connected Devices](docs/guide/using/connected-devices.md).
+MakerVault v1.4.0 adds browser-initiated tag registration and lookup on the paired RFID/NFC handheld, on-terminal confirmation of tag reassignment, cancellation/session recovery and permanent `MV-XXXXXXXX` IDs. Compatible firmware is v0.6.0; physical NDEF/CFS tag writing is not included. See [MakerTags](docs/guide/using/maker-tags.md) and [Connected Devices](docs/guide/using/connected-devices.md).
 
 ## v1.3.0 — Connected Devices and secure pairing
 
@@ -38,15 +38,15 @@ The v1.3.0 release established secure pairing, TLS trust and device management. 
 
 ## What's new in v1.2.2
 
-Record-level Maker Tag shortcuts across workshop assets, contextual navigation, QR/NFC/RFID tag deletion with confirmation, the Model Library sidebar entry, and storage/printing location preview, editing and deletion.
+Record-level MakerTag shortcuts across workshop assets, contextual navigation, QR/NFC/RFID tag deletion with confirmation, the Model Library sidebar entry, and storage/printing location preview, editing and deletion.
 
 ## What's new in v1.2.1
 
-Maker Tags now supports custom QR label dimensions, optional title/code/target text, improved single-label printing, batch printing of selected or matching active QR tags, and target-type filtering. The reusable spool features from v1.2.0 remain included.
+MakerTags now supports custom QR label dimensions, optional title/code/target text, improved single-label printing, batch printing of selected or matching active QR tags, and target-type filtering. The reusable spool features from v1.2.0 remain included.
 
 ## What's new in v1.2.0
 
-Version 1.2.0 introduced **reusable spool hardware inventory** separately from filament stock: manufacturer and printable design catalogues, physical reel tare weights, condition, storage, filament assignment history, image previews and personal artwork overrides. Maker Tags can identify reusable spools and display MakerVault-branded QR labels. Admins can add or correct shared spool models directly, while non-admin suggestions wait in a dedicated review queue. Key Add action labels are now consistent across the application.
+Version 1.2.0 introduced **reusable spool hardware inventory** separately from filament stock: manufacturer and printable design catalogues, physical reel tare weights, condition, storage, filament assignment history, image previews and personal artwork overrides. MakerTags can identify reusable spools and display MakerVault-branded QR labels. Admins can add or correct shared spool models directly, while non-admin suggestions wait in a dedicated review queue. Key Add action labels are now consistent across the application.
 
 Version 1.2.0 builds on v1.1.0 and its background catalogue-maintenance improvements.
 
@@ -65,7 +65,7 @@ At its core, MakerVault connects:
 - **projects and BOMs** for what you are building and what each build requires;
 - **files, revisions and wiring diagrams** for the digital side of a project;
 - **printers, filament, spools, models and print history** for 3D-printing workflows;
-- **printed parts and Maker Tags** for linking finished physical objects back to their records.
+- **printed parts and MakerTags** for linking finished physical objects back to their records.
 
 MakerVault runs on your own server using Docker and is accessed through a normal web browser. Your structured data is stored in PostgreSQL and your files remain with your installation. Optional integrations can add live printer status, camera feeds, filament synchronisation, OIDC sign-in and other capabilities, but the core application does not depend on a cloud service.
 
@@ -96,7 +96,7 @@ This guide documents **MakerVault v1.4.0**, including:
 - Projects, BOM allocation, Files and versioned assets;
 - 3D Printing, merged filament catalogue matching, physical spools, model library, 3D viewer, print history and Printed Parts;
 - live printer monitoring, optional controls and camera feeds, including the K2 same-origin camera compatibility path;
-- Maker Tags and Interactive Wiring;
+- MakerTags and Interactive Wiring;
 - user accounts, MFA, passkeys, local sign-up, password recovery and storage quotas;
 - Spoolman, Creality, SimplyPrint and manufacturer-specific printer integrations;
 - reverse-proxy HTTPS plus MakerVault's native HTTPS/Local CA certificate wizard;
