@@ -12,7 +12,7 @@ MakerVault's **Connected Devices** panel lets you approve hardware using a short
 
 ## What currently works — and what does not
 
-The v0.7 handheld supports Wi-Fi provisioning, certificate-verified HTTPS, pairing, heartbeat, local UID scanning and online MakerTag lookup/registration/reassignment with user confirmation. Physical NFC/RFID memory writing and Creality CFS payload decoding are not implemented.
+The v0.7 handheld supports Wi-Fi provisioning, certificate-verified HTTPS, pairing, heartbeat, local UID scanning and online MakerTag lookup/registration/reassignment with user confirmation. NTAG215 NFC URL writing is supported after confirmation and verification; Creality CFS payload decoding remains outside this firmware's scope.
 
 ## 1. Prepare MakerVault HTTPS
 
@@ -116,7 +116,7 @@ Expand **Device details and permissions** to inspect the reported firmware, devi
 
 From the handheld home screen, select **MakerTags** or **RFID Tags**, then the respective scan action. Present a compatible tag near the reader at the back of the enclosure. The firmware reports the **UID and detected tag type**. Tested tag families include MIFARE Classic 1 KB and NTAG215 UID detection.
 
-**UID scanning works offline.** In this firmware it does not automatically identify or open a MakerVault inventory item, model or spool, register a new MakerTag, write a tag, or decode filament contents from a CFS tag.
+**UID scanning works offline.** Online record resolution, registration, and NTAG215 URL writing require a paired, reachable MakerVault server. Creality CFS filament contents are not decoded by this firmware.
 
 ![Terminal connection status](../assets/screenshots/connected-devices/terminal-connection-status.png)
 ![System information](../assets/screenshots/connected-devices/terminal-system-info.png)
@@ -143,7 +143,7 @@ The v0.7 firmware has been flashed and the version display verified on physical 
 | API 403 | Check permission scopes and whether the operation is supported |
 | Pairing code invalid/expired | Obtain a fresh eight-digit code and approve within five minutes |
 | MakerVault shows Offline | Look at last heartbeat; check Wi-Fi, trust, API auth and heartbeat permissions |
-| Scan sees a UID but no MakerVault record | Expected in this firmware: online record resolution is not implemented |
+| Scan sees a UID but no MakerVault record | Check HTTPS, pairing, reader permissions and whether the UID is registered |
 
 For firmware, wiring and build-specific details, see [MakerVault-Hardware](https://github.com/gavrd7/MakerVault-Hardware). The API contract lives in the MakerVault application repository's `docs/CONNECTED_DEVICES_PAIRING.md`.
 
@@ -152,7 +152,7 @@ For firmware, wiring and build-specific details, see [MakerVault-Hardware](https
 The 22 accompanying screenshots are committed under `docs/guide/assets/screenshots/connected-devices/`, including the four-step pairing wizard, mobile setup screens and handheld menus. Sensitive API-key, pairing-code and LAN QR details were obscured in the prepared publication images. Review the final rendered images before publishing.
 
 
-## Connected MakerTag operations (v1.4.0)
+## Connected MakerTag operations (v1.4.5)
 
 With MakerVault [PR #150](https://github.com/gavrd7/MakerVault/pull/150) and MakerVault-Hardware [PR #6](https://github.com/gavrd7/MakerVault-Hardware/pull/6), a paired terminal can resolve MakerTags, receive browser-initiated registration requests and explicitly reassign a reusable tag to a different inventory item or spool. The user must confirm on the handheld, and reassignment asks for **a second confirmation**. The existing MakerVault ID and physical UID remain unchanged and the assignment history records the change.
 
