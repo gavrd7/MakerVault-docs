@@ -154,11 +154,11 @@ The 22 accompanying screenshots are committed under `docs/guide/assets/screensho
 
 ## Connected MakerTag operations (v1.4.5)
 
-With MakerVault [PR #150](https://github.com/gavrd7/MakerVault/pull/150) and MakerVault-Hardware [PR #6](https://github.com/gavrd7/MakerVault-Hardware/pull/6), a paired terminal can resolve MakerTags, receive browser-initiated registration requests and explicitly reassign a reusable tag to a different inventory item or spool. The user must confirm on the handheld, and reassignment asks for **a second confirmation**. The existing MakerVault ID and physical UID remain unchanged and the assignment history records the change.
+With MakerVault v1.4.5 and MakerVault Terminal v0.7, a paired terminal can resolve MakerTags, handle browser-initiated registration and explicitly reassign a reusable tag to a different record. The terminal shows the previous and proposed assignments before **one physical confirmation** for the combined assignment and, for compatible NTAG215 tags, URL write. The existing MakerVault ID and physical UID remain unchanged and the assignment history records the change.
 
 Grant `tags:read` for lookup and `tags:write` for browser-initiated registration, subject to the user's MakerTag permissions. Requests are sent only to the selected paired terminal over certificate-verified HTTPS. The browser and handheld can cancel one another's pending request, and a browser refresh can resume an active registration. See [MakerTags — connected terminal workflows](maker-tags.md#connected-rfid-terminal-workflows-v145) for the step-by-step instructions.
 
-**Release distinction:** the published v1.3.0 Connected Devices feature and released handheld baseline do not automatically include these draft additions. The hardware branch's Arduino sketch is called `MakerVault_Terminal_Firmware.ino`, inside the matching `MakerVault_Terminal_Firmware` folder. No NDEF or RFID memory writing is implemented.
+**Firmware distinction:** v0.7 adds verified NTAG215 NFC URL writing to the existing paired-device workflows. Other RFID technologies, including Creality CFS/MIFARE Classic, remain UID-based for lookup and are not physically rewritten. The standard `MakerVault_Terminal_Firmware.ino` sketch includes the writer by default.
 
 
 ## NTAG215 MakerTag writing (v0.7)
