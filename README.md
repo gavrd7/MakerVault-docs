@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>Guide for MakerVault v1.4.0</strong>
+  <strong>Guide for MakerVault v1.4.5</strong>
 </p>
 
 <p align="center">
