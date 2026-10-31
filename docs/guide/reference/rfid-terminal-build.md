@@ -109,7 +109,7 @@ Use the terminal's setup access point or LAN QR flow to configure a **2.4 GHz** 
 
 ## Current limitations
 
-At this firmware baseline, the handheld reads physical tag identities but **does not** yet resolve scanned UIDs to MakerVault records, write physical tags, or decode Creality CFS filament payloads. These are future firmware features, even though MakerVault's server APIs can support some related operations.
+The handheld reads physical tag identities, resolves UID associations against paired MakerVault, and writes confirmed NTAG215 URL records with read-back. It does not modify or decode Creality CFS filament payloads. Other hardware capabilities remain outside this scope, even though MakerVault's server APIs can support some related operations.
 
 ## Further references
 
@@ -124,9 +124,9 @@ At this firmware baseline, the handheld reads physical tag identities but **does
 
 ## Connected Maker Tag firmware v0.7
 
-Firmware v0.7 uses `MakerVault_Terminal_Firmware/MakerVault_Terminal_Firmware.ino` and requires MakerVault v1.4.0 for connected Maker Tag workflows. Keep the bundled headers and QRCode source files beside the sketch.
+Firmware v0.7 uses `MakerVault_Terminal_Firmware/MakerVault_Terminal_Firmware.ino` and requires MakerVault v1.4.5 for connected MakerTags workflows. Keep the bundled headers and QRCode source files beside the sketch.
 
-The new functionality includes online MakerTag resolution, UID registration, explicitly confirmed reassignment, cancellation from either device or browser and interrupted-session recovery. It does **not** write NDEF data or Creality CFS sectors. A fresh Verify/Compile and flashing check of the renamed sketch remain release gates; do not assume that passing tests on the historical sketch name validates packaging.
+The new functionality includes online MakerTag resolution, UID registration, explicitly confirmed reassignment, cancellation from either device or browser and interrupted-session recovery. It writes verified NTAG215 NDEF URLs only when explicitly confirmed, and does **not** write Creality CFS sectors. A fresh Verify/Compile and flashing check of the renamed sketch remain release gates; do not assume that passing tests on the historical sketch name validates packaging.
 
 
 ## Terminal firmware v0.7 compatibility
