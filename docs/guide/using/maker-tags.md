@@ -64,14 +64,14 @@ The main sidebar also links directly to **Model Library**, which remains accessi
 ### Register a physical tag using the handheld
 
 1. Pair the handheld through [Connected Devices](connected-devices.md), with `tags:write` permission and a trusted HTTPS connection.
-2. Choose **MakerTags → Add MakerTag → Use RFID terminal**. Select the paired terminal, the record type and the existing inventory item or spool.
-3. Choose **Use terminal to add**. Wait for the terminal to receive the request and display **Present a tag**.
-4. Bring your NTAG215 or compatible MIFARE Classic 1K tag to the reader. Check the UID and choose **Confirm** on the device to register it.
+2. Choose **MakerTags → Add MakerTag → Use MakerVault Terminal**. Select the paired terminal, the record type and the existing inventory item or spool.
+3. Start the terminal registration, review the generated MakerVault HTTPS URL and wait for **Present a tag**.
+4. Present your NTAG215 or MIFARE Classic 1K tag, review any existing assignment and press **Confirm** once. Keep an NTAG215 in place until its NFC URL is written and independently verified.
 5. MakerVault shows UID registration for generic RFID tags without changing their memory. Compatible NTAG215 tags follow the separately verified NFC URL-write workflow.
 
 ### Reassign a reusable tag
 
-When a scanned UID is already linked to a *different* record, the terminal displays its current and proposed assignments and asks for a second physical confirmation. Choose **Confirm** to reassign or **Back** to cancel. You need MakerTag editing permission for reassignment. The tag keeps its physical UID and its stable `MV-XXXXXXXX` identity, with a **Reassigned** event added to its history. A tag already assigned to the chosen record is not duplicated.
+When a scanned UID is already linked to a *different* record, the terminal displays its current and proposed assignments before the single physical confirmation. Choose **Confirm** to reassign or **Back** to cancel. You need MakerTag editing permission for reassignment. The tag keeps its physical UID and its stable `MV-XXXXXXXX` identity, with a **Reassigned** event added to its history. A tag already assigned to the chosen record is not duplicated.
 
 ### Look up a tag without changing it
 
