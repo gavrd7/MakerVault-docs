@@ -56,10 +56,10 @@ Use **Delete** from the MakerTags list or tag details to permanently remove a ta
 The main sidebar also links directly to **Model Library**, which remains accessible from **3D Printing**. The 3D Printing overview lists a few storage/printing locations and offers **View all**, **MakerTags**, **Edit** and **Delete** actions as permitted.
 
 
-## Connected RFID terminal workflows (v1.4.0)
+## Connected RFID terminal workflows (v1.4.5)
 
-!!! info "Requires MakerVault v1.4.0 and terminal firmware v0.6.0"
-    A paired ESP32-S3 handheld running firmware v0.6.0 can register, resolve and reassign MakerTags through MakerVault v1.4.0. Physical tag-memory writing is not implemented.
+!!! info "Requires MakerVault v1.4.5 and terminal firmware v0.7"
+    A paired MakerVault Terminal running firmware v0.7 can register, resolve and reassign MakerTags through MakerVault v1.4.5, and safely write verified NFC Forum URL records to supported NTAG215 tags.
 
 ### Register a physical tag using the handheld
 
@@ -67,7 +67,7 @@ The main sidebar also links directly to **Model Library**, which remains accessi
 2. Choose **MakerTags → Add MakerTag → Use RFID terminal**. Select the paired terminal, the record type and the existing inventory item or spool.
 3. Choose **Use terminal to add**. Wait for the terminal to receive the request and display **Present a tag**.
 4. Bring your NTAG215 or compatible MIFARE Classic 1K tag to the reader. Check the UID and choose **Confirm** on the device to register it.
-5. MakerVault displays the completed assignment; no data is written to the tag's memory.
+5. MakerVault shows UID registration for generic RFID tags without changing their memory. Compatible NTAG215 tags follow the separately verified NFC URL-write workflow.
 
 ### Reassign a reusable tag
 
