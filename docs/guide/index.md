@@ -9,7 +9,7 @@ Learn to install MakerVault, record what you own and bring your projects, files 
 [Follow the guided workflow](getting-started/first-project.md){ .md-button }
 </div>
 
-**New in v1.2.2:** custom and batch Maker Tag QR label printing, text visibility settings and target-type filters. **Previously in v1.2.0:** reusable spool hardware tracking, manufacturer and printable design catalogues, personal spool images, reviewed catalogue submissions and branded QR labels. The v1.4.0 release tag is published; consult the container release status before deploying a new image.
+**New in v1.4.5:** Paired MakerVault Terminal v0.7 supports verified single-scan NTAG215 NFC link writing, stable MakerTag URLs and cancellation-safe expiry. The native HTTPS listener is more resilient to slow connections. **Previously in v1.2.2:** custom and batch Maker Tag QR label printing, text visibility settings and target-type filters. **Previously in v1.2.0:** reusable spool hardware tracking, manufacturer and printable design catalogues, personal spool images, reviewed catalogue submissions and branded QR labels. The v1.4.0 release tag is published; consult the container release status before deploying a new image.
 
 ## What is MakerVault?
 
