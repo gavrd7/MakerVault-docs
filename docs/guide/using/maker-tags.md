@@ -82,3 +82,12 @@ Choose **Scan with MakerVault terminal**, select your paired handheld, and start
 Press **Back** on the handheld to cancel a pending registration, or choose **Cancel registration** in the browser. Both sides synchronise their state. If the browser is refreshed without cancelling, reopen the terminal registration form and choose **Resume previous request** or **Cancel previous request**. Requests expire after five minutes.
 
 The RC522 recognises tag families rather than verifying the precise NTAG215 model. **Physical NDEF writes, Creality CFS sector data writes and automatic printer database changes are not part of these workflows.**
+
+
+## Write an NTAG215 MakerTag using MakerVault Terminal (v1.4.5)
+
+For compatible **NTAG215** tags, MakerVault v1.4.5 and MakerVault Terminal firmware v0.7 provide a single-scan write workflow. Select the target record, choose **Use MakerVault Terminal**, check the HTTPS URL and optional address override, present the tag and confirm once on the terminal. Keep the tag in place until the device reports success. MakerVault records the physical read-back verification before declaring the NFC link ready.
+
+The written URL uses a stable, owner-scoped `/t/MV-XXXXXXXX/` identifier. Changing the record assigned to a MakerTag does not require rewriting this URL. The phone must trust the HTTPS certificate and be able to reach the MakerVault address including its port. Cancellation and expiry invalidate any outstanding write authorisation.
+
+**Important:** UID registration is not the same as NFC memory writing. Generic RFID tags, including MIFARE Classic / Creality CFS tags, are associated by UID for terminal lookups only and their manufacturer material data is not rewritten. A completed assignment with incomplete NFC verification must not be treated as a successfully written phone-readable link.
