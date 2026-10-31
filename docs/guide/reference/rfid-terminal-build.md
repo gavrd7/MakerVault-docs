@@ -131,4 +131,4 @@ The new functionality includes online MakerTag resolution, UID registration, exp
 
 ## Terminal firmware v0.7 compatibility
 
-Pair firmware v0.7 with MakerVault v1.4.5 to enable the permission-gated, confirmed NTAG215 URL writer. Use a verified release firmware build with `MAKERVAULT_NDEF_WRITER_EXPERIMENTAL=1`, and check the attached hardware acceptance guide for the approved firmware artifact and safe write procedure. Older firmware keeps ordinary read-only scanning and UID-based association. Never test an NFC writer on valuable CFS or manufacturer-programmed tags.
+Pair firmware v0.7 with MakerVault v1.4.5 to enable the permission-gated, confirmed NTAG215 URL writer. Use a verified release firmware build with NFC writing enabled by default (`MAKERVAULT_NDEF_WRITER_ENABLED=1`), and check the attached hardware acceptance guide for the approved firmware artifact and safe write procedure. Older firmware keeps ordinary read-only scanning and UID-based association. Never test an NFC writer on valuable CFS or manufacturer-programmed tags.
