@@ -56,22 +56,22 @@ Use **Delete** from the MakerTags list or tag details to permanently remove a ta
 The main sidebar also links directly to **Model Library**, which remains accessible from **3D Printing**. The 3D Printing overview lists a few storage/printing locations and offers **View all**, **MakerTags**, **Edit** and **Delete** actions as permitted.
 
 
-## Connected RFID terminal workflows (v1.4.0)
+## Connected RFID terminal workflows (v1.4.5)
 
-!!! info "Requires MakerVault v1.4.0 and terminal firmware v0.6.0"
-    A paired ESP32-S3 handheld running firmware v0.6.0 can register, resolve and reassign MakerTags through MakerVault v1.4.0. Physical tag-memory writing is not implemented.
+!!! info "Requires MakerVault v1.4.5 and terminal firmware v0.7"
+    A paired MakerVault Terminal running firmware v0.7 can register, resolve and reassign MakerTags through MakerVault v1.4.5, and safely write verified NFC Forum URL records to supported NTAG215 tags.
 
 ### Register a physical tag using the handheld
 
 1. Pair the handheld through [Connected Devices](connected-devices.md), with `tags:write` permission and a trusted HTTPS connection.
-2. Choose **MakerTags → Add MakerTag → Use RFID terminal**. Select the paired terminal, the record type and the existing inventory item or spool.
-3. Choose **Use terminal to add**. Wait for the terminal to receive the request and display **Present a tag**.
-4. Bring your NTAG215 or compatible MIFARE Classic 1K tag to the reader. Check the UID and choose **Confirm** on the device to register it.
-5. MakerVault displays the completed assignment; no data is written to the tag's memory.
+2. Choose **MakerTags → Add MakerTag → Use MakerVault Terminal**. Select the paired terminal, the record type and the existing inventory item or spool.
+3. Start the terminal registration, review the generated MakerVault HTTPS URL and wait for **Present a tag**.
+4. Present your NTAG215 or MIFARE Classic 1K tag, review any existing assignment and press **Confirm** once. Keep an NTAG215 in place until its NFC URL is written and independently verified.
+5. MakerVault shows UID registration for generic RFID tags without changing their memory. Compatible NTAG215 tags follow the separately verified NFC URL-write workflow.
 
 ### Reassign a reusable tag
 
-When a scanned UID is already linked to a *different* record, the terminal displays its current and proposed assignments and asks for a second physical confirmation. Choose **Confirm** to reassign or **Back** to cancel. You need MakerTag editing permission for reassignment. The tag keeps its physical UID and its stable `MV-XXXXXXXX` identity, with a **Reassigned** event added to its history. A tag already assigned to the chosen record is not duplicated.
+When a scanned UID is already linked to a *different* record, the terminal displays its current and proposed assignments before the single physical confirmation. Choose **Confirm** to reassign or **Back** to cancel. You need MakerTag editing permission for reassignment. The tag keeps its physical UID and its stable `MV-XXXXXXXX` identity, with a **Reassigned** event added to its history. A tag already assigned to the chosen record is not duplicated.
 
 ### Look up a tag without changing it
 
@@ -82,3 +82,12 @@ Choose **Scan with MakerVault terminal**, select your paired handheld, and start
 Press **Back** on the handheld to cancel a pending registration, or choose **Cancel registration** in the browser. Both sides synchronise their state. If the browser is refreshed without cancelling, reopen the terminal registration form and choose **Resume previous request** or **Cancel previous request**. Requests expire after five minutes.
 
 The RC522 recognises tag families rather than verifying the precise NTAG215 model. **Physical NDEF writes, Creality CFS sector data writes and automatic printer database changes are not part of these workflows.**
+
+
+## Write an NTAG215 MakerTag using MakerVault Terminal (v1.4.5)
+
+For compatible **NTAG215** tags, MakerVault v1.4.5 and MakerVault Terminal firmware v0.7 provide a single-scan write workflow. Select the target record, choose **Use MakerVault Terminal**, check the HTTPS URL and optional address override, present the tag and confirm once on the terminal. Keep the tag in place until the device reports success. MakerVault records the physical read-back verification before declaring the NFC link ready.
+
+The written URL uses a stable, owner-scoped `/t/MV-XXXXXXXX/` identifier. Changing the record assigned to a MakerTag does not require rewriting this URL. The phone must trust the HTTPS certificate and be able to reach the MakerVault address including its port. Cancellation and expiry invalidate any outstanding write authorisation.
+
+**Important:** UID registration is not the same as NFC memory writing. Generic RFID tags, including MIFARE Classic / Creality CFS tags, are associated by UID for terminal lookups only and their manufacturer material data is not rewritten. A completed assignment with incomplete NFC verification must not be treated as a successfully written phone-readable link.

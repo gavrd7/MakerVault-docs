@@ -154,3 +154,8 @@ Open `https://192.168.1.50:8443` (substituting your address). A self-signed cert
 The generated certificate/key are persistent and are included in new managed `.mvbackup` bundles. Existing v2 recovery bundles remain supported; because they predate native TLS, restoring one does not erase key storage already present on the target.
 
 If every browser-facing route is HTTPS, set `DJANGO_SECURE_COOKIES=true`. If you still intentionally use direct HTTP for interactive browser access, secure-only session cookies will prevent sign-in over that HTTP route.
+
+
+## Native HTTPS resilience (v1.4.5)
+
+The built-in certificate-backed HTTPS listener uses a threaded Gunicorn worker configuration. The default is two workers with four threads each, controlled through `HTTPS_WEB_CONCURRENCY=2` and `HTTPS_WEB_THREADS=4`. This prevents a single stalled connection from monopolising the native listener; deployments with explicitly set values should review their `.env` during upgrade. The ordinary reverse-proxy HTTP listener remains independent. Docker's application health status alone does not guarantee the native HTTPS endpoint is responding; verify `https://127.0.0.1:8443/` with an HTTPS client after changes.

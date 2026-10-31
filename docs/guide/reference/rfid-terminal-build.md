@@ -5,7 +5,7 @@ This appendix provides a **build overview and validation checklist** for the cus
 **Firmware, enclosure designs and build resources:** [gavrd7/MakerVault-Hardware](https://github.com/gavrd7/MakerVault-Hardware).
 
 !!! info "Hardware repository availability"
-    MakerVault-Hardware is public and includes current v0.6.0 firmware source, printable enclosure resources and earlier acceptance records. Check the release assets and build guide for installation details.
+    MakerVault-Hardware is public and includes current v0.7 firmware source, printable enclosure resources and earlier acceptance records. Check the release assets and build guide for installation details.
 
 ## What you're building
 
@@ -40,7 +40,7 @@ The prototype was validated using printed parts and M2 screws into plastic for i
 
 ## Verified wiring — ESP32-S3 SuperMini Rev C.3
 
-These connections use the tested Rev C.3 pinout retained in **v0.6.0** firmware. The TFT and RC522 share the SPI clock/data pins but have different chip-selects.
+These connections use the tested Rev C.3 pinout retained in **v0.7** firmware. The TFT and RC522 share the SPI clock/data pins but have different chip-selects.
 
 | Component / function | Module signal | ESP32-S3 |
 |---|---|---|
@@ -74,7 +74,7 @@ On the proven prototype the **TFT BLK backlight connects directly to 3V3** with 
 8. **Flash and perform a bench test with the case still open**, then complete final case assembly after the screen, controls and tag detection all pass.
 
 !!! warning "Flash the firmware matched to this Rev C.3 pinout"
-    Use the revision-matched `MakerVault_Terminal_Firmware` sketch (firmware v0.6.0) with the connections above. Do not substitute older experimental GPIO layouts.
+    Use the revision-matched `MakerVault_Terminal_Firmware` sketch (firmware v0.7) with the connections above. Do not substitute older experimental GPIO layouts.
 
 
 ## Flashing the terminal (Arduino IDE)
@@ -101,7 +101,7 @@ Only after these pass, proceed to [configure Wi-Fi, HTTPS trust and secure pairi
 
 ## Flashing, networking and security
 
-The current physically tested firmware is **v0.6.0**. The prior v0.5.1.14 maintenance baseline remains documented for historical reference. This firmware corrects the System info, serial-startup and heartbeat version values and was compiled, flashed and functionally checked on the assembled terminal. Its physically tested functionality includes Wi-Fi setup, a local phone configuration page, certificate-verified HTTPS, eight-digit pairing, persistent pairing credentials, heartbeats and offline tag UID detection.
+The current physically tested firmware is **v0.7**. The prior v0.5.1.14 maintenance baseline remains documented for historical reference. This firmware corrects the System info, serial-startup and heartbeat version values and was compiled, flashed and functionally checked on the assembled terminal. Its physically tested functionality includes Wi-Fi setup, a local phone configuration page, certificate-verified HTTPS, eight-digit pairing, persistent pairing credentials, heartbeats and offline tag UID detection.
 
 The earlier v0.5.1.13 source and **v0.5.1.14** maintenance update were merged into MakerVault-Hardware `main` ([firmware PR #3](https://github.com/gavrd7/MakerVault-Hardware/pull/3)). The terminal's version display, serial startup version and MakerVault heartbeat reporting have been validated. External Arduino dependency versions are not yet fully pinned and an independent clean-machine build remains outstanding, so do not claim fully reproducible firmware binaries.
 
@@ -109,7 +109,7 @@ Use the terminal's setup access point or LAN QR flow to configure a **2.4 GHz** 
 
 ## Current limitations
 
-At this firmware baseline, the handheld reads physical tag identities but **does not** yet resolve scanned UIDs to MakerVault records, write physical tags, or decode Creality CFS filament payloads. These are future firmware features, even though MakerVault's server APIs can support some related operations.
+The handheld reads physical tag identities, resolves UID associations against paired MakerVault, and writes confirmed NTAG215 URL records with read-back. It does not modify or decode Creality CFS filament payloads. Other hardware capabilities remain outside this scope, even though MakerVault's server APIs can support some related operations.
 
 ## Further references
 
@@ -122,8 +122,13 @@ At this firmware baseline, the handheld reads physical tag identities but **does
 - [MakerVault device pairing protocol](https://github.com/gavrd7/MakerVault/blob/main/docs/CONNECTED_DEVICES_PAIRING.md)
 
 
-## Connected Maker Tag firmware v0.6.0
+## Connected Maker Tag firmware v0.7
 
-Firmware v0.6.0 uses `MakerVault_Terminal_Firmware/MakerVault_Terminal_Firmware.ino` and requires MakerVault v1.4.0 for connected Maker Tag workflows. Keep the bundled headers and QRCode source files beside the sketch.
+Firmware v0.7 uses `MakerVault_Terminal_Firmware/MakerVault_Terminal_Firmware.ino` and requires MakerVault v1.4.5 for connected MakerTags workflows. Keep the bundled headers and QRCode source files beside the sketch.
 
-The new functionality includes online MakerTag resolution, UID registration, explicitly confirmed reassignment, cancellation from either device or browser and interrupted-session recovery. It does **not** write NDEF data or Creality CFS sectors. A fresh Verify/Compile and flashing check of the renamed sketch remain release gates; do not assume that passing tests on the historical sketch name validates packaging.
+The new functionality includes online MakerTag resolution, UID registration, explicitly confirmed reassignment, cancellation from either device or browser and interrupted-session recovery. It writes verified NTAG215 NDEF URLs only when explicitly confirmed, and does **not** write Creality CFS sectors. A fresh Verify/Compile and flashing check of the renamed sketch remain release gates; do not assume that passing tests on the historical sketch name validates packaging.
+
+
+## Terminal firmware v0.7 compatibility
+
+Pair firmware v0.7 with MakerVault v1.4.5 to enable the permission-gated, confirmed NTAG215 URL writer. Use a verified release firmware build with NFC writing enabled by default (`MAKERVAULT_NDEF_WRITER_ENABLED=1`), and check the attached hardware acceptance guide for the approved firmware artifact and safe write procedure. Older firmware keeps ordinary read-only scanning and UID-based association. Never test an NFC writer on valuable CFS or manufacturer-programmed tags.
