@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>Guide for MakerVault v1.4.5</strong>
+  <strong>Guide for MakerVault v1.4.6</strong>
 </p>
 
 <p align="center">
@@ -147,8 +147,8 @@ The guide is designed so screenshots complement the written instructions rather 
 
 MakerVault software is licensed **AGPL-3.0-or-later** in the main application repository. Third-party media keeps its original licence and provenance; application media attribution is available in MakerVault's **About** page where applicable.
 
-## Upcoming — terminal-initiated MakerTags (firmware v0.8)
+## New in MakerVault v1.4.6 — terminal-initiated MakerTags (Terminal v0.8)
 
-After the corresponding MakerVault and MakerVault-Hardware pull requests are merged and their builds published, firmware v0.8 will let a paired handheld create MakerTags without launching a browser session. Browse categories and alphabetical record lists directly on the terminal, with MakerVault IDs, paged results and an encoder-hold A–Z jump. Assign blank NTAG215 tags or explicitly replace a recognised existing HTTP(S) NFC URL; **Back** preserves the original content. Generic MIFARE Classic tags remain UID-only. See the [step-by-step MakerTags guide](docs/guide/using/maker-tags.md#terminal-initiated-makertag-creation-firmware-v08).
+MakerVault v1.4.6 with Terminal firmware v0.8 lets a paired handheld create MakerTags without launching a browser session. Browse categories and alphabetical record lists directly on the terminal, with MakerVault IDs, paged results and an encoder-hold A–Z jump. Assign blank NTAG215 tags or explicitly replace a recognised existing HTTP(S) NFC URL; **Back** preserves the original content. Generic MIFARE Classic tags remain UID-only. See the [step-by-step MakerTags guide](docs/guide/using/maker-tags.md#terminal-initiated-makertag-creation-firmware-v08).
 
-This does not imply that already-published MakerVault v1.4.5 containers or older firmware automatically include the new workflow. **CFS material decoding, CFS data writing and automatic printer synchronisation are not included.**
+Upgrade the application to v1.4.6 and the terminal to v0.8 to use this workflow; older released builds do not include it. **CFS material decoding, CFS data writing and automatic printer synchronisation are not included.**
