@@ -171,10 +171,10 @@ Grant `tags:read` for lookup and `tags:write` for browser-initiated registration
 
 The terminal checks the UID, memory capability/locks and server authorisation before writing. Cancelled or expired write requests cannot be resumed. If an assignment completes but NFC verification fails, the app shows incomplete NFC status rather than asserting that a URL was written. MIFARE Classic and Creality CFS tags are supported for UID-based lookup without modifying their existing data.
 
-## Terminal-first MakerTag registration (v0.8 firmware)
+## Terminal-first MakerTag registration (MakerVault v1.4.6 / Terminal v0.8)
 
-A paired MakerVault Terminal v0.8 can start **MakerTags → Add MakerTag** without an accompanying browser session, provided the MakerVault server contains the matching device record-browse and registration API. The paired terminal needs `inventory:read` and `tags:write`; the associated user still needs view permission for the chosen record and permissions to create or reassign MakerTags. Browsing uses small server-side pages and an A–Z encoder jump instead of downloading the inventory to the handheld.
+A paired MakerVault Terminal v0.8 can start **MakerTags → Add MakerTag** without an accompanying browser session, when paired with MakerVault v1.4.6. The paired terminal needs `inventory:read` and `tags:write`; the associated user still needs view permission for the chosen record and permissions to create or reassign MakerTags. Browsing uses small server-side pages and an A–Z encoder jump instead of downloading the inventory to the handheld.
 
 Supported NTAG215 tags receive a verified permanent MakerVault NFC URL. When an existing valid HTTP(S) NDEF URL belongs elsewhere, a **separate physical Back/Confirm prompt** protects it from accidental replacement. Locked or unrecognised NDEF data is not overwritten; wrong-tag UIDs, cancellations and expired authorisations cannot complete a write. Generic MIFARE Classic/Creality CFS tags support UID association only; CFS payload decoding and printer database synchronisation remain outside v0.8.
 
-See [MakerTags — terminal-initiated creation](maker-tags.md#terminal-initiated-makertag-creation-firmware-v08) for the workflow, recovery and troubleshooting. This is new functionality to be published after the application and firmware PRs are merged; the historical v0.7 sections above remain applicable to existing released builds.
+See [MakerTags — terminal-initiated creation](maker-tags.md#terminal-initiated-makertag-creation-firmware-v08) for the workflow, recovery and troubleshooting. This workflow is included in MakerVault v1.4.6 with Terminal v0.8; the historical v0.7 sections above remain applicable to older installations.
