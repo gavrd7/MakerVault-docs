@@ -92,10 +92,10 @@ The written URL uses a stable, owner-scoped `/t/MV-XXXXXXXX/` identifier. Changi
 
 **Important:** UID registration is not the same as NFC memory writing. Generic RFID tags, including MIFARE Classic / Creality CFS tags, are associated by UID for terminal lookups only and their manufacturer material data is not rewritten. A completed assignment with incomplete NFC verification must not be treated as a successfully written phone-readable link.
 
-## Terminal-initiated MakerTag creation (firmware v0.8)
+## Terminal-initiated MakerTag creation (MakerVault v1.4.6 / firmware v0.8)
 
-!!! note "Requires the matching server and terminal builds"
-    This feature requires MakerVault containing the terminal record-browse and device-initiated registration endpoints (application PR #161) and compatible MakerVault Terminal v0.8 firmware (hardware PR #10). An existing v1.4.5 container or v0.7 terminal binary does **not** gain this feature automatically; install published builds containing both changes before using this workflow.
+!!! info "Available in MakerVault v1.4.6 and MakerVault Terminal v0.8"
+    Install MakerVault v1.4.6 and compatible Terminal v0.8 firmware to use on-device registration. Older server containers and firmware do not include this workflow.
 
 ### Prerequisites
 
