@@ -91,3 +91,41 @@ For compatible **NTAG215** tags, MakerVault v1.4.5 and MakerVault Terminal firmw
 The written URL uses a stable, owner-scoped `/t/MV-XXXXXXXX/` identifier. Changing the record assigned to a MakerTag does not require rewriting this URL. The phone must trust the HTTPS certificate and be able to reach the MakerVault address including its port. Cancellation and expiry invalidate any outstanding write authorisation.
 
 **Important:** UID registration is not the same as NFC memory writing. Generic RFID tags, including MIFARE Classic / Creality CFS tags, are associated by UID for terminal lookups only and their manufacturer material data is not rewritten. A completed assignment with incomplete NFC verification must not be treated as a successfully written phone-readable link.
+
+## Terminal-initiated MakerTag creation (firmware v0.8)
+
+!!! note "Requires the matching server and terminal builds"
+    This feature requires MakerVault containing the terminal record-browse and device-initiated registration endpoints (application PR #161) and compatible MakerVault Terminal v0.8 firmware (hardware PR #10). An existing v1.4.5 container or v0.7 terminal binary does **not** gain this feature automatically; install published builds containing both changes before using this workflow.
+
+### Prerequisites
+
+Pair the MakerVault Terminal using [Connected Devices](connected-devices.md) over certificate-verified **HTTPS**. Grant the terminal the `inventory:read` and `tags:write` scopes; the MakerVault account must also have the appropriate record-view and MakerTag create/change permissions. The handheld must be connected to the approved MakerVault endpoint. You can check its connection/heartbeat from the Connected Devices page.
+
+### Create a MakerTag directly from the handheld
+
+1. On the handheld open **Home → MakerTags → Add MakerTag**.
+2. Choose **Inventory**, **Location**, **Printed Part**, **Printer**, **Project**, **Reusable Spool** or **Spool**. These appear as separate alphabetically ordered categories.
+3. Turn the encoder to navigate the server-side alphabetically sorted record list. Each row includes the MakerVault record identifier; only a small page is fetched at a time, so the inventory can be large.
+4. For a large list, **hold the encoder** to open the large single-letter **A–Z** jump picker. Turn to the desired letter and select it; use ordinary scrolling for the remaining records.
+5. Select a record and verify its name and MakerVault ID in the on-device preview.
+6. Present the physical tag when prompted. Confirm any assignment or reassignment on the handheld, keeping the same tag in the reader area until the operation completes.
+7. For a writable **NTAG215**, wait until the terminal displays **MakerTag ready**. Scan it with a phone to verify that the permanent HTTPS `/t/MV-XXXXXXXX/` link opens the assigned MakerVault record.
+
+The phone must be able to reach the MakerVault HTTPS host and port and trust the server certificate (for private Local CAs, install and trust the CA appropriately on the phone).
+
+### If the tag already contains a different NFC URL
+
+A recognised existing HTTP(S) NFC URI, such as a URL written using a phone app, is **not overwritten silently**. The terminal displays **Replace existing NFC URL?**, including the old and proposed links. Turn the encoder to scroll through the details; the scroll indicator shows additional content. Choose **Back** to retain the old URL or **Confirm** to explicitly approve replacing it. This extra confirmation is separate from the original record assignment.
+
+Unrecognised or malformed NDEF, locked/password-protected tags and unsupported memory layouts remain protected. The terminal requires the same physical tag UID and a valid, unexpired MakerVault authorisation before writing. If the UID differs, the authorisation expires, or you cancel, the old NFC link must not be overwritten.
+
+### Retry and troubleshooting
+
+- **Cancelled or incomplete NFC write:** Check the MakerTag record in MakerVault, then repeat the assignment with the *same* tag and target. The existing `MV-XXXXXXXX` identity should be retained rather than creating another tag. A server-side assignment is not proof of a completed phone-readable NFC write.
+- **Permission denied:** Check both terminal API scopes (`inventory:read`, `tags:write`) and the account's record/MakerTag permissions.
+- **Wrong tag — return original:** Remove the substituted tag and present the originally approved UID; never approve a different physical chip under the existing operation.
+- **Certificate, connection or HTTPS error:** Check the approved endpoint, local CA certificate/hostname and the terminal's connected status. Do not disable TLS verification.
+
+**Other RFID types:** MIFARE Classic 1K, including tags used by Creality CFS, support **UID association only** in this workflow. Firmware v0.8 does **not** decode Creality CFS material payloads, write CFS sector data or automatically synchronise the printer material database. These functions are outside this release.
+
+For firmware source, flashing and physical acceptance coverage, see [MakerVault-Hardware](https://github.com/gavrd7/MakerVault-Hardware) and its [v0.8 acceptance checklist](https://github.com/gavrd7/MakerVault-Hardware/blob/main/docs/terminal-v0.8-browser-acceptance.md).
