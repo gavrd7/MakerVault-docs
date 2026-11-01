@@ -149,6 +149,6 @@ MakerVault software is licensed **AGPL-3.0-or-later** in the main application re
 
 ## New in MakerVault v1.4.6 — terminal-initiated MakerTags (Terminal v0.8)
 
-MakerVault v1.4.6 with Terminal firmware v0.8 lets a paired handheld create MakerTags without launching a browser session. Browse categories and alphabetical record lists directly on the terminal, with MakerVault IDs, paged results and an encoder-hold A–Z jump. Assign blank NTAG215 tags or explicitly replace a recognised existing HTTP(S) NFC URL; **Back** preserves the original content. Generic MIFARE Classic tags remain UID-only. See the [step-by-step MakerTags guide](docs/guide/using/maker-tags.md#terminal-initiated-makertag-creation-firmware-v08).
+MakerVault v1.4.6 with Terminal firmware v0.8 lets a paired handheld create MakerTags without launching a browser session. Browse categories and alphabetical record lists directly on the terminal, with MakerVault IDs, paged results and an encoder-hold A–Z jump. Assign blank NTAG215 tags or explicitly replace a recognised existing HTTP(S) NFC URL; **Back** preserves the original content. Generic MIFARE Classic tags remain UID-only. See the [step-by-step MakerTags guide](docs/guide/using/maker-tags.md#terminal-initiated-makertag-creation-makervault-v146--firmware-v08).
 
 Upgrade the application to v1.4.6 and the terminal to v0.8 to use this workflow; older released builds do not include it. **CFS material decoding, CFS data writing and automatic printer synchronisation are not included.**
