@@ -44,3 +44,11 @@ See [Connected Devices](connected-devices.md), [MakerTags](maker-tags.md) and th
 - **Lookup unavailable:** Verify terminal Wi-Fi, MakerVault HTTPS trust, pairing and `inventory:read` permission.
 - **SSH host verification failed:** Do not bypass the fingerprint check. Recheck the printer's trusted public host key.
 - **Read-only:** No tag writing, printer material database pushing, implicit product creation or material-only spool matching occurs in these workflows.
+
+## Third-party experimental tags (Terminal v1.0)
+
+The terminal's generic **RFID Tags** reader also includes experimental Bambu Lab MIFARE Classic and Elegoo NTAG field readers. These use published formats to display only decoded fields: material, colour, and where supported, weight and diameter. **Neither implementation has been tested using an actual manufacturer tag.** The automated tests use synthetic documented-format fixtures and do not establish physical compatibility. Protected, unfamiliar or unsupported tags fall back to UID-only scanning; no third-party tag is written or automatically linked to a spool.
+
+The Bambu reader uses community-described per-UID Key A authentication, while the Elegoo reader accepts only a narrow manufacturer-marked, plain-text NTAG layout. Displayed results are informational and are not proof of genuineness or manufacturer authenticity.
+
+See the [hardware repository experimental RFID notes](https://github.com/gavrd7/MakerVault-Hardware/blob/main/docs/terminal-third-party-rfid.md) for format limits and validation status.
