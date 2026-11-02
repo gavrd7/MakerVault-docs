@@ -1,5 +1,8 @@
 # Printers, filament and spools
 
+!!! tip "Scan a spool RFID tag with MakerVault Terminal"
+    In a spool's **Physical Identity** modal, **Scan using terminal** can fill its UID from a paired terminal. Check the correct physical reel, then **Save RFID identity**; scanning does not create or assign an inventory record automatically. See [Terminal interoperability](terminal-interoperability.md).
+
 **Goal:** describe your equipment and materials, then record the physical things you own.
 
 | Record | Meaning |
