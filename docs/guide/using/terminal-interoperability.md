@@ -21,12 +21,13 @@ A database sync stores an exact validated JSON copy. It does not write to the pr
 Material names and colours identify a product, **not a particular physical reel**.
 
 1. Open **3D Printing → Spool Inventory**, choose the correct spool and open **RFID identity**.
-2. Enter the tag UID manually or choose **Scan using terminal** and a paired terminal.
-3. Present the tag to that terminal. The UID fills the field but is **not yet saved**.
-4. Verify that the tag is attached to the intended reel, then choose **Save RFID identity**.
-5. A subsequent scan resolves the spool ID using its UID.
+2. Choose **1 tag** or **2 tags (one on each side)**. Existing spools retain their original RFID ID as Tag 1.
+3. Enter either tag UID manually, or choose a paired terminal and select **Scan into Tag 1** or **Scan into Tag 2** as appropriate.
+4. Present the corresponding tag to the terminal. Repeat for the second tag if selected. Scanning only fills the selected field; it is **not yet saved**.
+5. Verify that both tags belong to the same physical reel and have different UIDs, then select **Save RFID identity**.
+6. Scanning either side of the reel now resolves to the **same** MakerVault spool ID.
 
-The browser-assisted scan is read-only and requires a paired terminal with `tags:read`. It never writes the third-party tag or assigns an inventory spool automatically. A physical UID can only belong to one MakerVault spool.
+The browser-assisted scan is read-only and requires a paired terminal with `tags:read`. It never writes the third-party tag or assigns an inventory spool automatically. A physical UID can only belong to one MakerVault spool, including across primary and secondary tag slots. Selecting one tag and saving clears the optional second identity.
 
 ## Offline and experimental RFID
 
