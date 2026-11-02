@@ -1,5 +1,8 @@
 # Creality local monitoring and CFS
 
+!!! tip "Read-only printer material database snapshots"
+    MakerVault v1.5 adds **Settings → 3D Printing → Creality printer material databases** for manual (or opt-in scheduled) read-only snapshot retrieval. The terminal resolves material names from the saved snapshot, while physical spool matching requires a separately assigned RFID UID. See [Terminal interoperability](../using/terminal-interoperability.md). No printer material data is written back.
+
 **Optional · Local-first · Read-only by default; optional controls on supported sources**
 
 MakerVault has two complementary Creality integrations:
