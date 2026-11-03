@@ -76,6 +76,7 @@ nav:
       - Print history and costs: using/print-history.md
       - Printed parts: using/printed-parts.md
       - MakerTags: using/maker-tags.md
+      - Clean and remove MakerTags (feature preview): using/maker-tag-maintenance.md
       - Connected Devices: using/connected-devices.md
       - Terminal interoperability: using/terminal-interoperability.md
       - Interactive Wiring: using/interactive-wiring.md
