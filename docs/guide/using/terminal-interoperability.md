@@ -40,6 +40,8 @@ A database sync stores an exact validated JSON copy. It does not write to the pr
 
 ## Link a physical spool by RFID
 
+For two-sided spools, two physically distinct RFID tags can be assigned to one MakerVault record. Tag 1 and Tag 2 may encode identical filament information, but their UIDs are different. Either side resolves to the **same** inventory spool; matching the material alone never links a physical spool.
+
 Material names and colours identify a product, **not a particular physical reel**.
 
 1. Open **3D Printing → Spool Inventory**, choose the correct spool and open **RFID identity**.
@@ -48,6 +50,8 @@ Material names and colours identify a product, **not a particular physical reel*
 4. Present the corresponding tag to the terminal. Repeat for the second tag if selected. Scanning only fills the selected field; it is **not yet saved**.
 5. Verify that both tags belong to the same physical reel and have different UIDs, then select **Save RFID identity**.
 6. Scanning either side of the reel now resolves to the **same** MakerVault spool ID.
+
+**Terminal-assisted scan:** choose the relevant tag slot, select your paired terminal, and present that side of the reel when the terminal displays the scan request. Check the returned UID before saving. If you switch back to **1 tag**, saving removes the optional second UID. You can rescan the same UID to verify the association without modifying the tag.
 
 The browser-assisted scan is read-only and requires a paired terminal with `tags:read`. It never writes the third-party tag or assigns an inventory spool automatically. A physical UID can only belong to one MakerVault spool, including across primary and secondary tag slots. Selecting one tag and saving clears the optional second identity.
 
@@ -72,5 +76,7 @@ See [Connected Devices](connected-devices.md), [MakerTags](maker-tags.md) and th
 The terminal's generic **RFID Tags** reader also includes experimental Bambu Lab MIFARE Classic and Elegoo NTAG field readers. These use published formats to display only decoded fields: material, colour, and where supported, weight and diameter. **Neither implementation has been tested using an actual manufacturer tag.** The automated tests use synthetic documented-format fixtures and do not establish physical compatibility. Protected, unfamiliar or unsupported tags fall back to UID-only scanning; no third-party tag is written or automatically linked to a spool.
 
 The Bambu reader uses community-described per-UID Key A authentication, while the Elegoo reader accepts only a narrow manufacturer-marked, plain-text NTAG layout. Displayed results are informational and are not proof of genuineness or manufacturer authenticity.
+
+**Screenshots:** The accompanying terminal images are real screen captures from the ESP32-S3; no mock third-party tag results have been added because Bambu Lab and Elegoo remain unverified on physical tags.
 
 See the [hardware repository experimental RFID notes](https://github.com/gavrd7/MakerVault-Hardware/blob/main/docs/terminal-third-party-rfid.md) for format limits and validation status.
