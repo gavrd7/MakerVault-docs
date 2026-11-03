@@ -13,6 +13,9 @@ MakerVault's **Connected Devices** panel lets you approve hardware using a short
 ![MakerVault handheld terminal enclosure](../assets/screenshots/connected-devices/terminal-enclosure.jpg)
 *The ESP32-S3 handheld in its printed enclosure; the rear-mounted antenna reads tags brought near the device.*
 
+!!! tip "Upcoming physical MakerTag maintenance — #159 feature branches"
+    The paired terminal can **Clean MakerTag** (erase verified NTAG215 NDEF user data while preserving the registration) or **Remove MakerTag** (delete the registration, optionally after an explicitly confirmed physical clean). The MakerVault UI can request the same operations on a selected terminal. The feature-branch firmware also adds **Connections → MakerVault → Reconnect server**, preserving saved credentials while refreshing the Wi-Fi/TLS transport. See [Clean and remove MakerTags](maker-tag-maintenance.md). These additions are not in published v1.0.0 firmware, and long-idle reconnection remains under extended testing.
+
 ## What currently works — and what does not
 
 The v0.7 handheld supports Wi-Fi provisioning, certificate-verified HTTPS, pairing, heartbeat, local UID scanning and online MakerTag lookup/registration/reassignment with user confirmation. NTAG215 NFC URL writing is supported after confirmation and verification; Creality CFS payload decoding remains outside this firmware's scope.
