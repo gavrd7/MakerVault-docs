@@ -9,6 +9,9 @@
 
 MakerTags attach a stable physical identity to an owner-scoped record. They are useful when a board, component, printed part, spool or other supported item is easier to scan than to search for manually.
 
+!!! tip "Clean or remove a physical MakerTag — feature #159 preview"
+    The upcoming **Clean MakerTag** function clears and verifies the NFC contents of a registered writable NTAG215 while preserving its MakerVault record and permanent URL. **Remove MakerTag** removes only the registration unless **Also clean NFC data** is explicitly chosen. See [Clean and remove MakerTags](maker-tag-maintenance.md) for terminal and browser instructions, safety and partial-failure recovery. These options require the matching **draft** application and firmware builds; they are not in the published v1.5.0 / Terminal v1.0.0 versions.
+
 ## Create MakerTags on the handheld
 
 The MakerVault Terminal can browse inventory and register or reassign MakerTags without needing an on-screen keyboard. See [Connected Devices](connected-devices.md) for pairing and permissions.
@@ -60,7 +63,7 @@ Always inspect the browser print preview and print at **100% scaling** when dime
 
 From an eligible inventory item, project, filament spool, physical reusable spool, printer, printed part or storage/printing location, select **MakerTags** to open an assigned tag. If none is assigned and your role permits creation, the existing MakerTag form opens with the current target preselected. Closing the tag view or creation form returns to the originating record.
 
-Use **Delete** from the MakerTags list or tag details to permanently remove a tag if you have deletion permission. Confirm carefully: the MakerVault record and its history are removed and its scan link no longer resolves. This does **not** erase a physical NFC/RFID chip or the separate filament spool RFID UID. Use **Retire** instead when preserving identity history is important.
+Use **Remove MakerTag** (previously labelled **Delete**) to permanently remove the registered MakerTag when you have deletion permission. Its link no longer resolves, but the linked inventory record stays intact. **By default this does not erase a physical NFC/RFID chip** or any separately registered spool RFID UID. The upcoming #159 feature adds the optional **also clean NFC data** choice when removing a supported NTAG215; see [Clean and remove MakerTags](maker-tag-maintenance.md). Use **Retire** where available when preserving the registered identity/history is more important than deletion.
 
 The main sidebar also links directly to **Model Library**, which remains accessible from **3D Printing**. The 3D Printing overview lists a few storage/printing locations and offers **View all**, **MakerTags**, **Edit** and **Delete** actions as permitted.
 
