@@ -1,5 +1,8 @@
 # Connected Devices and MakerVault Terminal
 
+!!! tip "Terminal interoperability in MakerVault v1.5"
+    The terminal also supports read-only Creality CFS material lookup, offline colour/ID display and explicit spool UID association. See [Terminal interoperability](terminal-interoperability.md) for the v1.5 workflow. Historical compatibility notes below describe earlier firmware versions.
+
 !!! info "MakerVault v1.4.5 and Terminal Firmware v0.7"
     MakerVault v1.4.5 and paired MakerVault Terminal firmware v0.7 support confirmed NTAG215 NFC link writing with independent read-back verification. Classic/CFS tags remain UID lookup only.
 

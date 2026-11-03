@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>Guide for MakerVault v1.4.6</strong>
+  <strong>Guide for MakerVault v1.5.0 (release candidate)</strong>
 </p>
 
 <p align="center">
@@ -25,6 +25,10 @@
 - **[MakerVault-Hardware](https://github.com/gavrd7/MakerVault-Hardware)** — RFID/NFC handheld firmware, wiring, printable enclosure files and future connected hardware.
 
 ---
+
+## v1.5.0 — Terminal interoperability
+
+MakerVault adds read-only Creality printer material database snapshots, online CFS material-ID resolution, explicit spool UID association and terminal-assisted RFID capture. The terminal can still decode supported tag information offline. See [Terminal interoperability](docs/guide/using/terminal-interoperability.md). Bambu Lab and Elegoo RFID compatibility remains experimental and limited to documented, verifiably readable data.
 
 ## v1.4.0 — Connected RFID/NFC MakerTag management
 
