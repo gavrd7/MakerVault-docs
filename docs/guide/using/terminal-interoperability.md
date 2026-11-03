@@ -2,9 +2,26 @@
 
 MakerVault v1.5 connects compatible MakerVault Terminal firmware to the filament and physical-spool workflows. All operations remain self-hosted. The terminal uses its paired HTTPS connection and individually scoped permissions.
 
+## Terminal screens
+
+<figure markdown>
+  ![MakerVault Terminal home menu with MakerTags, RFID Tags, Connections and System info.](../assets/screenshots/terminal-home-v1.png){ width="320" }
+  <figcaption>The v1.0 terminal home screen. MakerTags and generic RFID reading are separate workflows.</figcaption>
+</figure>
+
+<figure markdown>
+  ![MakerVault Terminal inventory browser showing alphabetically ordered records and MakerVault identifiers.](../assets/screenshots/terminal-inventory-browser-v1.png){ width="320" }
+  <figcaption>The on-device inventory browser displays record names and stable MakerVault IDs.</figcaption>
+</figure>
+
 ## CFS material reading
 
 The terminal decodes supported Creality CFS RFID material IDs, colour HEX values and UIDs directly from the tag. When connected, MakerVault resolves a material ID against its saved read-only Creality printer material database snapshot. This returns material name and manufacturer; no printer update or filament library import is performed.
+
+<figure markdown>
+  ![Creality CFS tag scanned by MakerVault Terminal, displaying SUNLU filament, a green swatch and a linked physical spool.](../assets/screenshots/terminal-cfs-linked-v1.png){ width="320" }
+  <figcaption>Read-only CFS scan: material details and a spool link resolved from the physical RFID UID.</figcaption>
+</figure>
 
 To obtain a material snapshot:
 
