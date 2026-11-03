@@ -65,9 +65,9 @@ A pending request can be cancelled before its destructive phase. If a tag is mis
 
 ## Long-idle connection recovery (feature-branch firmware)
 
-If Wi-Fi still shows **Connected** but MakerVault reports a failed secure session, open **Connections → MakerVault → Reconnect server**. This refreshes the Wi-Fi transport and retries authenticated HTTPS verification, **without deleting** the saved CA, approved server URL or pairing credential. It is blocked during active tag operations.
+If Wi-Fi still shows **Connected** but MakerVault reports a failed secure session, open **Connections → MakerVault → Reconnect server**. The terminal displays **Refreshing Wi-Fi**, followed by **Verifying HTTPS** and **Server connected** or **Reconnect failed**. A temporary **Wi-Fi: offline** state is expected during this deliberate transport reset. On failure, use **OK: retry**; on success, use **OK: done**. The action preserves the saved CA, approved server URL and pairing credential, and is blocked during active tag operations.
 
-The **Test HTTPS** screen is diagnostic; it does not deliberately rebuild the transport. **Connection status** also shows **Heap free** and **Largest block**, useful when investigating long-idle TLS errors such as **SSL memory allocation failed**. This is still under extended hardware testing, so don't treat reconnection as proof that the underlying memory issue is solved.
+The **Test HTTPS** screen is diagnostic; it does not deliberately rebuild the transport. **Connection status** also shows **Heap free** and **Largest block**, useful when investigating long-idle TLS errors such as **SSL memory allocation failed**. After a reproduced failure (free heap falling from roughly 127,564 to 96,488 bytes with the largest contiguous block steady at 31,732 bytes), the firmware was revised to minimise repeated SNTP configuration and idle TLS checks. Those mitigations and the dedicated reconnect screen still need long-idle hardware validation; a successful manual reconnect does **not** prove the underlying memory issue is solved.
 
 ## Screenshots
 
