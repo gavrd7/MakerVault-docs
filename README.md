@@ -26,6 +26,12 @@
 
 ---
 
+## Upcoming #159 — Clean and remove MakerTags (draft feature)
+
+The matching [MakerVault app PR #165](https://github.com/gavrd7/MakerVault/pull/165) and [Terminal PR #12](https://github.com/gavrd7/MakerVault-Hardware/pull/12) add **Clean MakerTag** (verified physical NTAG215 erasure while retaining the MakerVault registration), **Remove MakerTag** (server registration only) and **Remove + clean** (erase and verify first, remove registration second). The browser can send requests to a paired terminal, or the terminal can start the operation. The firmware branch also adds a manual **Reconnect server** option and TLS memory diagnostics, currently under long-idle testing.
+
+See the [Clean and remove MakerTags guide](docs/guide/using/maker-tag-maintenance.md). **These actions are not included in the published v1.5.0 / Terminal v1.0.0 releases.** No inventory item or third-party filament tag data is deleted by these workflows.
+
 ## v1.5.0 — Terminal interoperability
 
 MakerVault adds read-only Creality printer material database snapshots, online CFS material-ID resolution, explicit spool UID association and terminal-assisted RFID capture. The terminal can still decode supported tag information offline. See [Terminal interoperability](docs/guide/using/terminal-interoperability.md). Bambu Lab and Elegoo RFID compatibility remains experimental and limited to documented, verifiably readable data.
