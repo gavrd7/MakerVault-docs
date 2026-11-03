@@ -9,6 +9,15 @@
 
 MakerTags attach a stable physical identity to an owner-scoped record. They are useful when a board, component, printed part, spool or other supported item is easier to scan than to search for manually.
 
+## Create MakerTags on the handheld
+
+The MakerVault Terminal can browse inventory and register or reassign MakerTags without needing an on-screen keyboard. See [Connected Devices](connected-devices.md) for pairing and permissions.
+
+<figure markdown>
+  ![MakerVault Terminal confirmation screen showing a completed MakerTag and stable MV identifier.](../assets/screenshots/terminal-makertag-ready-v1.png){ width="320" }
+  <figcaption>The terminal confirms a successful MakerTag assignment after verifying the required operation.</figcaption>
+</figure>
+
 ## Create a tag
 
 1. Open **MakerTags** and choose **Add MakerTag**.
