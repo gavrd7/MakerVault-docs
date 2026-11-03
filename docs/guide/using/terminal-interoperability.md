@@ -14,6 +14,11 @@ MakerVault v1.5 connects compatible MakerVault Terminal firmware to the filament
   <figcaption>The on-device inventory browser displays record names and stable MakerVault IDs.</figcaption>
 </figure>
 
+<figure markdown>
+  ![MakerVault Terminal A–Z letter jump, with a large selectable letter.](../assets/screenshots/terminal-letter-jump-v1.png){ width="320" }
+  <figcaption>Hold the encoder in the inventory browser to jump alphabetically without an on-screen keyboard.</figcaption>
+</figure>
+
 ## CFS material reading
 
 The terminal decodes supported Creality CFS RFID material IDs, colour HEX values and UIDs directly from the tag. When connected, MakerVault resolves a material ID against its saved read-only Creality printer material database snapshot. This returns material name and manufacturer; no printer update or filament library import is performed.
