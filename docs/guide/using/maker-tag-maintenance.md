@@ -63,6 +63,12 @@ A pending request can be cancelled before its destructive phase. If a tag is mis
 - **Wrong UID / expired or cancelled request:** The original authorisation cannot be reused to erase another tag.
 - **Permission or HTTPS error:** Verify both the user's permissions and terminal scopes. Don't bypass certificate verification.
 
+## Consolidated terminal requests (feature branches)
+
+The paired terminal now uses **one authenticated pending-work check approximately every five seconds** for browser-initiated MakerTag registration, NFC writing, RFID lookup and Clean/Remove requests. Previously these used four separate HTTPS polls. This change reduces idle TLS connection churn without altering the security or physical-confirmation process: each accepted operation still verifies its exact UID, server authorisation and completion independently.
+
+**Upgrade the MakerVault application feature branch before flashing the matching firmware**; the unified request requires the new `/api/device/v1/pending-work/` endpoint. Heartbeats and operation-specific safety checks remain separate. The earlier long-idle TLS memory failure is still being investigated through physical testing and serial heap diagnostics.
+
 ## Long-idle connection recovery (feature-branch firmware)
 
 If Wi-Fi still shows **Connected** but MakerVault reports a failed secure session, open **Connections → MakerVault → Reconnect server**. The terminal displays **Refreshing Wi-Fi**, followed by **Verifying HTTPS** and **Server connected** or **Reconnect failed**. A temporary **Wi-Fi: offline** state is expected during this deliberate transport reset. On failure, use **OK: retry**; on success, use **OK: done**. The action preserves the saved CA, approved server URL and pairing credential, and is blocked during active tag operations.
