@@ -13,10 +13,24 @@ MakerVault's **Connected Devices** panel lets you approve hardware using a short
 ![MakerVault handheld terminal enclosure](../assets/screenshots/connected-devices/terminal-enclosure.jpg)
 *The ESP32-S3 handheld in its printed enclosure; the rear-mounted antenna reads tags brought near the device.*
 
-## What currently works — and what does not
+!!! tip "MakerTag maintenance — tested v1.0.1 release candidate"
+    The paired terminal can **Clean MakerTag** (erase verified NTAG215 NDEF user data while preserving the registration) or **Remove MakerTag** (delete the registration, optionally after an explicitly confirmed physical clean). The MakerVault UI can request the same operations on a selected terminal. The feature-branch firmware also adds **Connections → MakerVault → Reconnect server**, preserving saved credentials while refreshing the Wi-Fi/TLS transport. See [Clean and remove MakerTags](maker-tag-maintenance.md). These additions are included in the matching app and terminal release-candidate branches, not necessarily in older published binaries. The maintainer reports the physical regression matrix passed, including recovery and TLS safety; the ESP-IDF firmware also completed a two-hour-plus stable-heap idle test.
 
-The v0.7 handheld supports Wi-Fi provisioning, certificate-verified HTTPS, pairing, heartbeat, local UID scanning and online MakerTag lookup/registration/reassignment with user confirmation. NTAG215 NFC URL writing is supported after confirmation and verification; Creality CFS payload decoding remains outside this firmware's scope.
+## Current release-candidate capabilities
 
+The matching **MakerVault v1.5.1 / Terminal v1.0.1** release candidate provides Wi-Fi provisioning, verified HTTPS, secure pairing, scoped heartbeats, MakerTag lookup, terminal/browser-initiated registration and reassignment, verified NTAG215 URL writing, Clean/Remove options, inventory browsing with A–Z jump, read-only Creality CFS material decoding and explicit physical spool UID linking. Experimental Bambu/Elegoo decoding is read-only and depends on compatible tags; no third-party filament tag writing or automatic printer-database writes are supported.
+
+The v0.7/v0.8 sections below are retained as **historical, version-specific instructions**, not limitations of the v1.0.0 source.
+
+## Native ESP-IDF HTTPS and connection recovery (Terminal v1.0.1)
+
+Terminal v1.0.1's matching release-candidate firmware uses Espressif's native `esp_http_client` rather than Arduino `HTTPClient`. The verified HTTPS connection is reused for the combined **five-second pending-work** checks, heartbeats and periodic `/me` verification. `GET /api/device/v1/pending-work/` discovers browser-initiated work but does **not** authorise NFC writes or removal. Operation-specific server checks, matching tag UID and physical confirmation are still mandatory.
+
+For direct MakerVault HTTPS on port **8443**, the native server defaults to a **15-second HTTP keep-alive** (`HTTPS_KEEPALIVE_SECONDS`, allowed integer range 6–120). A separate reverse proxy needs its own device-facing HTTPS idle timeout that permits connection reuse. Keep-alive does not bypass TLS validation, scope checks or reconnect handling.
+
+**Connectivity:** use **Connections → MakerVault → Reconnect server** after an interrupted secure session. The action preserves the saved Wi-Fi networks, trusted CA, approved server endpoint and pairing key, then reconnects and verifies HTTPS. **Test HTTPS** remains diagnostic. If certificate trust fails, correct the CA, hostname or device time; never disable verification or send a stored key to another origin.
+
+**Memory validation:** earlier Arduino-client firmware lost approximately 96 bytes per completed idle request. Native ESP-IDF HTTPS and corrected temporary-buffer cleanup before FreeRTOS task deletion yielded stable idle heap in a two-hour-plus physical run, with no memory-recovery reboots. The maintainer reports the full release validation matrix passed. These are results for the tested device/network, not a universal guarantee. Compare `[HEAP IDLE]` samples taken after worker completion; individual negative `[TLS HEAP]` request deltas can represent temporary allocations.
 ## 1. Prepare MakerVault HTTPS
 
 Pairing requires HTTPS in both your browser and the terminal. Navigate to **Settings → HTTPS & certificates**. Use your existing valid reverse-proxy TLS setup, a publicly trusted server certificate, or MakerVault's native HTTPS and Local CA.
@@ -140,7 +154,7 @@ The v0.7 firmware has been flashed and the version display verified on physical 
 | Cannot join Wi-Fi | Check 2.4 GHz compatibility, SSID/password and signal |
 | Server unreachable or DNS failure | Verify the server URL, DNS, network access and HTTPS port |
 | **Certificate rejected** | Import the correct public Local CA or use a valid public certificate; verify SAN hostname/IP and dates |
-| `HTTPClient -1` | This is a client-side failure, **not** HTTP status -1; inspect **Test HTTPS** TLS details |
+| HTTPS transport error (`ESP-IDF HTTP` or legacy `HTTPClient -1`) | A client-side failure, **not** an HTTP status; inspect **Test HTTPS** TLS details and verify connectivity and certificate trust |
 | mbedTLS `-0x2700` | X.509 verification failed; inspect trust chain, hostname and expiry |
 | TLS Verified but API 401 | Check whether the terminal is paired, has its original credential and uses the approved endpoint |
 | API 403 | Check permission scopes and whether the operation is supported |

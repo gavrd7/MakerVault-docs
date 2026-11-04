@@ -54,7 +54,7 @@ extra_javascript:
   - assets/guide-search.js
 extra:
   generator: false
-copyright: MakerVault · Guide for v1.5.0
+copyright: MakerVault · Guide for v1.5.1
 nav:
   - Welcome: index.md
   - Getting started:
@@ -76,6 +76,7 @@ nav:
       - Print history and costs: using/print-history.md
       - Printed parts: using/printed-parts.md
       - MakerTags: using/maker-tags.md
+      - Clean and remove MakerTags: using/maker-tag-maintenance.md
       - Connected Devices: using/connected-devices.md
       - Terminal interoperability: using/terminal-interoperability.md
       - Interactive Wiring: using/interactive-wiring.md
