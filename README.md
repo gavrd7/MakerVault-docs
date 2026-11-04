@@ -26,11 +26,11 @@
 
 ---
 
-## Upcoming #159 — Clean and remove MakerTags (draft feature)
+## MakerTag cleaning and removal — v1.5.0 / Terminal v1.0.0 release candidate
 
-The matching [MakerVault app PR #165](https://github.com/gavrd7/MakerVault/pull/165) and [Terminal PR #12](https://github.com/gavrd7/MakerVault-Hardware/pull/12) add **Clean MakerTag** (verified physical NTAG215 erasure while retaining the MakerVault registration), **Remove MakerTag** (server registration only) and **Remove + clean** (erase and verify first, remove registration second). The browser can send requests to a paired terminal, or the terminal can start the operation. The firmware branch also adds a manual **Reconnect server** option and TLS memory diagnostics, currently under long-idle testing.
+The matching [MakerVault app PR #165](https://github.com/gavrd7/MakerVault/pull/165) and [Terminal PR #12](https://github.com/gavrd7/MakerVault-Hardware/pull/12) add **Clean MakerTag** (verified physical NTAG215 erasure while retaining the MakerVault registration), **Remove MakerTag** (server registration only) and **Remove + clean** (erase and verify first, remove registration second). The browser can send requests to a paired terminal, or the terminal can start the operation. The terminal firmware also adds **Reconnect server**, native ESP-IDF persistent HTTPS, consolidated five-second idle polling and controlled memory/connection diagnostics. The maintainer reports the full physical release matrix passed; a two-hour-plus idle test showed stable heap and no memory-recovery reboots.
 
-See the [Clean and remove MakerTags guide](docs/guide/using/maker-tag-maintenance.md). **These actions are not included in the published v1.5.0 / Terminal v1.0.0 releases.** No inventory item or third-party filament tag data is deleted by these workflows.
+See the [Clean and remove MakerTags guide](docs/guide/using/maker-tag-maintenance.md). **These features are implemented in the matching release-candidate branches; previously published binaries may not contain them until the final releases are issued.** No inventory item or third-party filament tag data is deleted by these workflows.
 
 ## v1.5.0 — Terminal interoperability
 
