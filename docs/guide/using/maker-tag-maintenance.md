@@ -1,4 +1,4 @@
-# Clean and remove MakerTags (v1.5.0 / Terminal v1.0.0 release candidate)
+# Clean and remove MakerTags (v1.5.1 / Terminal v1.0.1 release candidate)
 
 !!! info "Tested release candidate — check published versions"
     These controls are implemented in [MakerVault app PR #165](https://github.com/gavrd7/MakerVault/pull/165) and [Terminal firmware PR #12](https://github.com/gavrd7/MakerVault-Hardware/pull/12). Until both PRs are merged and matching versions published, use the **matching app and terminal release-candidate branches** on staging. The maintainer reports the complete physical test matrix passed, including cleaning/removal safety, HTTPS recovery and certificate rejection. A two-hour-plus ESP-IDF idle test showed stable heap. Older published binaries may not contain these controls.
@@ -15,7 +15,7 @@ MakerVault never erases the factory RFID UID, manufacturer pages, capability con
 
 ## Prerequisites
 
-- A securely paired **MakerVault Terminal v1.0.0** running the matching release-candidate firmware (or its subsequently published release) and online over trusted HTTPS. The app must include the matching v1.5.0 pending-work and Clean/Remove APIs.
+- A securely paired **MakerVault Terminal v1.0.1** running the matching release-candidate firmware (or its subsequently published release) and online over trusted HTTPS. The app must include the matching v1.5.1 pending-work and Clean/Remove APIs.
 - A registered MakerTag linked to an existing MakerVault record. For NFC cleaning, it must be a **writable, unprotected NTAG215 with a supported seven-byte UID**.
 - A device credential with appropriate `tags:write` capability, and a MakerVault account with the necessary MakerTag permissions. Cleaning requires change permission; removal additionally requires **delete MakerTag** permission.
 - For web-started cleaning, select the intended paired terminal. Use a spare/reprogrammable tag for initial testing.
@@ -63,13 +63,13 @@ A pending request can be cancelled before its destructive phase. If a tag is mis
 - **Wrong UID / expired or cancelled request:** The original authorisation cannot be reused to erase another tag.
 - **Permission or HTTPS error:** Verify both the user's permissions and terminal scopes. Don't bypass certificate verification.
 
-## Consolidated terminal requests (v1.0.0 release candidate)
+## Consolidated terminal requests (v1.0.1 release candidate)
 
 The paired terminal now uses **one authenticated pending-work check approximately every five seconds** for browser-initiated MakerTag registration, NFC writing, RFID lookup and Clean/Remove requests. Previously these used four separate HTTPS polls. This change reduces idle TLS connection churn without altering the security or physical-confirmation process: each accepted operation still verifies its exact UID, server authorisation and completion independently.
 
 **Update MakerVault to the matching application release candidate before flashing the terminal**; the unified request requires `/api/device/v1/pending-work/`. Heartbeats and operation-specific safety checks remain separate. Native ESP-IDF `esp_http_client` reuses a verified HTTPS session, and temporary C++ buffers are destroyed before FreeRTOS workers exit. The maintainer's two-hour-plus memory test did not reproduce the previous persistent ~96-byte-per-request loss.
 
-## Connection recovery (v1.0.0 release candidate)
+## Connection recovery (v1.0.1 release candidate)
 
 If Wi-Fi still shows **Connected** but MakerVault reports a failed secure session, open **Connections → MakerVault → Reconnect server**. The terminal displays **Refreshing Wi-Fi**, followed by **Verifying HTTPS** and **Server connected** or **Reconnect failed**. A temporary **Wi-Fi: offline** state is expected during this deliberate transport reset. On failure, use **OK: retry**; on success, use **OK: done**. The action preserves the saved CA, approved server URL and pairing credential, and is blocked during active tag operations.
 
