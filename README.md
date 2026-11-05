@@ -32,7 +32,7 @@ The matching [MakerVault app PR #165](https://github.com/gavrd7/MakerVault/pull/
 
 See the [Clean and remove MakerTags guide](docs/guide/using/maker-tag-maintenance.md). **These features were introduced in v1.5.1 and remain available in v1.6.0 with compatible Terminal firmware.** No inventory item or third-party filament tag data is deleted by these workflows.
 
-## G-code Library and explicit print submission — current feature
+## v1.6.0 — G-code Library and explicit print submission
 
 The accompanying [MakerVault app PR #169](https://github.com/gavrd7/MakerVault/pull/169) provides private plain-text G-code files with bounded source/XY inspection, immutable edits, optional model revision links, printer file browsing, upload-only and explicitly confirmed print-start. Stock K1 native file browsing and print-start were hardware-tested on clean firmware; K2 native uploads and Moonraker print-start were also tested. Native K1/K2 WebRTC previews use the existing authenticated MakerVault compatibility relay. Other printer adapters and mapped K2 CFS printing remain firmware/hardware dependent. See [G-code library and printer submission](docs/guide/using/gcode-and-print-submission.md).
 
