@@ -2,7 +2,7 @@
 
 ## Version and scope
 
-This guide describes **MakerVault v1.4.0**, including Connected Devices, RFID/NFC Maker Tag lookup and registration, confirmed reassignment and short identity codes. Earlier v1.2.x features include reusable spools and QR label improvements.
+This guide describes **MakerVault v1.6.0**, including the G-code library, explicit file transfer and printer submission, stock K1/K2 local cameras, Connected Devices, and MakerTag management. Individual manufacturer protocols remain experimental where physical hardware validation is incomplete. Earlier features include v1.5.1 terminal reliability/MakerTag maintenance and v1.2.x reusable spools and QR label improvements.
 
 Linux with the supplied Docker Compose configuration remains the preferred always-on server deployment. Windows users can also follow the documented Docker Desktop, Docker Desktop + WSL2 integration, or direct WSL2 Docker Engine routes. NAS/Portainer and macOS remain platform-adaptation cases rather than fully validated walkthroughs. No measured minimum hardware specification is claimed.
 
