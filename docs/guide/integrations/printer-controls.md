@@ -38,7 +38,7 @@ MakerVault stores a command receipt before contacting the printer. Repeating the
 
 If delivery is uncertain, refresh and inspect the printer's actual state before another action. MakerVault does not automatically retry commands. Network and firmware delays still leave a short interval between the final status check and dispatch; this interface is not an emergency-stop system.
 
-This pass does not expose Start print, movement, heating, macros or raw G-code.
+**G-code upload and explicit print-start are separate from Pause/Resume/Cancel controls.** The [G-code library and printer submission](../using/gcode-and-print-submission.md) feature supports compatible adapter-specific file operations and confirmed print-start. It does not expose arbitrary movement, heating, macros or a raw G-code command console.
 
 ## Testing still required
 
