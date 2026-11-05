@@ -11,6 +11,12 @@
 
 A file can remain standalone. Attach or detach a project later without uploading another copy. Model files can also be linked to model revisions.
 
+## G-code library and XY inspection
+
+Plain-text `.gcode` is a first-class Files asset. Upload it standalone or link it to a project and model revision. The **G-code viewer** offers bounded code source, machine/filament metadata where available, and top-down XY path samples. Save supported, complete edited text as a **new version**, not an overwrite. The preview is not a slicer or full simulator, and binary `.bgcode` is unsupported by the editor.
+
+To browse a printer's storage, transfer a file or explicitly start printing, follow [G-code library and printer submission](gcode-and-print-submission.md).
+
 ## Keep earlier versions
 
 Use **Upload new version** on an existing file when the content changes. Each new version stores new bytes; previous versions remain available in history. Normal lists show the current version.

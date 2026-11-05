@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>Guide for MakerVault v1.5.1 (release candidate)</strong>
+  <strong>Guide for MakerVault v1.6.0</strong>
 </p>
 
 <p align="center">
@@ -26,11 +26,15 @@
 
 ---
 
-## MakerTag cleaning and removal — v1.5.1 / Terminal v1.0.1 release candidate
+## MakerTag cleaning and removal — introduced in v1.5.1 / Terminal v1.0.1
 
 The matching [MakerVault app PR #165](https://github.com/gavrd7/MakerVault/pull/165) and [Terminal PR #12](https://github.com/gavrd7/MakerVault-Hardware/pull/12) add **Clean MakerTag** (verified physical NTAG215 erasure while retaining the MakerVault registration), **Remove MakerTag** (server registration only) and **Remove + clean** (erase and verify first, remove registration second). The browser can send requests to a paired terminal, or the terminal can start the operation. The terminal firmware also adds **Reconnect server**, native ESP-IDF persistent HTTPS, consolidated five-second idle polling and controlled memory/connection diagnostics. The maintainer reports the full physical release matrix passed; a two-hour-plus idle test showed stable heap and no memory-recovery reboots.
 
-See the [Clean and remove MakerTags guide](docs/guide/using/maker-tag-maintenance.md). **These features are implemented in the matching release-candidate branches; previously published binaries may not contain them until the final releases are issued.** No inventory item or third-party filament tag data is deleted by these workflows.
+See the [Clean and remove MakerTags guide](docs/guide/using/maker-tag-maintenance.md). **These features were introduced in v1.5.1 and remain available in v1.6.0 with compatible Terminal firmware.** No inventory item or third-party filament tag data is deleted by these workflows.
+
+## v1.6.0 — G-code Library and explicit print submission
+
+The accompanying [MakerVault app PR #169](https://github.com/gavrd7/MakerVault/pull/169) provides private plain-text G-code files with bounded source/XY inspection, immutable edits, optional model revision links, printer file browsing, upload-only and explicitly confirmed print-start. Stock K1 native file browsing and print-start were hardware-tested on clean firmware; K2 native uploads and Moonraker print-start were also tested. Native K1/K2 WebRTC previews use the existing authenticated MakerVault compatibility relay. Other printer adapters and mapped K2 CFS printing remain firmware/hardware dependent. See [G-code library and printer submission](docs/guide/using/gcode-and-print-submission.md).
 
 ## v1.5.0 — Terminal interoperability
 
@@ -98,13 +102,13 @@ Support and future development therefore depend on the capabilities of the avail
 
 ## What the guide covers
 
-This guide documents **MakerVault v1.4.0**, including:
+This guide documents **MakerVault v1.6.0**, including:
 
 - beginner-friendly Docker installation from the pre-built GHCR image on Linux, Docker Desktop or WSL2, plus an optional build-it-yourself path and `.env` configuration;
 - Docker volumes, bind mounts, backups and restore;
 - Dashboard, Universal Search, Board Catalogue, Components and Inventory;
 - Projects, BOM allocation, Files and versioned assets;
-- 3D Printing, merged filament catalogue matching, physical spools, model library, 3D viewer, print history and Printed Parts;
+- 3D Printing, merged filament catalogue matching, physical spools, model library, 3D viewer, **G-code library and explicit print submission**, print history and Printed Parts;
 - live printer monitoring, optional controls and camera feeds, including the K2 same-origin camera compatibility path;
 - MakerTags and Interactive Wiring;
 - user accounts, MFA, passkeys, local sign-up, password recovery and storage quotas;
@@ -113,7 +117,7 @@ This guide documents **MakerVault v1.4.0**, including:
 - OpenID Connect configuration and SMTP-backed account recovery;
 - managed v3 backup/recovery, including TLS identity and replacement-host recovery.
 
-MakerVault v1.4.0 is the latest published application release, introducing reusable spool hardware, catalogue review and branded QR workflows while retaining the existing first-run wizard, account and role management. Version 1.1.0 improved background catalogue enrichment. The previous v1.0.4 release added project priorities, optional deadlines, attention ranking, deadline highlighting, quick completion and project deletion controls while retaining the v1.0.3 Creality FDM catalogue expansion and earlier v1 improvements. The mandatory v1 acceptance checks were completed on 3 October 2026, including representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS/Local CA validation and final green CI.
+MakerVault v1.4.0 introduced reusable spool hardware, catalogue review and branded QR workflows while retaining the existing first-run wizard, account and role management. Version 1.1.0 improved background catalogue enrichment. The previous v1.0.4 release added project priorities, optional deadlines, attention ranking, deadline highlighting, quick completion and project deletion controls while retaining the v1.0.3 Creality FDM catalogue expansion and earlier v1 improvements. The mandatory v1 acceptance checks were completed on 3 October 2026, including representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS/Local CA validation and final green CI.
 
 ## Repositories
 

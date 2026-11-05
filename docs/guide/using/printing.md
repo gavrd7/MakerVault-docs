@@ -15,6 +15,12 @@
 | Physical reusable spool | One owned refillable reel, with measured tare, location, condition and optional assigned filament |
 | Slot | A position in a printer's multi-material system |
 
+## G-code library and printing from MakerVault
+
+MakerVault provides a shared **G-code library** for plain-text files and **Start print / G-code** per compatible live printer connection. Upload a new file, choose stored MakerVault G-code, or browse existing printer files. Upload-only and start are separate operations; start requires explicit confirmation and current printer readiness. Support varies by adapter and firmware.
+
+See [G-code library and printer submission](gcode-and-print-submission.md).
+
 ## Add your printer
 
 1. Open **3D Printing** and choose the add-printer action.
