@@ -3,7 +3,7 @@
 !!! tip "Read-only printer material database snapshots"
     MakerVault v1.5 adds **Settings → 3D Printing → Creality printer material databases** for manual (or opt-in scheduled) read-only snapshot retrieval. The terminal resolves material names from the saved snapshot, while physical spool matching requires a separately assigned RFID UID. See [Terminal interoperability](../using/terminal-interoperability.md). No printer material data is written back.
 
-**Optional · Local-first · Read-only by default; optional controls on supported sources**
+**Optional · Local-first · Monitoring, camera previews and explicit G-code transfer/start on compatible stock-LAN models**
 
 MakerVault has two complementary Creality integrations:
 
@@ -22,6 +22,12 @@ Neither path requires a Creality Cloud login. Compatibility still depends on the
 6. Scheduled polling then follows the connection's configured interval.
 
 The current adapter uses the local Creality WebSocket service on port 9999. Monitoring has owner confirmation on K2 and K1; K1 monitoring was also tested through Moonraker. Other models and firmware remain experimental. Optional Pause, Resume and confirmed Cancel are available for supported live sources and require a per-source opt-in. Controls still need K2 hardware testing. See [Optional printer controls](printer-controls.md). Heater, movement and raw G-code controls are not exposed.
+
+## Native G-code library, storage and print-start
+
+MakerVault integrates stock **K1** and **K2** LAN file operations without Moonraker. Open **Start print / G-code** under the live connection to upload only, upload and start, or select G-code already on the printer. Browsing is read-only; start follows explicit confirmation and current state checks. Uncertain commands are never automatically resent.
+
+K1 native file browsing and print-start were hardware-tested on **clean stock firmware**. An earlier modified K1 had rebooted during starts from both MakerVault and its touchscreen, so modified configurations can behave differently. K1 single-spool and K2 multi-material protocols remain separate. K2 native HTTP upload and Moonraker start were tested; **K2 mapped-CFS native start** remains to be hardware-validated. See [G-code library and printer submission](../using/gcode-and-print-submission.md).
 
 ## CFS set up
 
@@ -48,7 +54,7 @@ Review the specific live-source or integration error. A printer catalogue entry 
 
 ## Camera feeds
 
-K1 and K2 camera playback have owner confirmation. Camera setup is a separate action on the printer card; the configured preview appears automatically on visible dashboard and 3D Printing cards. K1 uses supported HTTP image/MJPEG routes, while K2 can use experimental Creality WebRTC. See [camera setup and network requirements](printer-cameras.md); playback confirmation does not establish every route, firmware or browser combination.
+K1 and K2 camera playback have owner confirmation. Camera setup is a separate action on the printer card; the configured preview appears automatically on visible dashboard and 3D Printing cards. Stock K1 and K2 use the shared native Creality WebRTC compatibility relay for same-origin previews, hardware-tested simultaneously. Legacy K1 MJPEG/Helper Script routes remain available when those services are installed. See [camera setup and network requirements](printer-cameras.md); playback confirmation does not establish every route, firmware or browser combination.
 
 
 <figure markdown>
