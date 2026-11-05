@@ -17,6 +17,10 @@ In **Manage model**, add a revision and attach a compatible existing file. Choos
 
 Use **Upload new version** when replacing the design with a new iteration. This creates a new immutable model revision and preserves the previous STL/3MF on its earlier revision. Attaching/detaching a file link does not duplicate or delete the underlying stored asset.
 
+## Link G-code to a model revision
+
+A model revision can reference optional plain-text G-code as its resulting toolpath. Attach an existing G-code file or upload one through the Model Library. This does not replace the STL/3MF source geometry and does not duplicate the underlying asset. Inspect it using the shared viewer and use [G-code library and printer submission](gcode-and-print-submission.md) for printer transfer. Saved G-code is not automatically re-sliced when the model changes.
+
 ## Inspect the geometry
 
 Open **View** from the model, Files or Project where supported. Orbit, zoom and pan to examine the model. Reset returns to the initial view; grid, axes, wireframe and fullscreen aid inspection. STL/3MF previews are supported; a CAD source file is not necessarily directly renderable.
