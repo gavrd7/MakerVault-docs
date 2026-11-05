@@ -91,8 +91,8 @@ That separation is what lets MakerVault grow from a simple parts list into a use
   <div id="guide-search-results" class="guide-search__results" data-guide-search-results></div>
 </div>
 
-!!! info "Guide version: v1.6.0"
-    MakerVault v1.4.0 is the current published application release. It adds online RFID/NFC Maker Tag lookup, handheld registration, confirmed reassignment, and stable short IDs (with v0.6.0 terminal firmware). MakerVault v1.2.2 previously introduced reusable spool inventory and QR label enhancements. It adds reusable spool inventory and manufacturer catalogues, Maker Tags for reusable reels and branded QR labels. It retains v1.1.0's automated catalogue maintenance, first-run administrator setup, account/security management and the earlier project priority and deadline features. The v1 acceptance gates include representative off-server recovery, a fresh Debian/Docker installation, restart/persistence checks, native HTTPS with the MakerVault Local CA, deployment preflight and final green CI. Experimental printer adapters remain labelled according to their hardware-validation status. See [scope and verification](reference/about.md).
+!!! info "MakerVault v1.6.0 — G-code Library and printer submission"
+    Version 1.6.0 adds owner-scoped plain-text G-code storage, bounded visual inspection, model/revision links and explicit upload/print workflows for compatible printer connections. Stock Creality K1 native print-start and completion, K2 file transfer, Moonraker start, and simultaneous K1/K2 same-origin camera previews have hardware evidence; some other printer/firmware operations, including proprietary K2 mapped-CFS starts, remain experimental. This guide documents the v1.6.0 feature set for its coordinated release; verify the image/tag you deploy. Earlier releases introduced the Terminal, MakerTags, reusable spools and the v1 platform/recovery foundations. See [G-code Library and printer submission](using/gcode-and-print-submission.md) and [scope and verification](reference/about.md).
 
 <div class="guide-grid" markdown>
 <div class="guide-card" markdown>
