@@ -71,6 +71,7 @@ nav:
       - Physical inventory: using/inventory.md
       - Projects and bills of materials: using/projects.md
       - Files, images and versions: using/files.md
+      - G-code library and printer submission: using/gcode-and-print-submission.md
       - Printers, filament and spools: using/printing.md
       - Models and the 3D viewer: using/models.md
       - Print history and costs: using/print-history.md
