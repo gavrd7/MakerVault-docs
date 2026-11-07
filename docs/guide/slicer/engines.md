@@ -1,7 +1,7 @@
 # Manage slicer engines
 
 !!! warning "Administrator management UI is planned, not released"
-    The current PR #171 supports candidate engine discovery, native profile search/import and a guarded single-engine development worker. It **does not** yet support the independent engine installer, simultaneous engine routing or production-ready verified slicing.
+    Draft PR #171 now includes independent OrcaSlicer and Creality Print worker adapters, a shared pinned-engine registry, native profile search/import, and an initial browser-native custom-profile editor. It **does not** yet include a production-ready engine installer, approved Linux slicing binaries, complete native setting coverage, or successful real end-to-end slicing fixtures for both engines.
 
 ## One container, individually selectable engines
 
@@ -29,3 +29,9 @@ The actual installer controls, release catalogues and approved download mechanis
 ## Engine compatibility
 
 An engine appearing in the candidate catalogue **does not** mean a compatible binary is installed, licensed for distribution or verified to slice. Each engine will receive a documented tested version, native profile source, known limitations and fixture evidence before it is marked supported. The engine priority currently starts with OrcaSlicer and then Creality Print, but users will not be forced to install Orca to use Creality.
+
+## GUI custom profile editing (draft)
+
+In PR #171, open **Profile management → Manage profiles**, select a saved OrcaSlicer or Creality Print printer/filament/process preset, and choose **Edit as custom**. A browser form exposes a conservative subset of native numerical controls; save it under a new name. The original preset and its source file are preserved, and the edited copy remains an **unverified candidate** until its engine/version and any parent preset chain are validated. This is early GUI coverage, not full native setting parity.
+
+The supported settings list will expand and gain searchable Basic/Advanced categories before release. Administrator engine installation and update actions must also be possible from the MakerVault interface; the original desktop slicer will not be required for the normal end-user workflow.
