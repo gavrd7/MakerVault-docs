@@ -35,3 +35,11 @@ An engine appearing in the candidate catalogue **does not** mean a compatible bi
 In PR #171, open **Profile management → Manage profiles**, select a saved OrcaSlicer or Creality Print printer/filament/process preset, and choose **Edit as custom**. A browser form exposes a conservative subset of native numerical controls; save it under a new name. The original preset and its source file are preserved, and the edited copy remains an **unverified candidate** until its engine/version and any parent preset chain are validated. This is early GUI coverage, not full native setting parity.
 
 The supported settings list will expand and gain searchable Basic/Advanced categories before release. Administrator engine installation and update actions must also be possible from the MakerVault interface; the original desktop slicer will not be required for the normal end-user workflow.
+
+## Profile defaults and automatic suggestions (draft)
+
+For each engine and exact engine version, saved printer, filament and process presets can be marked **Set as default** in **Manage profiles** or **Saved profiles**. Official search results offer **Import & set default**. Defaults belong to the user; another user's choices are unaffected.
+
+When opening the workbench, MakerVault prefers a compatible explicitly selected default, then a compatible most-recently used profile for that printer. When neither exists, it may suggest an already imported standard **0.20 mm** process profile. The selected printer provides its stored stock nozzle and bed dimensions where available.
+
+Selecting a physical spool such as **PETG** narrows suggested imported filament presets to PETG, with K1/K2-specific matches checked where identified. MakerVault can search the pinned official catalogue for matching candidate profiles, but **does not silently download, approve or install** native presets. Engine-specific compatibility and actual worker verification remain necessary before slicing.
