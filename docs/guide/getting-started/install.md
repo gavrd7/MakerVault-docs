@@ -13,6 +13,9 @@ MakerVault supports two image routes:
 
 Both routes use the same Compose stack, `.env`, database and persistent storage.
 
+!!! info "Optional MakerVault Slicer (in development)"
+    The slicer will be installed **after** the core application, using one optional container declared in the same `compose.yaml`. It will not be needed for normal 3D Printing or G-code management. See the dedicated [Slicer installation chapter](../slicer/installation.md) and [engine management guide](../slicer/engines.md). The supported installer is not yet available.
+
 ## 1. Install Docker and the basic tools
 
 Follow Docker's official instructions for your installed distribution: [Debian](https://docs.docker.com/engine/install/debian/) or [Ubuntu](https://docs.docker.com/engine/install/ubuntu/). Choose Docker Engine with the **Compose plugin**. The Buildx plugin is also required if you want to build MakerVault locally.

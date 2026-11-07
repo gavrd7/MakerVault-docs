@@ -11,6 +11,10 @@ Learn to install MakerVault, record what you own and bring your projects, files 
 
 **Introduced in v1.5.1 / Terminal v1.0.1 and retained in v1.6.0:** verified MakerTag cleaning and optional clean-on-remove, one authenticated five-second terminal pending-work poll, and native ESP-IDF persistent HTTPS with corrected worker memory cleanup. The maintainer reports the hardware release test matrix passed; final availability depends on the matching published app and firmware builds. See [Clean and remove MakerTags](using/maker-tag-maintenance.md) and [Connected Devices](using/connected-devices.md). **Previously in v1.4.5:** Paired MakerVault Terminal v0.7 supports verified single-scan NTAG215 NFC link writing, stable MakerTag URLs and cancellation-safe expiry. The native HTTPS listener is more resilient to slow connections. **Previously in v1.2.2:** custom and batch Maker Tag QR label printing, text visibility settings and target-type filters. **Previously in v1.2.0:** reusable spool hardware tracking, manufacturer and printable design catalogues, personal spool images, reviewed catalogue submissions and branded QR labels. The v1.5.0 application was published previously; confirm the v1.5.1 container image is available before deploying this maintenance release.
 
+## MakerVault Slicer — in development
+
+A dedicated [MakerVault Slicer guide](slicer/index.md) now outlines the future optional one-container installation, independent engine installation and updates, interactive multi-model build plate and G-code workflow. The slicer is **not yet a released feature**; the guide will gain verified commands and real screenshots once the implementation is tested.
+
 ## G-code Library and printer submission
 
 MakerVault includes private plain-text G-code storage with XY/source inspection, model-revision links, printer file browsing, upload-only and explicitly confirmed start on compatible adapters. Stock K1 native file discovery/start and simultaneous K1/K2 camera relay playback have been hardware-tested; K2 mapped CFS and other printer adapters still need further validation. See [G-code library and printer submission](using/gcode-and-print-submission.md).
