@@ -157,3 +157,10 @@ Use the interactive search above or the search icon in the header to find a feat
   ![MakerVault dashboard showing workspace totals and live-printer information.](assets/screenshots/dashboard-overview.png)
   <figcaption>MakerVault v1 release-candidate dashboard.</figcaption>
 </figure>
+
+
+## Contact MakerVault
+
+For general enquiries, write to **[maker@makervault.co.uk](mailto:maker@makervault.co.uk)**. For help using MakerVault, contact **[support@makervault.co.uk](mailto:support@makervault.co.uk)**; reproducible bugs and feature requests are best submitted using the [GitHub issue forms](https://github.com/gavrd7/MakerVault/issues/new/choose). Manufacturers interested in hardware evaluation loans or integration collaboration can contact **[partnerships@makervault.co.uk](mailto:partnerships@makervault.co.uk)** and read the [Development Partners programme](https://github.com/gavrd7/MakerVault/blob/main/DEVELOPMENT_PARTNERS.md).
+
+Please report security vulnerabilities using the [private security reporting guidance](https://github.com/gavrd7/MakerVault/blob/main/SECURITY.md), not public issues or ordinary support correspondence.
