@@ -166,3 +166,11 @@ MakerVault software is licensed **AGPL-3.0-or-later** in the main application re
 MakerVault v1.4.6 with Terminal firmware v0.8 lets a paired handheld create MakerTags without launching a browser session. Browse categories and alphabetical record lists directly on the terminal, with MakerVault IDs, paged results and an encoder-hold A–Z jump. Assign blank NTAG215 tags or explicitly replace a recognised existing HTTP(S) NFC URL; **Back** preserves the original content. Generic MIFARE Classic tags remain UID-only. See the [step-by-step MakerTags guide](docs/guide/using/maker-tags.md#terminal-initiated-makertag-creation-makervault-v146--firmware-v08).
 
 Upgrade the application to v1.4.6 and the terminal to v0.8 to use this workflow; older released builds do not include it. **CFS material decoding, CFS data writing and automatic printer synchronisation are not included.**
+
+## Contact and support
+
+- **General MakerVault enquiries:** [maker@makervault.co.uk](mailto:maker@makervault.co.uk)
+- **Development hardware and manufacturer partnerships:** [partnerships@makervault.co.uk](mailto:partnerships@makervault.co.uk) — [Development Partners programme](https://github.com/gavrd7/MakerVault/blob/main/DEVELOPMENT_PARTNERS.md)
+- **User support enquiries:** [support@makervault.co.uk](mailto:support@makervault.co.uk)
+
+Please use [MakerVault's issue forms](https://github.com/gavrd7/MakerVault/issues/new/choose) for reproducible bugs and feature requests; security vulnerabilities should be reported privately as described in [SECURITY.md](https://github.com/gavrd7/MakerVault/blob/main/SECURITY.md). Email does not imply a guaranteed support response time.
