@@ -1,20 +1,22 @@
 # Slicer troubleshooting
 
-This page covers the optional slicing service. For general application problems, see [MakerVault troubleshooting](../reference/troubleshooting.md).
+This page is for the optional MakerVault Slicer. Core models, G-code storage and printer monitoring work without it. For general issues see [MakerVault troubleshooting](../reference/troubleshooting.md).
 
-| Message | Meaning | First check |
-| --- | --- | --- |
-| No slicer installed or enabled | The optional service was not enabled. | This is expected if you did not choose to install the slicer. |
-| Slicer service unavailable | Execution was enabled, but no healthy, approved engine worker was verified. | Worker status, engine/version approval, credentials and binary/image identity. |
-| Could not check slicer availability | The app could not confirm the worker state. | Browser/network connection and server logs. |
-| Profile unverified | The imported native preset has not passed approval. | Exact engine/version, parent preset dependencies and fixture receipt. |
-| No compatible engine | A selected engine is not installed, supported or approved. | Install/verify that specific engine; unrelated engines should remain available. |
+| Message or symptom | Check |
+| --- | --- |
+| **No slicer installed or enabled** | Expected if you did not opt in. Other printing features remain available. |
+| **Slicer service unavailable** | Confirm the isolated worker is enabled, healthy and authenticated; verify its pinned image and engine executable. |
+| **Could not check slicer availability** | Confirm application and worker reachability, credentials and bounded container logs. |
+| **Missing or incompatible profiles** | Use profile search/import for the exact engine/version; verify required machine/process/filament parents, nozzle and build plate. |
+| **Slice rejected or failed** | Review the job's safe error detail, input file/mesh limits and selected native profile; avoid disabling safety gates. |
+| **Paint or filament change not in G-code** | Check native profile capability, logical slot assignments, actual machine topology and engine-specific painting support. Preview colours alone do not create filament changes. |
+| **Flushing/prime output differs** | Verify the active native multi-material configuration and exported G-code. Do not treat an offline multiplier change as proof of printer compatibility. |
+| **Upload/start is unavailable** | Confirm the printer adapter, confirmed physical slot mapping, printer status and separate print authorisation. Slicing support is not the same as printer dispatch support. |
 
-## Safe diagnosis
+## Safe checks
 
-- Confirm ordinary MakerVault 3D Printing functions work before changing slicer settings.
-- Do not paste secrets from worker/environment configuration into reports.
-- Review container status and bounded application logs; do not download unverified binaries to bypass a failed check.
-- Keep printer submission separate from slicing. An unsuccessful slice must never start a print or deduct filament.
+For a known **staging** worker, use `sudo python3 scripts/install_slicer_staging.py status` from the correct MakerVault checkout. Do not run staging installation on production, expose `.slicer-staging.env`, paste tokens into reports or substitute unchecked slicer binaries. Keep a backup and retain existing named volumes when changing Compose services.
 
-Specific commands and screenshots will be added after the final single-container design and engine management workflow pass acceptance testing.
+When requesting help, report the app commit, worker/engine version, selected printer topology, native profile source and safe redacted job error. Avoid sharing private G-code or printer addresses unless necessary.
+
+See [Installation](installation.md), [Engines and profiles](engines.md), and [Prepare, paint and slice](workbench.md).
