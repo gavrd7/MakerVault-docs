@@ -13,7 +13,7 @@ Learn to install MakerVault, record what you own and bring your projects, files 
 
 ## MakerVault Slicer — in development
 
-A dedicated [MakerVault Slicer guide](slicer/index.md) now outlines the future optional one-container installation, independent engine installation and updates, interactive multi-model build plate and G-code workflow. The slicer is **not yet a released feature**; the guide will gain verified commands and real screenshots once the implementation is tested.
+The separate [MakerVault Slicer guide](slicer/index.md) covers the **v1.7.0 Beta candidate**: optional staging installation, OrcaSlicer and Creality Print engine-native profiles, the preparation workbench, multi-material precautions, G-code preview and explicit printer submission. The slicer is **not yet a published stable feature**. Bambu Studio and a normal production engine installer remain under development; screenshots and final release commands will follow acceptance.
 
 ## G-code Library and printer submission
 
