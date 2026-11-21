@@ -81,11 +81,11 @@ nav:
       - Connected Devices: using/connected-devices.md
       - Terminal interoperability: using/terminal-interoperability.md
       - Interactive Wiring: using/interactive-wiring.md
-  - MakerVault Slicer (in development):
+  - MakerVault Slicer (v1.7.0 Beta — unreleased):
       - Overview: slicer/index.md
       - Install the optional service: slicer/installation.md
-      - Manage engines and updates: slicer/engines.md
-      - Prepare and slice models: slicer/workbench.md
+      - Engines and native profiles: slicer/engines.md
+      - Prepare, paint and slice: slicer/workbench.md
       - Troubleshooting: slicer/troubleshooting.md
   - Optional integrations:
       - Spoolman: integrations/spoolman.md
