@@ -1,45 +1,36 @@
-# Manage slicer engines
+# Slicing engines and native profiles
 
-!!! warning "Administrator management UI is planned, not released"
-    Draft PR #171 now includes independent OrcaSlicer and Creality Print worker adapters, a shared pinned-engine registry, native profile search/import, and an initial browser-native custom-profile editor. It **does not** yet include a production-ready engine installer, approved Linux slicing binaries, complete native setting coverage, or successful real end-to-end slicing fixtures for both engines.
+!!! warning "Beta integration versus production availability"
+    [MakerVault PR #171](https://github.com/gavrd7/MakerVault/pull/171) contains OrcaSlicer and Creality Print integrations with staging evidence. This does not mean every downloadable engine is production-approved or installed. [Bambu Studio PR #191](https://github.com/gavrd7/MakerVault/pull/191) is still an early draft; its native Linux binary and worker admission have not passed full acceptance.
 
-## One container, individually selectable engines
+## Choose an engine independently of your printer brand
 
-The optional MakerVault slicing service will be **one container** with independently installed executable versions. **OrcaSlicer is not a mandatory dependency.** For example, an administrator may install only Creality Print, or add OrcaSlicer and PrusaSlicer later. Each engine must be independently validated and have its own original native profiles.
+OrcaSlicer and Creality Print each have their **own** engine/version, machine profile, process profile and filament profile. A Creality printer can be sliced with a compatible Orca profile; selecting Creality Print is not mandatory. Do not reuse a native profile from one engine as if it belonged to the other.
 
-## Installing an engine — planned
+The longer-term roadmap includes Bambu Studio and additional independently installed engines. The browser-based engine **install/update/remove** manager is planned. A named engine in the catalogue does not imply a reviewed executable is available to run.
 
-1. In MakerVault open **Slicer → Engine management** as an administrator.
-2. Choose an engine and a supported, explicitly pinned version.
-3. Review the licence, source, verification record, storage requirements and installation confirmation.
-4. Install only the selected engine. Verify its executable checksum and controlled slicing fixture before enabling actual jobs.
-5. Import/select the engine's compatible native printer, filament and process presets. An imported preset is initially **unverified** and cannot be trusted automatically.
-6. Choose this engine/version in the slicer workbench. Missing/invalid engines should not affect other verified engines.
+## Find and select profiles
 
-The actual installer controls, release catalogues and approved download mechanism will be documented with screenshots only when delivered.
+1. Choose the installed engine and its exact version, then the printer and compatible nozzle.
+2. In **Change slicing profiles**, search the saved profiles. If the required machine, process or filament profile is missing, use the official-profile search/import workflow for the selected engine.
+3. Select matching machine, process and native filament presets. Import complete parent/inheritance dependencies where needed. A manual profile may be registered but remains a candidate until verified for its exact engine/version and machine.
+4. Choose the relevant build-plate type where exposed in the native profile settings; a visual plate size alone is not evidence of printable geometry.
+5. Review the selected process profile in the workbench. Basic/Advanced search shows the supported native fields; an unsupported field remains in the underlying manufacturer preset rather than being silently rewritten.
 
-## Updating, removing and rolling back — planned
+**Saved defaults:** In **Manage profiles** or **Saved profiles**, choose **Set as default** for a saved machine, process or filament preset. Defaults apply to the user and engine/version. **Import & set default** is also available where the official catalogue provides a compatible profile.
 
-- Updates must be explicit and limited to the **chosen** engine.
-- A new executable/version and its native profiles need fresh integrity and fixture verification; no silent profile interchange between slicer engines.
-- Preserve previous verified versions until rollback is no longer needed.
-- Removing an engine must not remove unrelated engines or existing MakerVault models/G-code. Warn and resolve pending jobs.
-- Persist engine data across normal container updates and document backup/restore as part of the release.
+**Physical spool versus native preset:** Choosing a MakerVault spool can suggest a native filament profile by material or colour; it never silently approves a native preset, changes printer CFS mapping, or downloads it without your action. Assign a native filament profile to each material slot used by the slice.
 
-## Engine compatibility
+## Custom profiles and per-draft settings
 
-An engine appearing in the candidate catalogue **does not** mean a compatible binary is installed, licensed for distribution or verified to slice. Each engine will receive a documented tested version, native profile source, known limitations and fixture evidence before it is marked supported. The engine priority currently starts with OrcaSlicer and then Creality Print, but users will not be forced to install Orca to use Creality.
+**Edit as custom** and **Save as custom profile** create a new profile; the original manufacturer preset stays unchanged. Temporary workbench settings are applied to a scratch copy for the selected draft. Validate the edited profile before real printer use. Searchable settings and available categories differ between Orca and Creality, and not every desktop slicer option is exposed.
 
-## GUI custom profile editing (draft)
+## Multi-material restrictions
 
-In PR #171, open **Profile management → Manage profiles**, select a saved OrcaSlicer or Creality Print printer/filament/process preset, and choose **Edit as custom**. A browser form exposes a conservative subset of native numerical controls; save it under a new name. The original preset and its source file are preserved, and the edited copy remains an **unverified candidate** until its engine/version and any parent preset chain are validated. This is early GUI coverage, not full native setting parity.
+Painted regions, filament-slot assignment and native flushing controls depend on the engine, machine topology and genuine profile capabilities. MakerVault must not assume that a generic K2 two-material/single-nozzle encoder applies to unrelated or multi-nozzle printers. On Creality CFS, confirm genuine enabled native machine settings and physical slot mapping before printing. A successful preview or offline slice is **not** approval to dispatch to a printer.
 
-The supported settings list will expand and gain searchable Basic/Advanced categories before release. Administrator engine installation and update actions must also be possible from the MakerVault interface; the original desktop slicer will not be required for the normal end-user workflow.
+For the full workflow see [Prepare, paint and slice](workbench.md); for missing engines or profiles see [Troubleshooting](troubleshooting.md).
 
-## Profile defaults and automatic suggestions (draft)
+## Engine maintenance
 
-For each engine and exact engine version, saved printer, filament and process presets can be marked **Set as default** in **Manage profiles** or **Saved profiles**. Official search results offer **Import & set default**. Defaults belong to the user; another user's choices are unaffected.
-
-When opening the workbench, MakerVault prefers a compatible explicitly selected default, then a compatible most-recently used profile for that printer. When neither exists, it may suggest an already imported standard **0.20 mm** process profile. The selected printer provides its stored stock nozzle and bed dimensions where available.
-
-Selecting a physical spool such as **PETG** narrows suggested imported filament presets to PETG, with K1/K2-specific matches checked where identified. MakerVault can search the pinned official catalogue for matching candidate profiles, but **does not silently download, approve or install** native presets. Engine-specific compatibility and actual worker verification remain necessary before slicing.
+Production one-click installs, updates, rollback and removal remain planned. Do not use provisional controls or undocumented Docker changes to treat an engine as supported. An engine upgrade needs independently reviewed binary integrity, licence and compatibility testing. Upgrading one engine should not silently overwrite the others or native preset origins.
