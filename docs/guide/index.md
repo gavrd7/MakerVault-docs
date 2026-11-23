@@ -160,7 +160,7 @@ Use the interactive search above or the search icon in the header to find a feat
 
 <figure markdown>
   ![MakerVault dashboard showing workspace totals and live-printer information.](assets/screenshots/dashboard-overview.png)
-  <figcaption>MakerVault v1 release-candidate dashboard.</figcaption>
+  <figcaption>MakerVault dashboard showing workshop inventory, projects and printing.</figcaption>
 </figure>
 
 ## Contact MakerVault
