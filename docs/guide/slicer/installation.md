@@ -2,6 +2,12 @@
 
 MakerVault v1.7.0 includes **`makervault-slicer`**, a separate container supplied through GHCR. The application, slicer, PostgreSQL and Redis are the **four long-running services**. They share one Docker network named `makervault`. Only MakerVault's user-facing web/camera ports are published; slicer, PostgreSQL and Redis remain internal.
 
+## Supported platforms (v1.7.0)
+
+The **MakerVault Slicer image is Linux AMD64 (x86-64) only**. On x86-64 Linux it runs natively as a Linux container; on x86-64 Windows with Docker Desktop or Intel macOS with Docker Desktop, Linux-container execution is possible (host-specific compatibility still needs testing). No native Windows or macOS slicer image is distributed.
+
+The **main MakerVault application** publishes AMD64 and ARM64 images, but the **slicer has no native ARM64 image in v1.7.0**. This includes ARM64 Linux, Raspberry Pi and Apple Silicon hosts. The standard four-container Compose installation therefore is not natively supported on ARM64; the slicer may fail to start even when the main application supports the processor. AMD64 emulation on ARM64 has not been validated as supported. A future ARM64 slicer image would need compatible verified native engine binaries and testing.
+
 ## Install the stack
 
 Follow the [Linux installation guide](../getting-started/install.md) for Docker prerequisites and server configuration. On a new checkout, generate your private configuration (including four separate application/database/slicer secrets), review server addresses, and start the standard stack:
