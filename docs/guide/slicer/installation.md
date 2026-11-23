@@ -14,7 +14,7 @@ sudo docker compose up -d
 sudo docker compose ps
 ```
 
-There are **no Compose profiles, extra YAML overlays or local source builds** in the normal deployment. The slicer worker and engine installer run as separate restricted processes inside the one `makervault-slicer` container. An engine-store permissions helper starts once and exits, so it is not a fifth permanent service.
+There are **no Compose profiles, extra YAML overlays or local source builds** in the normal deployment. The slicer worker and engine installer run as separate restricted processes inside the one `makervault-slicer` container. The image provides the initial engine-store volume permissions on a new installation.
 
 **Release image:** `ghcr.io/gavrd7/makervault-slicer:1.7.0` must be published and verified before the v1.7.0 release. The older `0.1.0` image cannot run the combined worker/installer entry point and must not be substituted.
 
