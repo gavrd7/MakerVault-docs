@@ -93,7 +93,7 @@ See [Guide maintenance](docs/GUIDE_MAINTENANCE.md) for publishing and screenshot
 MakerVault software is licensed **AGPL-3.0-or-later** in the application repository. Third-party media retains its original licence and attribution.
 
 - **General enquiries:** [maker@makervault.co.uk](mailto:maker@makervault.co.uk)
-- **Hardware and manufacturer partnerships:** [partnerships@makervault.co.uk](mailto:partnerships@makervault.co.uk)
+- **Hardware and manufacturer partnerships:** [partnerships@makervault.co.uk](mailto:partnerships@makervault.co.uk) — [Development Partners programme](https://github.com/gavrd7/MakerVault/blob/main/DEVELOPMENT_PARTNERS.md)
 - **Support:** [support@makervault.co.uk](mailto:support@makervault.co.uk)
 
-For bugs and feature requests use [MakerVault issues](https://github.com/gavrd7/MakerVault/issues/new/choose). Report security concerns privately according to [SECURITY.md](https://github.com/gavrd7/MakerVault/blob/main/SECURITY.md).
+For reproducible bugs and feature requests use [MakerVault's issue forms](https://github.com/gavrd7/MakerVault/issues/new/choose). Security vulnerabilities should be reported privately according to [SECURITY.md](https://github.com/gavrd7/MakerVault/blob/main/SECURITY.md), not in a public issue. Email does not imply a guaranteed support response time.
