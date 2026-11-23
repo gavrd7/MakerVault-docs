@@ -15,11 +15,13 @@
 | Physical reusable spool | One owned refillable reel, with measured tare, location, condition and optional assigned filament |
 | Slot | A position in a printer's multi-material system |
 
-## Optional MakerVault Slicer (in development)
+## MakerVault Slicer
 
-MakerVault Slicer is a separate optional service planned to turn prepared STL models into G-code inside MakerVault. You will be able to use one container with individually installed slicing engines, without requiring OrcaSlicer for Creality Print. The feature is currently in development, not part of v1.6.0.
+MakerVault v1.7.0 includes an optional native slicing service for **OrcaSlicer, Creality Print and Bambu Studio**. Choose a compatible installed engine, native printer/process/filament profiles and build-plate type, then prepare models and review the generated G-code.
 
-See the [MakerVault Slicer guide](../slicer/index.md), [optional installation](../slicer/installation.md) and [engine management](../slicer/engines.md).
+The shared editor supports placement, settings and selected painting, multicolour, support, seam, fuzzy and variable-layer controls as supported by the native engine and printer topology. Its **Device** button opens the live printer monitor over the slicer; closing the modal returns to your current workbench.
+
+See the dedicated [MakerVault Slicer guide](../slicer/index.md), [installation](../slicer/installation.md) and [engine/profile management](../slicer/engines.md). Slicing does not start a print or automatically deduct spool stock.
 
 ## G-code library and printing from MakerVault
 
