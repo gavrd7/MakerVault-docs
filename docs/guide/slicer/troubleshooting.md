@@ -1,22 +1,33 @@
 # Slicer troubleshooting
 
-This page is for the optional MakerVault Slicer. Core models, G-code storage and printer monitoring work without it. For general issues see [MakerVault troubleshooting](../reference/troubleshooting.md).
+MakerVault's Model Library, printer monitoring and G-code management work without an installed slicer engine. The slicer is available when the optional combined container and selected native engine are configured and healthy.
 
-| Message or symptom | Check |
+| Symptom | What to check |
 | --- | --- |
-| **No slicer installed or enabled** | Expected if you did not opt in. Other printing features remain available. |
-| **Slicer service unavailable** | Confirm the isolated worker is enabled, healthy and authenticated; verify its pinned image and engine executable. |
-| **Could not check slicer availability** | Confirm application and worker reachability, credentials and bounded container logs. |
-| **Missing or incompatible profiles** | Use profile search/import for the exact engine/version; verify required machine/process/filament parents, nozzle and build plate. |
-| **Slice rejected or failed** | Review the job's safe error detail, input file/mesh limits and selected native profile; avoid disabling safety gates. |
-| **Paint or filament change not in G-code** | Check native profile capability, logical slot assignments, actual machine topology and engine-specific painting support. Preview colours alone do not create filament changes. |
-| **Flushing/prime output differs** | Verify the active native multi-material configuration and exported G-code. Do not treat an offline multiplier change as proof of printer compatibility. |
-| **Upload/start is unavailable** | Confirm the printer adapter, confirmed physical slot mapping, printer status and separate print authorisation. Slicing support is not the same as printer dispatch support. |
+| **No slicer installed or enabled** | Enable the `slicer` profile in the single `compose.yaml`; use approved credentials and a reviewed worker image |
+| **Slicer service unavailable** | Container health, private network, installer/worker tokens, immutable image identity and engine registry |
+| **Engine missing / Install failed** | Exact native engine version, approved source and SHA-256; installer UID's access to persistent engine storage |
+| **No compatible profiles** | Engine/version match, machine/nozzle topology, native parent dependencies and profile source |
+| **Model invalid / Slice rejected** | Mesh and 3MF integrity, material assignments, native settings and bounded model limits |
+| **Paint not reflected in G-code** | Actual native binary capabilities, selected facet/support/seam/fuzzy settings and tool assignments; visual paint alone is not proof |
+| **Unexpected variable layers** | Real G-code Z increments versus requested heights; unsupported requests can be rejected |
+| **Unexpected flush or prime tower** | Native material changer mode, directional volumes, multiplier, tower placement and firmware commands |
+| **Device returns to dashboard** | Use a release containing the slicer's in-place Device modal; closing it should retain your workbench |
+| **Upload / Start unavailable** | Compatible printer adapter, printer state, firmware, material/tool mapping and separate print authorisation |
 
 ## Safe checks
 
-For a known **staging** worker, use `sudo python3 scripts/install_slicer_staging.py status` from the correct MakerVault checkout. Do not run staging installation on production, expose `.slicer-staging.env`, paste tokens into reports or substitute unchecked slicer binaries. Keep a backup and retain existing named volumes when changing Compose services.
+On the host in the MakerVault checkout:
 
-When requesting help, report the app commit, worker/engine version, selected printer topology, native profile source and safe redacted job error. Avoid sharing private G-code or printer addresses unless necessary.
+```bash
+sudo docker compose config --quiet
+sudo docker compose --profile slicer config --quiet
+sudo docker compose --profile slicer ps
+sudo docker compose --profile slicer logs --tail=100 slicer-worker
+```
 
-See [Installation](installation.md), [Engines and profiles](engines.md), and [Prepare, paint and slice](workbench.md).
+These checks do not start a print. Do not disable identity checks, grant the web app Docker-socket access, use a sample worker image as if it were approved, or run `docker compose down -v` to troubleshoot.
+
+If upgrading from earlier staging/development releases, the old multiple Compose overlays have been retired. Review your private `.env`, former `.slicer-staging.env`, installed engine volume and custom Compose settings before switching. The [single-Compose installation guide](installation.md) and [MakerVault update guide](../administration/updates.md) explain the migration safety boundaries.
+
+When reporting a problem, include the MakerVault version/commit, exact slicer engine/version, printer model/topology, non-secret worker diagnostics and what native G-code did or did not contain. Redact accounts, file names, host addresses and tokens.
