@@ -128,7 +128,7 @@ Press **Ctrl+C** to stop following logs; this does not stop MakerVault.
 
 The normal installation starts **four separate containers**: MakerVault, `makervault-slicer`, PostgreSQL and Redis. Docker Compose uses the single `compose.yaml`, downloads the application and slicer images from GHCR, and connects the services to one Docker network. PostgreSQL, Redis and the slicer have **no published host ports**.
 
-The initial setup script creates different secrets for the worker and engine installer. A one-off engine-storage permissions task runs and exits; no additional application or slicer container stays running. Use [the separate slicer guide](../slicer/installation.md) to install and select your native engine.
+The initial setup script creates different secrets for the worker and engine installer. A new engine-store volume is prepared by the reviewed slicer image; the stack has exactly four services. Use [the separate slicer guide](../slicer/installation.md) to install and select your native engine.
 
 **Release prerequisite:** the new combined slicer GHCR image tagged `1.7.0` must be published and tested before release. The older `makervault-slicer:0.1.0` image is incompatible with the combined entry point.
 
