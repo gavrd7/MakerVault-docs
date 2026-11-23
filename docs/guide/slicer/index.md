@@ -1,30 +1,26 @@
 # MakerVault Slicer
 
-!!! warning "v1.7.0 Beta documentation — not a published stable feature"
-    The slicer foundation is in [MakerVault PR #171](https://github.com/gavrd7/MakerVault/pull/171). OrcaSlicer and Creality Print have real worker and native-profile implementations with verified staging tests, but support remains conditional on the particular engine, printer topology, selected profiles and validated output. Bambu Studio is under development in [PR #191](https://github.com/gavrd7/MakerVault/pull/191) and is not yet a working enabled engine. Do not assume v1.7.0 or a production installer has been released.
+**MakerVault v1.7.0 includes the integrated MakerVault Slicer**, a browser-based preparation, painting, native slicing and G-code review workspace. Supported native engine integrations are **OrcaSlicer**, **Creality Print** and **Bambu Studio**. Their executables are installed and verified individually in the combined slicer container rather than bundled into the MakerVault web application.
 
-MakerVault Slicer is an **optional**, self-hosted preparation workspace. MakerVault remains useful for models, G-code storage, printer monitoring and print submission when no slicer worker is installed.
+The slicer service is an optional part of deployment. All existing model, filament/spool, G-code Library, live printer monitoring and explicit printer-submission features remain usable without it.
 
-## Choose where to start
+## Start here
 
-- [Install or enable the optional slicer](installation.md) — what works in staging, how it differs from the planned production installation, and how to disable it without removing MakerVault data.
-- [Engines and native profiles](engines.md) — choose OrcaSlicer or Creality Print, search and import native machine/process/filament presets, and understand engine-specific limitations.
-- [Prepare, paint and slice](workbench.md) — build plates, drafts, object and material assignment, print settings, toolpath preview and explicit G-code handoff.
-- [Diagnose slicing problems](troubleshooting.md) — unavailable workers, profile issues, safe output review and printer submission boundaries.
+- [Install the slicer service](installation.md) — one `compose.yaml`, the opt-in `slicer` profile, separate secrets, persistent engine storage and safe upgrades.
+- [Install engines and select profiles](engines.md) — versions, official native catalogue searches, saved defaults, per-engine lifecycle and build plates.
+- [Prepare, paint and slice](workbench.md) — placement, per-object settings, colour/material painting, supports, seams, fuzzy skin, variable layers, flushing, towers and G-code review.
+- [Troubleshooting](troubleshooting.md) — credentials, engine health, profile inheritance, unsupported native settings and print submission.
 
-## Slicing and printing are separate
+The main [3D Printing guide](../using/printing.md) explains printer and filament inventory and links here when it reaches slicing. The [Model Library guide](../using/models.md) explains selecting stored STL/3MF assets.
 
-A successful slice creates G-code for inspection. It **does not automatically send a job, start printing or deduct filament stock**. Uploading or starting a print is a separate, expressly confirmed operation subject to the printer adapter's capabilities and material mapping restrictions. A printer's manufacturer does not force use of a matching slicer engine; engine-native profiles and actual hardware still have to match.
+## Native engines and physical printing
 
-## What is verified and what is not
+The same workbench supports different installed engines, but each uses **its own native machine, filament and process profiles**. Choosing a printer brand does not lock you to that manufacturer's slicing engine. Imported presets must match the selected engine/version, nozzle, topology and printer firmware.
 
-- OrcaSlicer and Creality Print have worker adapters and staged slicing/profile test evidence in PR #171. Available painting, multipaterial, flushing and support features are specific to the engine and selected machine/profile, not universally guaranteed.
-- Successful owner-confirmed Creality multi-colour cube prints are real evidence, but do not certify every CFS profile, flushing multiplier or different printer topology.
-- Bambu Studio has a separate early draft runner in PR #191, without complete executable validation and production worker integration.
-- General one-click browser installation and independent engine updates are **planned**, not current production instructions.
+Real executable regression tests validate selected capabilities. Bambu Studio 02.09.01.70, for example, has tests for material/tool deposition, painted facets, support-enforcer extrusion, seam/fuzzy effects, selected variable-layer bands, flush-volume multipliers and prime-tower placement. Other engine capabilities and printer topologies vary. These tests do not prove every profile or physical printer will print successfully.
 
-This is the **public user guide**. Detailed implementation tests, pinning and developer migration notes remain in the [application's technical documentation](https://github.com/gavrd7/MakerVault/tree/feature/self-hosted-slicer-foundation/docs/development).
+**Slicing is not printing.** Generated G-code must be reviewed and any subsequent printer upload/start requires a separate, explicit action and printer-specific validation. Slicing never silently starts the printer, changes the printer material database or deducts filament stock.
 
-## Illustrations before publication
+## Screenshots
 
-Capture real desktop and mobile UI screenshots for engine selection, build plate, profile search, paint tools, preview and explicit printer confirmation. Add descriptive alternative text and check screenshots for keys, private files and printer identifiers. Do not substitute mock-ups for shipped features.
+This guide is designed to include real, redacted desktop/mobile screenshots for engine installation, the workbench, profile search, painting and G-code preview. Until captured, the steps and labels are authoritative; do not substitute mock-ups or disclose printer addresses, credentials, private models or identifying account data.
