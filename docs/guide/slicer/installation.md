@@ -1,51 +1,39 @@
-# Install the MakerVault Slicer service
+# Install and manage MakerVault Slicer
 
-MakerVault uses **one** `compose.yaml` for published-image installations, source builds and the optional slicer. There are no additional supported Compose overlay files.
+MakerVault v1.7.0 includes **`makervault-slicer`**, a separate container supplied through GHCR. The application, slicer, PostgreSQL and Redis are the **four long-running services**. They share one Docker network named `makervault`. Only MakerVault's user-facing web/camera ports are published; slicer, PostgreSQL and Redis remain internal.
 
-The base installation starts three long-running containers: **MakerVault**, **PostgreSQL** and **Redis**. Enabling the standalone slicer container adds a fourth, **`makervault-slicer`**, which runs an isolated worker and native-engine installer as distinct processes with separate credentials and restricted user IDs. An engine-store permission helper runs and exits; it is not a fifth permanent service.
+## Install the stack
 
-## Before enabling
-
-1. Install MakerVault from the [Linux guide](../getting-started/install.md), and [back up](../administration/backup.md) existing data before changing a running installation.
-2. Preserve your existing `.env`, media, keys, database, backups and any installed engine volume. Never overwrite an existing `.env` with `.env.example`.
-3. Configure **different, strong** worker and installer tokens, an independently reviewed immutable combined worker image and the exact supported engine identities/checksums in your private `.env`. See [Environment configuration](../getting-started/environment.md).
-4. Enable slicer preview/execution only after the image, credentials, native engine and profile requirements are verified. Do not use placeholder secrets or fabricated digests.
-
-The combined runtime and native engines still have to be published and verified for the actual release platform. A Compose file alone is not an engine installation, and a passing configuration check is not evidence of printer compatibility.
-
-## Start the slicer
-
-From the MakerVault checkout containing the release `compose.yaml`:
+Follow the [Linux installation guide](../getting-started/install.md) for Docker prerequisites and server configuration. On a new checkout, generate your private configuration (including four separate application/database/slicer secrets), review server addresses, and start the standard stack:
 
 ```bash
+python3 scripts/generate_env_secrets.py
 sudo docker compose config --quiet
+sudo docker compose pull
 sudo docker compose up -d
 sudo docker compose ps
 ```
 
-The main application and the combined slicer are connected on an internal network. The isolated worker and installer endpoints are not published to the host. Do not grant the MakerVault application the Docker socket, access to printer credentials inside the worker, or unnecessary privileges.
+There are **no Compose profiles, extra YAML overlays or local source builds** in the normal deployment. The slicer worker and engine installer run as separate restricted processes inside the one `makervault-slicer` container. An engine-store permissions helper starts once and exits, so it is not a fifth permanent service.
 
-The first start may perform a **one-time** engine-volume permissions operation. The regular four-service count excludes its completed helper. Engine installation is administrator-initiated from the MakerVault Slicer engine-management interface.
+**Release image:** `ghcr.io/gavrd7/makervault-slicer:1.7.0` must be published and verified before the v1.7.0 release. The older `0.1.0` image cannot run the combined worker/installer entry point and must not be substituted.
 
-## Install or switch native engines
+## Install an engine
 
-Open **MakerVault Slicer → View engine installations**. Review the engine, version and source, then explicitly choose **Install**, **Update**, **Switch** or **Uninstall** as supported. MakerVault checks the source/identity and stores installed versions in a persistent engine volume. Set up matching native printer, process and filament presets before slicing.
+Open **MakerVault Slicer → View engine installations**. Select an approved OrcaSlicer, Creality Print or Bambu Studio engine/version and use the available **Install**, **Update**, **Switch** and **Uninstall** actions. Choose compatible native machine, process and filament profiles before slicing.
 
-The service may contain several verified engines; you do **not** have to install OrcaSlicer in order to use Creality Print or Bambu Studio.
+The worker and installer authenticate using two different private tokens. The setup script generates both; there is normally no need to edit them manually. Advanced installations may pin the combined image by digest or add a reviewed native engine identity to `.env`.
 
-## Updates and existing installations
+## Update safely
 
-With an installed slicer, retain the profile in normal Compose operations:
+Normal updates use the same published images and Compose file:
 
 ```bash
-sudo docker compose config --quiet
+sudo docker compose pull
 sudo docker compose up -d
+sudo docker compose ps
 ```
 
-Do not silently replace installed engine binaries when upgrading MakerVault itself. Engine version changes require independent verification and explicit administrator action. See [Update MakerVault](../administration/updates.md).
+Keep your existing `.env`, database, media, encryption key and slicer engine volumes. If you previously used development Compose overlays, read the [upgrade instructions](../administration/updates.md) before changing your running stack. Never use `docker compose down -v` to upgrade.
 
-Older development checkouts used `compose.build.yaml`, `compose.slicer.yaml` and `compose.slicer.staging.yaml`. These are **retired**. If you previously used them, back up and review existing private staging credentials, custom service overrides, image references and persistent volumes before adopting the one-file deployment. Never run `docker compose down -v` as an upgrade step.
-
-## If the slicer is unavailable
-
-Check `sudo docker compose ps`, the worker's health, its approved image identity, separate tokens and native engine registry. Other MakerVault features remain operational even if no slicer engine is installed. See [Troubleshooting](troubleshooting.md).
+See [Engines and profiles](engines.md), [Workbench](workbench.md) and [Troubleshooting](troubleshooting.md) for everyday slicing.
