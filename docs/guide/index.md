@@ -7,6 +7,7 @@ Learn to install MakerVault, record what you own and bring your projects, files 
 
 [Start here](getting-started/before-you-begin.md){ .md-button .md-button--primary }
 [Follow the guided workflow](getting-started/first-project.md){ .md-button }
+[MakerVault Slicer guide](slicer/index.md)
 </div>
 
 !!! info "MakerVault v1.7.0"
@@ -113,7 +114,7 @@ Find a board, add the units you own, plan a build and keep its files together.
 ### Organise 3D printing
 Keep track of printers, camera feeds, physical spools, models, print history and explicitly retained printed parts.
 
-[3D printing →](using/printing.md)
+[3D printing →](using/printing.md) · [MakerVault Slicer →](slicer/index.md)
 </div>
 <div class="guide-card" markdown>
 ### Keep your data safe
