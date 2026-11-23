@@ -74,30 +74,17 @@ You normally do not need to add anything to `.env`. If you want to stay on a spe
 MAKERVAULT_IMAGE=ghcr.io/gavrd7/makervault:1.7.0
 ```
 
-This setting controls only the MakerVault application image. It does not change your database or storage. Users following the build-it-yourself route use `compose.yaml (build the local application explicitly)`, which replaces the published image with a locally built one.
+This setting controls only the MakerVault application image. It does not change your database or storage. For the standard installation, use the published GHCR images; no local build is required.
 
-## Optional MakerVault Slicer settings
+## MakerVault Slicer environment settings
 
-MakerVault v1.7.0 uses the **same `compose.yaml`** for the base installation and the standalone slicer container. The base setup needs no slicer credentials. To enable native slicing, configure these in the **private `.env`** before starting the profile:
+The standard installation includes a separate `makervault-slicer` container, alongside the application, PostgreSQL and Redis. All four use a single `compose.yaml` and one Docker network. PostgreSQL, Redis and the slicer have no host-published ports.
 
-| Variable | Purpose |
-| --- | --- |
-| `MAKERVAULT_SLICER_WORKER_TOKEN` | Strong bearer secret shared with the isolated slicing worker |
-| `MAKERVAULT_SLICER_INSTALLER_TOKEN` | **Different** strong secret for the engine installer |
-| `MAKERVAULT_SLICER_WORKER_IMAGE` | Reviewed combined-worker image, preferably referenced by immutable digest |
-| `MAKERVAULT_SLICER_ENGINE_IMAGE_DIGEST` | Exact approved image identity |
-| `MAKERVAULT_SLICER_ENGINES_JSON` | Approved engine/version identities and binary checksums for MakerVault |
-| `SLICER_ENGINES_JSON` | Verified native executable paths and checksums for the worker |
-| `MAKERVAULT_SLICER_EXECUTION_ENABLED` | `1` only after execution requirements are fulfilled |
-| `MAKERVAULT_SLICER_PREVIEW_ENABLED` | Enables the integrated slicer UI when the service is configured |
+For a new installation, `python3 scripts/generate_env_secrets.py` creates **four separate secrets**: the Django key, PostgreSQL password, slicer worker token and slicer installer token. Do not copy passwords or tokens from examples, commit your private `.env`, or share expanded Compose configuration.
 
-Generate distinct long tokens locally; do not use `disabled`, CI examples or guessed checksums as production credentials. The engine binary, selected printer and native profiles must also be independently verified. See [Slicer installation](../slicer/installation.md).
+The combined slicer runs from the published `ghcr.io/gavrd7/makervault-slicer:1.7.0` GHCR image. Administrators manage the actual OrcaSlicer, Creality Print and Bambu Studio engines in the application. Advanced deployments may pin the reviewed combined image digest or approved native engine identities in `.env`; see the [Slicer installation guide](../slicer/installation.md).
 
-```bash
-sudo docker compose config --quiet
-```
-
-Never post the fully expanded Compose configuration to a public issue: environment variables can contain secrets.
+The former `makervault-slicer:0.1.0` image is not compatible with the combined worker/installer. The new image must pass publication and verification before the v1.7.0 release.
 
 ## Generate the secrets
 
@@ -211,7 +198,7 @@ sudo docker compose config --quiet
 
 No output and a successful exit means Compose could parse the configuration. It does **not** prove the database credentials, network address or storage choices are correct.
 
-For the first launch, return to [installation step 4](install.md#4-pull-and-start-makervault-recommended) and build the app. For an existing installation after an ordinary settings edit:
+For the first launch, return to [installation step 4](install.md#4-pull-and-start-makervault-recommended) and start the published images. For an existing installation after an ordinary settings edit:
 
 ```bash
 sudo docker compose up -d
