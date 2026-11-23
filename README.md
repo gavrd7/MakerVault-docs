@@ -42,7 +42,7 @@ Native slicer-engine compatibility varies by engine, profile, printer and firmwa
 
 ## Install MakerVault
 
-MakerVault uses **one Docker Compose file** and published container images. Its normal deployment contains four containers: MakerVault, a separate MakerVault Slicer container, PostgreSQL and Redis. Only the application’s user-facing ports are published; the other services communicate over the internal MakerVault network.
+MakerVault uses **one Docker Compose file** and published container images. Each versioned release automatically publishes both the MakerVault application and its separate slicer image, with a verified slicer identity built into the application image. Its normal deployment contains four containers: MakerVault, a separate MakerVault Slicer container, PostgreSQL and Redis. Only the application’s user-facing ports are published; the other services communicate over the internal MakerVault network.
 
 For a new Linux installation, follow the [step-by-step installation guide](docs/guide/getting-started/install.md), then [configure your server](docs/guide/getting-started/environment.md) and complete the first-run wizard. For a Windows host, use the [Docker Desktop / WSL2 guide](docs/guide/getting-started/windows.md).
 
