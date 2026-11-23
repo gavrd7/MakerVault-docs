@@ -84,7 +84,7 @@ For a new installation, `python3 scripts/generate_env_secrets.py` creates **four
 
 The combined slicer runs from the published `ghcr.io/gavrd7/makervault-slicer:1.7.0` GHCR image. Administrators manage the actual OrcaSlicer, Creality Print and Bambu Studio engines in the application. Advanced deployments may pin the reviewed combined image digest or approved native engine identities in `.env`; see the [Slicer installation guide](../slicer/installation.md).
 
-The former `makervault-slicer:0.1.0` image is not compatible with the combined worker/installer. The new image must pass publication and verification before the v1.7.0 release.
+The former `makervault-slicer:0.1.0` image is not compatible with the combined worker/installer. Use the reviewed v1.7.0 image.
 
 ## Generate the secrets
 
