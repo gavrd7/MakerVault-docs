@@ -86,6 +86,10 @@ The combined slicer runs from the published `ghcr.io/gavrd7/makervault-slicer:1.
 
 The former `makervault-slicer:0.1.0` image is not compatible with the combined worker/installer. Use the reviewed v1.7.0 image.
 
+## Custom slicer and service storage
+
+All persistent data locations can be configured independently in your private `.env`: `MEDIA_STORAGE`, `KEY_STORAGE`, `BACKUP_STORAGE`, `POSTGRES_STORAGE`, `REDIS_STORAGE` and **`SLICER_ENGINE_STORAGE`**. Keep their Docker named-volume defaults or use absolute Linux host paths. A custom slicer engine folder needs ownership `10002:10002` and no group/world-write permissions. Read [storage setup](storage.md#prepare-a-custom-slicer-engine-directory) before changing paths on an existing installation.
+
 ## Generate the secrets
 
 There are three different secrets to understand. They are not interchangeable.
