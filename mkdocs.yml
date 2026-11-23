@@ -83,7 +83,7 @@ nav:
       - Interactive Wiring: using/interactive-wiring.md
   - MakerVault Slicer:
       - Overview: slicer/index.md
-      - Install the optional service: slicer/installation.md
+      - Install and manage the slicer: slicer/installation.md
       - Engines and native profiles: slicer/engines.md
       - Prepare, paint and slice: slicer/workbench.md
       - Troubleshooting: slicer/troubleshooting.md
