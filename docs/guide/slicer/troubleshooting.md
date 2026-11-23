@@ -4,7 +4,7 @@ MakerVault's Model Library, printer monitoring and G-code management work withou
 
 | Symptom | What to check |
 | --- | --- |
-| **No slicer installed or enabled** | Enable the standalone slicer container in the single `compose.yaml`; use approved credentials and a reviewed worker image |
+| **No slicer installed or enabled** | Enable the standalone slicer container in the single `docker-compose.yml`; use approved credentials and a reviewed worker image |
 | **Slicer service unavailable** | Container health, private network, installer/worker tokens, immutable image identity and engine registry |
 | **Engine missing / Install failed** | Exact native engine version, approved source and SHA-256; installer UID's access to persistent engine storage |
 | **No compatible profiles** | Engine/version match, machine/nozzle topology, native parent dependencies and profile source |
