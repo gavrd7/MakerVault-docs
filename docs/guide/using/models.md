@@ -1,6 +1,6 @@
 # Models and the 3D viewer
 
-**Goal:** keep the history of a design and inspect printable geometry before opening your slicer.
+**Goal:** keep the history of a design, inspect printable geometry and send a compatible STL/3MF into MakerVault Slicer.
 
 ## Add a model
 
@@ -35,7 +35,7 @@ The Model Intelligence panel can show dimensions, triangle/vertex counts, surfac
 - Orientation guidance compares six axis-aligned candidates and estimates support risk, contact area and height. It does not test every possible rotation.
 - Fitting inside a build volume does not prove the sliced job clears clips, exclusion zones, supports or a brim.
 
-MakerVault analyses geometry locally and does not slice or repair the model. Confirm scale, orientation, support and machine settings in your slicer.
+The Model Library analyses geometry locally; the separate **MakerVault Slicer** workspace generates G-code using an installed verified native engine. The viewer does not slice, repair geometry or certify a physical print. Confirm scale, orientation, support, materials and firmware settings using the [slicer guide](../slicer/index.md).
 
 ## Saved 3MF settings
 
@@ -48,3 +48,9 @@ Re-analyse existing files when new analysis fields become available, using the a
   ![MakerVault 3D viewer displaying a 3MF model with plate selection, grid, axes and wireframe controls.](../assets/screenshots/model-viewer.png)
   <figcaption>The local STL/3MF viewer.</figcaption>
 </figure>
+
+## Send a model to MakerVault Slicer
+
+Open **MakerVault Slicer**, select the installed native engine and its compatible printer/process/filament profiles, then add your saved STL/3MF to the workbench's build plate. Position the model, apply supported settings, slice and inspect G-code. Your stored model revisions remain intact; slicing creates a separate G-code output and never automatically starts a printer.
+
+See [Prepare, paint and slice](../slicer/workbench.md) for the full procedure.
