@@ -6,19 +6,14 @@ Using Windows instead? Follow [Install MakerVault on Windows](windows.md) for Do
 
 This chapter covers a native Linux Docker host. MakerVault also supports the same Compose stack on Windows through the separate Windows guide.
 
-MakerVault supports two image routes:
+MakerVault uses the published application and slicer images from GHCR with a single `compose.yaml` file. No local compilation, Compose profiles or extra deployment overlays are required.
 
-- **Recommended:** pull the pre-built image from GitHub Container Registry (GHCR). This is the simplest route and does not compile MakerVault on your server.
-- **Build it yourself:** clone the same repository and build the Docker image locally from the supplied Dockerfile.
-
-Both routes use the same Compose stack, `.env`, database and persistent storage.
-
-!!! info "Optional MakerVault Slicer"
-    The slicer is part of v1.7.0. The same `compose.yaml` offers an optional combined `slicer` service with independently installed OrcaSlicer, Creality Print and Bambu Studio engines. See the [Slicer installation chapter](../slicer/installation.md) and [engine guide](../slicer/engines.md).
+!!! info "MakerVault Slicer"
+    The slicer runs in its own container in the standard four-container setup. OrcaSlicer, Creality Print and Bambu Studio are installed and selected separately through MakerVault. See the [slicer installation chapter](../slicer/installation.md).
 
 ## 1. Install Docker and the basic tools
 
-Follow Docker's official instructions for your installed distribution: [Debian](https://docs.docker.com/engine/install/debian/) or [Ubuntu](https://docs.docker.com/engine/install/ubuntu/). Choose Docker Engine with the **Compose plugin**. The Buildx plugin is also required if you want to build MakerVault locally.
+Follow Docker's official instructions for your installed distribution: [Debian](https://docs.docker.com/engine/install/debian/) or [Ubuntu](https://docs.docker.com/engine/install/ubuntu/). Choose Docker Engine with the **Compose plugin**. 
 
 Install the remaining tools on Debian/Ubuntu:
 
@@ -106,7 +101,7 @@ Leave the storage values at their defaults for named volumes. Leave `DJANGO_DEBU
 To pin MakerVault to one published version, optionally add:
 
 ```dotenv
-MAKERVAULT_IMAGE=ghcr.io/gavrd7/makervault:1.1.0
+MAKERVAULT_IMAGE=ghcr.io/gavrd7/makervault:1.7.0
 ```
 
 If that setting is omitted, Compose uses `ghcr.io/gavrd7/makervault:latest`.
@@ -129,32 +124,13 @@ Startup applies database changes, prepares the required roles and creates the pr
 
 Press **Ctrl+C** to stop following logs; this does not stop MakerVault.
 
-### Build MakerVault from source instead
+### MakerVault Slicer is included
 
-The only supported Compose file is `compose.yaml`. To build the checked-out application source rather than pull the published image, choose a local image tag and build the app:
+The normal installation starts **four separate containers**: MakerVault, `makervault-slicer`, PostgreSQL and Redis. Docker Compose uses the single `compose.yaml`, downloads the application and slicer images from GHCR, and connects the services to one Docker network. PostgreSQL, Redis and the slicer have **no published host ports**.
 
-```bash
-export MAKERVAULT_IMAGE=makervault-local:dev
-sudo docker compose pull makervault
-sudo -E docker compose up -d
-sudo -E docker compose ps
-```
+The initial setup script creates different secrets for the worker and engine installer. A one-off engine-storage permissions task runs and exits; no additional application or slicer container stays running. Use [the separate slicer guide](../slicer/installation.md) to install and select your native engine.
 
-For an ongoing source-build installation, put `MAKERVAULT_IMAGE=makervault-local:dev` in your private `.env`, then run `sudo docker compose pull makervault` before `sudo docker compose up -d`. The same database, media, encryption keys, backup storage and ports are retained.
-
-### MakerVault Slicer combined four-container deployment
-
-MakerVault's **`slicer` profile** adds exactly one long-running `makervault-slicer` container (worker and installer in separate restricted processes) to the three core containers. A one-time permissions helper runs and exits. No additional Compose overlays are required.
-
-Set two different strong slicer tokens, a reviewed combined-worker image and actual approved native-engine checksums in your private `.env` before enabling execution. See [environment settings](environment.md) and the [dedicated slicer installation guide](../slicer/installation.md). With verified configuration:
-
-```bash
-sudo docker compose config --quiet
-sudo docker compose up -d
-sudo docker compose ps
-```
-
-This does not automatically install a native engine or authorise a print. Use **MakerVault Slicer → View engine installations** and select a reviewed OrcaSlicer, Creality Print or Bambu Studio version, then compatible native printer/process/filament profiles.
+**Release prerequisite:** the new combined slicer GHCR image tagged `1.7.0` must be published and tested before release. The older `makervault-slicer:0.1.0` image is incompatible with the combined entry point.
 
 ## 5. Set up the first administrator
 
