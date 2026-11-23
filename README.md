@@ -10,6 +10,7 @@
 
 <p align="center">
   <a href="https://gavrd7.github.io/MakerVault-docs/">Read the guide</a> ·
+  <a href="https://gavrd7.github.io/MakerVault-docs/slicer/">Slicer guide</a> ·
   <a href="https://github.com/gavrd7/MakerVault">MakerVault application</a> ·
   <a href="docs/guide/getting-started/install.md">Installation instructions</a>
 </p>
@@ -44,6 +45,8 @@ Native slicer-engine compatibility varies by engine, profile, printer and firmwa
 MakerVault uses **one Docker Compose file** and published container images. Its normal deployment contains four containers: MakerVault, a separate MakerVault Slicer container, PostgreSQL and Redis. Only the application’s user-facing ports are published; the other services communicate over the internal MakerVault network.
 
 For a new Linux installation, follow the [step-by-step installation guide](docs/guide/getting-started/install.md), then [configure your server](docs/guide/getting-started/environment.md) and complete the first-run wizard. For a Windows host, use the [Docker Desktop / WSL2 guide](docs/guide/getting-started/windows.md).
+
+The [MakerVault Slicer guide](https://gavrd7.github.io/MakerVault-docs/slicer/) has its own section alongside the main user guide, including engine setup, profiles, painting and G-code review.
 
 The following chapters explain specific tasks in more detail:
 
