@@ -78,7 +78,7 @@ This setting controls only the MakerVault application image. It does not change 
 
 ## Optional MakerVault Slicer settings
 
-MakerVault v1.7.0 uses the **same `compose.yaml`** for the base installation and the optional `slicer` profile. The base setup needs no slicer credentials. To enable native slicing, configure these in the **private `.env`** before starting the profile:
+MakerVault v1.7.0 uses the **same `compose.yaml`** for the base installation and the standalone slicer container. The base setup needs no slicer credentials. To enable native slicing, configure these in the **private `.env`** before starting the profile:
 
 | Variable | Purpose |
 | --- | --- |
@@ -94,7 +94,7 @@ MakerVault v1.7.0 uses the **same `compose.yaml`** for the base installation and
 Generate distinct long tokens locally; do not use `disabled`, CI examples or guessed checksums as production credentials. The engine binary, selected printer and native profiles must also be independently verified. See [Slicer installation](../slicer/installation.md).
 
 ```bash
-sudo docker compose --profile slicer config --quiet
+sudo docker compose config --quiet
 ```
 
 Never post the fully expanded Compose configuration to a public issue: environment variables can contain secrets.
