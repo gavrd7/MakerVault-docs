@@ -71,10 +71,33 @@ ghcr.io/gavrd7/makervault:latest
 You normally do not need to add anything to `.env`. If you want to stay on a specific release until you deliberately upgrade, set:
 
 ```dotenv
-MAKERVAULT_IMAGE=ghcr.io/gavrd7/makervault:1.1.0
+MAKERVAULT_IMAGE=ghcr.io/gavrd7/makervault:1.7.0
 ```
 
-This setting controls only the MakerVault application image. It does not change your database or storage. Users following the build-it-yourself route use `compose.build.yaml`, which replaces the published image with a locally built one.
+This setting controls only the MakerVault application image. It does not change your database or storage. Users following the build-it-yourself route use `compose.yaml (build the local application explicitly)`, which replaces the published image with a locally built one.
+
+## Optional MakerVault Slicer settings
+
+MakerVault v1.7.0 uses the **same `compose.yaml`** for the base installation and the optional `slicer` profile. The base setup needs no slicer credentials. To enable native slicing, configure these in the **private `.env`** before starting the profile:
+
+| Variable | Purpose |
+| --- | --- |
+| `MAKERVAULT_SLICER_WORKER_TOKEN` | Strong bearer secret shared with the isolated slicing worker |
+| `MAKERVAULT_SLICER_INSTALLER_TOKEN` | **Different** strong secret for the engine installer |
+| `MAKERVAULT_SLICER_WORKER_IMAGE` | Reviewed combined-worker image, preferably referenced by immutable digest |
+| `MAKERVAULT_SLICER_ENGINE_IMAGE_DIGEST` | Exact approved image identity |
+| `MAKERVAULT_SLICER_ENGINES_JSON` | Approved engine/version identities and binary checksums for MakerVault |
+| `SLICER_ENGINES_JSON` | Verified native executable paths and checksums for the worker |
+| `MAKERVAULT_SLICER_EXECUTION_ENABLED` | `1` only after execution requirements are fulfilled |
+| `MAKERVAULT_SLICER_PREVIEW_ENABLED` | Enables the integrated slicer UI when the service is configured |
+
+Generate distinct long tokens locally; do not use `disabled`, CI examples or guessed checksums as production credentials. The engine binary, selected printer and native profiles must also be independently verified. See [Slicer installation](../slicer/installation.md).
+
+```bash
+sudo docker compose --profile slicer config --quiet
+```
+
+Never post the fully expanded Compose configuration to a public issue: environment variables can contain secrets.
 
 ## Generate the secrets
 
