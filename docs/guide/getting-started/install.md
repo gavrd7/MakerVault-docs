@@ -135,12 +135,12 @@ The only supported Compose file is `compose.yaml`. To build the checked-out appl
 
 ```bash
 export MAKERVAULT_IMAGE=makervault-local:dev
-sudo -E docker compose build makervault
+sudo docker compose pull makervault
 sudo -E docker compose up -d
 sudo -E docker compose ps
 ```
 
-For an ongoing source-build installation, put `MAKERVAULT_IMAGE=makervault-local:dev` in your private `.env`, then run `sudo docker compose build makervault` before `sudo docker compose up -d`. The same database, media, encryption keys, backup storage and ports are retained.
+For an ongoing source-build installation, put `MAKERVAULT_IMAGE=makervault-local:dev` in your private `.env`, then run `sudo docker compose pull makervault` before `sudo docker compose up -d`. The same database, media, encryption keys, backup storage and ports are retained.
 
 ### MakerVault Slicer combined four-container deployment
 
@@ -149,9 +149,9 @@ MakerVault's **`slicer` profile** adds exactly one long-running `makervault-slic
 Set two different strong slicer tokens, a reviewed combined-worker image and actual approved native-engine checksums in your private `.env` before enabling execution. See [environment settings](environment.md) and the [dedicated slicer installation guide](../slicer/installation.md). With verified configuration:
 
 ```bash
-sudo docker compose --profile slicer config --quiet
-sudo docker compose --profile slicer up -d
-sudo docker compose --profile slicer ps
+sudo docker compose config --quiet
+sudo docker compose up -d
+sudo docker compose ps
 ```
 
 This does not automatically install a native engine or authorise a print. Use **MakerVault Slicer → View engine installations** and select a reviewed OrcaSlicer, Creality Print or Bambu Studio version, then compatible native printer/process/filament profiles.
@@ -198,7 +198,7 @@ sudo docker compose up -d
 For a source-build deployment, use the same Compose file with your local image tag:
 
 ```bash
-sudo docker compose build makervault
+sudo docker compose pull makervault
 sudo docker compose up -d
 ```
 
