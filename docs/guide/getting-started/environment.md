@@ -6,13 +6,13 @@ Work through this chapter at **step 3 of installation**, after downloading Maker
 
 ## What is .env?
 
-`.env` is a plain-text settings file in the same folder as `compose.yaml`. Docker Compose reads it to configure your installation. MakerVault's Compose file also passes settings from it to the application container.
+`.env` is a plain-text settings file in the same folder as `docker-compose.yml`. Docker Compose reads it to configure your installation. MakerVault's Compose file also passes settings from it to the application container.
 
 | File | Purpose | Should you edit it? |
 | --- | --- | --- |
 | `.env.example` | The project's example settings, updated with the source code | Normally no; use it as a reference |
 | `.env` | Your installation's real settings and secrets | Yes; this is your working configuration |
-| `compose.yaml` | Describes the services, ports and storage connections | Normally leave it alone for this setup |
+| `docker-compose.yml` | Describes the services, ports and storage connections | Normally leave it alone for this setup |
 
 The leading dot makes `.env` a hidden file on many systems. Its exact name matters: `.env.txt` is a different file. It is not a Python script and you do not need to run or `source` it.
 
@@ -78,7 +78,7 @@ This setting controls only the MakerVault application image. It does not change 
 
 ## MakerVault Slicer environment settings
 
-The standard installation includes a separate `makervault-slicer` container, alongside the application, PostgreSQL and Redis. All four use a single `compose.yaml` and one Docker network. PostgreSQL, Redis and the slicer have no host-published ports.
+The standard installation includes a separate `makervault-slicer` container, alongside the application, PostgreSQL and Redis. All four use a single `docker-compose.yml` and one Docker network. PostgreSQL, Redis and the slicer have no host-published ports.
 
 For a new installation, `python3 scripts/generate_env_secrets.py` creates **four separate secrets**: the Django key, PostgreSQL password, slicer worker token and slicer installer token. Do not copy passwords or tokens from examples, commit your private `.env`, or share expanded Compose configuration.
 
