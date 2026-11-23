@@ -36,4 +36,10 @@ sudo docker compose ps
 
 Keep your existing `.env`, database, media, encryption key and slicer engine volumes. If you previously used development Compose overlays, read the [upgrade instructions](../administration/updates.md) before changing your running stack. Never use `docker compose down -v` to upgrade.
 
+## Choose where engines live
+
+By default, installed native engines persist in the Docker volume `makervault_slicer_engines`. In your private `.env`, set `SLICER_ENGINE_STORAGE=/srv/makervault/slicer-engines` to use a custom absolute host directory instead. This is independent of the existing paths for PostgreSQL, Redis, MakerVault media, keys and backups.
+
+On a **new** host directory, set owner UID/GID `10002:10002` and mode `0755` before starting. For an **existing** installation, first back up, migrate and verify all installed engine files and the registry; changing the path does not automatically move them. See [Storage](../getting-started/storage.md#prepare-a-custom-slicer-engine-directory).
+
 See [Engines and profiles](engines.md), [Workbench](workbench.md) and [Troubleshooting](troubleshooting.md) for everyday slicing.
