@@ -4,7 +4,7 @@ MakerVault's Model Library, printer monitoring and G-code management work withou
 
 | Symptom | What to check |
 | --- | --- |
-| **No slicer installed or enabled** | Enable the `slicer` profile in the single `compose.yaml`; use approved credentials and a reviewed worker image |
+| **No slicer installed or enabled** | Enable the standalone slicer container in the single `compose.yaml`; use approved credentials and a reviewed worker image |
 | **Slicer service unavailable** | Container health, private network, installer/worker tokens, immutable image identity and engine registry |
 | **Engine missing / Install failed** | Exact native engine version, approved source and SHA-256; installer UID's access to persistent engine storage |
 | **No compatible profiles** | Engine/version match, machine/nozzle topology, native parent dependencies and profile source |
@@ -21,9 +21,9 @@ On the host in the MakerVault checkout:
 
 ```bash
 sudo docker compose config --quiet
-sudo docker compose --profile slicer config --quiet
-sudo docker compose --profile slicer ps
-sudo docker compose --profile slicer logs --tail=100 slicer-worker
+sudo docker compose config --quiet
+sudo docker compose ps
+sudo docker compose logs --tail=100 slicer-worker
 ```
 
 These checks do not start a print. Do not disable identity checks, grant the web app Docker-socket access, use a sample worker image as if it were approved, or run `docker compose down -v` to troubleshoot.
