@@ -9,11 +9,12 @@ Learn to install MakerVault, record what you own and bring your projects, files 
 [Follow the guided workflow](getting-started/first-project.md){ .md-button }
 </div>
 
-**Introduced in v1.5.1 / Terminal v1.0.1 and retained in v1.6.0:** verified MakerTag cleaning and optional clean-on-remove, one authenticated five-second terminal pending-work poll, and native ESP-IDF persistent HTTPS with corrected worker memory cleanup. The maintainer reports the hardware release test matrix passed; final availability depends on the matching published app and firmware builds. See [Clean and remove MakerTags](using/maker-tag-maintenance.md) and [Connected Devices](using/connected-devices.md). **Previously in v1.4.5:** Paired MakerVault Terminal v0.7 supports verified single-scan NTAG215 NFC link writing, stable MakerTag URLs and cancellation-safe expiry. The native HTTPS listener is more resilient to slow connections. **Previously in v1.2.2:** custom and batch Maker Tag QR label printing, text visibility settings and target-type filters. **Previously in v1.2.0:** reusable spool hardware tracking, manufacturer and printable design catalogues, personal spool images, reviewed catalogue submissions and branded QR labels. The v1.5.0 application was published previously; confirm the v1.5.1 container image is available before deploying this maintenance release.
+!!! info "MakerVault v1.7.0"
+    MakerVault includes the optional **MakerVault Slicer** with native **OrcaSlicer, Creality Print and Bambu Studio** integrations. Each engine is installed and verified separately; the common interface supports engine-native profiles, build-plate preparation, material/colour assignment, supported painting and G-code review. The same release retains private G-code storage and confirmed printer submission, MakerTags, connected terminal features, printer monitoring, workshop inventory and project management.
 
-## MakerVault Slicer — in development
+## MakerVault Slicer
 
-The separate [MakerVault Slicer guide](slicer/index.md) covers the **v1.7.0 Beta candidate**: optional staging installation, OrcaSlicer and Creality Print engine-native profiles, the preparation workbench, multi-material precautions, G-code preview and explicit printer submission. The slicer is **not yet a published stable feature**. Bambu Studio and a normal production engine installer remain under development; screenshots and final release commands will follow acceptance.
+The dedicated [MakerVault Slicer guide](slicer/index.md) covers [installation](slicer/installation.md) using one Docker Compose file with a `slicer` profile, [engine and profile management](slicer/engines.md), [painting and slicing](slicer/workbench.md), and [troubleshooting](slicer/troubleshooting.md). Native engine output and compatible printer firmware still require review before a physical print.
 
 ## G-code Library and printer submission
 
