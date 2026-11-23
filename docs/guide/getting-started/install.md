@@ -6,7 +6,7 @@ Using Windows instead? Follow [Install MakerVault on Windows](windows.md) for Do
 
 This chapter covers a native Linux Docker host. MakerVault also supports the same Compose stack on Windows through the separate Windows guide.
 
-MakerVault uses the published application and slicer images from GHCR with a single `compose.yaml` file. No local compilation, Compose profiles or extra deployment overlays are required.
+MakerVault uses the published application and slicer images from GHCR with a single `docker-compose.yml` file. No local compilation, Compose profiles or extra deployment overlays are required.
 
 !!! info "MakerVault Slicer"
     The slicer runs in its own container in the standard four-container setup. OrcaSlicer, Creality Print and Bambu Studio are installed and selected separately through MakerVault. See the [slicer installation chapter](../slicer/installation.md).
@@ -126,7 +126,7 @@ Press **Ctrl+C** to stop following logs; this does not stop MakerVault.
 
 ### MakerVault Slicer is included
 
-The normal installation starts **four separate containers**: MakerVault, `makervault-slicer`, PostgreSQL and Redis. Docker Compose uses the single `compose.yaml`, downloads the application and slicer images from GHCR, and connects the services to one Docker network. PostgreSQL, Redis and the slicer have **no published host ports**.
+The normal installation starts **four separate containers**: MakerVault, `makervault-slicer`, PostgreSQL and Redis. Docker Compose uses the single `docker-compose.yml`, downloads the application and slicer images from GHCR, and connects the services to one Docker network. PostgreSQL, Redis and the slicer have **no published host ports**.
 
 The initial setup script creates different secrets for the worker and engine installer. A new engine-store volume is prepared by the reviewed slicer image; the stack has exactly four services. Use [the separate slicer guide](../slicer/installation.md) to install and select your native engine.
 
