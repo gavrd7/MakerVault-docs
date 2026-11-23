@@ -16,7 +16,7 @@ sudo docker compose ps
 
 There are **no Compose profiles, extra YAML overlays or local source builds** in the normal deployment. The slicer worker and engine installer run as separate restricted processes inside the one `makervault-slicer` container. The image provides the initial engine-store volume permissions on a new installation.
 
-**Slicer image:** `ghcr.io/gavrd7/makervault-slicer:1.7.0`. The older `0.1.0` image cannot run the combined worker/installer entry point and must not be substituted.
+**Slicer image:** `ghcr.io/gavrd7/makervault-slicer:1.7.0`. Creating the `v1.7.0` release tag automatically publishes both the MakerVault application image and its matching slicer image through one release workflow. The application image includes the reviewed slicer digest, so normal installers do not need to copy image hashes into `.env`. The older `0.1.0` image cannot run the combined worker/installer entry point and must not be substituted.
 
 ## Install an engine
 
