@@ -2,7 +2,7 @@
 
 MakerVault uses **one** `compose.yaml` for published-image installations, source builds and the optional slicer. There are no additional supported Compose overlay files.
 
-The base installation starts three long-running containers: **MakerVault**, **PostgreSQL** and **Redis**. Enabling the `slicer` profile adds a fourth, **`makervault-slicer`**, which runs an isolated worker and native-engine installer as distinct processes with separate credentials and restricted user IDs. An engine-store permission helper runs and exits; it is not a fifth permanent service.
+The base installation starts three long-running containers: **MakerVault**, **PostgreSQL** and **Redis**. Enabling the standalone slicer container adds a fourth, **`makervault-slicer`**, which runs an isolated worker and native-engine installer as distinct processes with separate credentials and restricted user IDs. An engine-store permission helper runs and exits; it is not a fifth permanent service.
 
 ## Before enabling
 
@@ -18,9 +18,9 @@ The combined runtime and native engines still have to be published and verified 
 From the MakerVault checkout containing the release `compose.yaml`:
 
 ```bash
-sudo docker compose --profile slicer config --quiet
-sudo docker compose --profile slicer up -d
-sudo docker compose --profile slicer ps
+sudo docker compose config --quiet
+sudo docker compose up -d
+sudo docker compose ps
 ```
 
 The main application and the combined slicer are connected on an internal network. The isolated worker and installer endpoints are not published to the host. Do not grant the MakerVault application the Docker socket, access to printer credentials inside the worker, or unnecessary privileges.
@@ -38,8 +38,8 @@ The service may contain several verified engines; you do **not** have to install
 With an installed slicer, retain the profile in normal Compose operations:
 
 ```bash
-sudo docker compose --profile slicer config --quiet
-sudo docker compose --profile slicer up -d
+sudo docker compose config --quiet
+sudo docker compose up -d
 ```
 
 Do not silently replace installed engine binaries when upgrading MakerVault itself. Engine version changes require independent verification and explicit administrator action. See [Update MakerVault](../administration/updates.md).
@@ -48,4 +48,4 @@ Older development checkouts used `compose.build.yaml`, `compose.slicer.yaml` and
 
 ## If the slicer is unavailable
 
-Check `sudo docker compose --profile slicer ps`, the worker's health, its approved image identity, separate tokens and native engine registry. Other MakerVault features remain operational even if no slicer engine is installed. See [Troubleshooting](troubleshooting.md).
+Check `sudo docker compose ps`, the worker's health, its approved image identity, separate tokens and native engine registry. Other MakerVault features remain operational even if no slicer engine is installed. See [Troubleshooting](troubleshooting.md).
