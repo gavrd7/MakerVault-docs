@@ -25,7 +25,7 @@ Named volumes still consume space on the Docker host's disk. They are not cloud 
 
 Docker's [volumes guide](https://docs.docker.com/engine/storage/volumes/) and [bind mounts guide](https://docs.docker.com/engine/storage/bind-mounts/) describe the underlying storage options.
 
-## MakerVault's five storage locations
+## MakerVault's six storage locations
 
 | `.env` setting | What it stores | Path seen inside the container |
 | --- | --- | --- |
@@ -34,8 +34,9 @@ Docker's [volumes guide](https://docs.docker.com/engine/storage/volumes/) and [b
 | `POSTGRES_STORAGE` | Database records, accounts and settings | `/var/lib/postgresql` |
 | `REDIS_STORAGE` | Background queue/cache state | `/data` |
 | `BACKUP_STORAGE` | Managed `.mvbackup` recovery bundles and validation metadata | `/app/backups` |
+| `SLICER_ENGINE_STORAGE` | Installed slicer engines and version registry | `/opt/engine-store` in `makervault-slicer` |
 
-Your source folder, containing `compose.yaml` and `.env`, is separate. Keeping a copy of the source folder alone does not back up these persistent data locations.
+Your source folder, containing `docker-compose.yml` and `.env`, is separate. Keeping a copy of the source folder alone does not back up these persistent data locations.
 
 ## Option A: keep the named-volume defaults
 
@@ -47,11 +48,12 @@ KEY_STORAGE=makervault_keys
 POSTGRES_STORAGE=makervault_postgres
 REDIS_STORAGE=makervault_redis
 BACKUP_STORAGE=makervault_backups
+SLICER_ENGINE_STORAGE=makervault_slicer_engines
 ```
 
 You do not need to make directories named `makervault_media` beside your Compose file. Compose creates its declared named volumes when you start the stack. Their actual Docker names may include the project-name prefix.
 
-Keep the supplied names unless also editing the volume declarations in `compose.yaml`. Changing them to arbitrary new names in `.env` alone is not a supported shortcut to creating undeclared volumes.
+Keep the supplied names unless also editing the volume declarations in `docker-compose.yml`. Changing them to arbitrary new names in `.env` alone is not a supported shortcut to creating undeclared volumes.
 
 Use the [backup procedure](../administration/backup.md) without needing to know Docker's internal storage folder. Do not manually edit files under Docker's storage directory.
 
@@ -67,16 +69,17 @@ For a **new Linux installation**, you might choose this layout. For Docker Deskt
 | `/srv/makervault/postgres` | Live database files |
 | `/srv/makervault/redis` | Live queue/cache data |
 | `/srv/makervault/backups` | Managed recovery bundles |
+| `/srv/makervault/slicer-engines` | Installed native slicer engines |
 
 The source can also remain in `~/apps/MakerVault` as in the installation guide; you do not have to move it to use these data folders. A path such as `/mnt/Server/MakerVault/media` is equally valid if that is where you organise your server's storage. Choose a reliable local filesystem; external/network mounts need additional care to ensure availability before startup.
 
 Create the data folders:
 
 ```bash
-sudo mkdir -p /srv/makervault/media /srv/makervault/keys /srv/makervault/postgres /srv/makervault/redis /srv/makervault/backups
+sudo mkdir -p /srv/makervault/media /srv/makervault/keys /srv/makervault/postgres /srv/makervault/redis /srv/makervault/backups /srv/makervault/slicer-engines
 ```
 
-Replace the **five existing storage entries** in `.env` with:
+Replace the **six storage entries** in `.env` with:
 
 ```dotenv
 MEDIA_STORAGE=/srv/makervault/media
@@ -84,6 +87,7 @@ KEY_STORAGE=/srv/makervault/keys
 POSTGRES_STORAGE=/srv/makervault/postgres
 REDIS_STORAGE=/srv/makervault/redis
 BACKUP_STORAGE=/srv/makervault/backups
+SLICER_ENGINE_STORAGE=/srv/makervault/slicer-engines
 ```
 
 On Linux or a WSL-hosted Docker Engine, use full absolute Linux paths beginning with `/`. Avoid `~`, relative paths and spaces for this beginner setup. On Docker Desktop from Windows, do not copy these `/srv/...` examples as Windows paths; keep named volumes unless you deliberately configure Docker Desktop bind mounts. If using the commented examples in `.env.example`, remove their `#` and remove/replace the old active entries so there is only one active entry per setting.
@@ -119,6 +123,20 @@ UMASK=0022
 ```
 
 Do not run `sudo id` to find your normal user's IDs; it reports root's IDs. MakerVault's startup normally fixes ownership of its application media/key/backup storage. PostgreSQL uses the official image's own user: do not change its data directory to MakerVault's PUID/PGID.
+
+### Prepare a custom slicer engine directory
+
+The slicer engine installer runs as Linux UID/GID `10002:10002`; the separate worker cannot modify its engine binaries. On a fresh Linux host path:
+
+```bash
+sudo mkdir -p /srv/makervault/slicer-engines
+sudo chown 10002:10002 /srv/makervault/slicer-engines
+sudo chmod 0755 /srv/makervault/slicer-engines
+```
+
+Keep that directory owned by UID 10002 and not writable by group or other users. The default named Docker volume inherits the required permissions from the combined slicer image. Your other data directories remain independently configurable.
+
+Changing from a named volume to a host path **does not copy existing engines**. Back up and migrate the old files, permissions and version registry before switching, then test native engine availability. Do not delete volumes or use `docker compose down -v`. Use a local Linux filesystem that supports standard ownership and permissions.
 
 Continue with the normal installation after saving. Bind mounts do not need a separate MakerVault image or different web port.
 

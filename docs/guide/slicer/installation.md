@@ -1,0 +1,51 @@
+# Install and manage MakerVault Slicer
+
+MakerVault v1.7.0 includes **`makervault-slicer`**, a separate container supplied through GHCR. The application, slicer, PostgreSQL and Redis are the **four long-running services**. They share one Docker network named `makervault`. Only MakerVault's user-facing web/camera ports are published; slicer, PostgreSQL and Redis remain internal.
+
+## Supported platforms (v1.7.0)
+
+The **MakerVault Slicer image is Linux AMD64 (x86-64) only**. On x86-64 Linux it runs natively as a Linux container; on x86-64 Windows with Docker Desktop or Intel macOS with Docker Desktop, Linux-container execution is possible (host-specific compatibility still needs testing). No native Windows or macOS slicer image is distributed.
+
+The **main MakerVault application** publishes AMD64 and ARM64 images, but the **slicer has no native ARM64 image in v1.7.0**. This includes ARM64 Linux, Raspberry Pi and Apple Silicon hosts. The standard four-container Compose installation therefore is not natively supported on ARM64; the slicer may fail to start even when the main application supports the processor. AMD64 emulation on ARM64 has not been validated as supported. A future ARM64 slicer image would need compatible verified native engine binaries and testing.
+
+## Install the stack
+
+Follow the [Linux installation guide](../getting-started/install.md) for Docker prerequisites and server configuration. On a new checkout, generate your private configuration (including four separate application/database/slicer secrets), review server addresses, and start the standard stack:
+
+```bash
+python3 scripts/generate_env_secrets.py
+sudo docker compose config --quiet
+sudo docker compose pull
+sudo docker compose up -d
+sudo docker compose ps
+```
+
+There are **no Compose profiles, extra YAML overlays or local source builds** in the normal deployment. The slicer worker and engine installer run as separate restricted processes inside the one `makervault-slicer` container. The image provides the initial engine-store volume permissions on a new installation.
+
+**Slicer image:** `ghcr.io/gavrd7/makervault-slicer:1.7.0`. Creating the `v1.7.0` release tag automatically publishes both the MakerVault application image and its matching slicer image through one release workflow. The application image includes the reviewed slicer digest, so normal installers do not need to copy image hashes into `.env`. The older `0.1.0` image cannot run the combined worker/installer entry point and must not be substituted.
+
+## Install an engine
+
+Open **MakerVault Slicer → View engine installations**. Select an approved OrcaSlicer, Creality Print or Bambu Studio engine/version and use the available **Install**, **Update**, **Switch** and **Uninstall** actions. Choose compatible native machine, process and filament profiles before slicing.
+
+The worker and installer authenticate using two different private tokens. The setup script generates both; there is normally no need to edit them manually. Advanced installations may pin the combined image by digest or add a reviewed native engine identity to `.env`.
+
+## Update safely
+
+Normal updates use the same published images and Compose file:
+
+```bash
+sudo docker compose pull
+sudo docker compose up -d
+sudo docker compose ps
+```
+
+Keep your existing `.env`, database, media, encryption key and slicer engine volumes. If you previously used development Compose overlays, read the [upgrade instructions](../administration/updates.md) before changing your running stack. Never use `docker compose down -v` to upgrade.
+
+## Choose where engines live
+
+By default, installed native engines persist in the Docker volume `makervault_slicer_engines`. In your private `.env`, set `SLICER_ENGINE_STORAGE=/srv/makervault/slicer-engines` to use a custom absolute host directory instead. This is independent of the existing paths for PostgreSQL, Redis, MakerVault media, keys and backups.
+
+On a **new** host directory, set owner UID/GID `10002:10002` and mode `0755` before starting. For an **existing** installation, first back up, migrate and verify all installed engine files and the registry; changing the path does not automatically move them. See [Storage](../getting-started/storage.md#prepare-a-custom-slicer-engine-directory).
+
+See [Engines and profiles](engines.md), [Workbench](workbench.md) and [Troubleshooting](troubleshooting.md) for everyday slicing.

@@ -7,9 +7,15 @@ Learn to install MakerVault, record what you own and bring your projects, files 
 
 [Start here](getting-started/before-you-begin.md){ .md-button .md-button--primary }
 [Follow the guided workflow](getting-started/first-project.md){ .md-button }
+[MakerVault Slicer guide](slicer/index.md)
 </div>
 
-**Introduced in v1.5.1 / Terminal v1.0.1 and retained in v1.6.0:** verified MakerTag cleaning and optional clean-on-remove, one authenticated five-second terminal pending-work poll, and native ESP-IDF persistent HTTPS with corrected worker memory cleanup. The maintainer reports the hardware release test matrix passed; final availability depends on the matching published app and firmware builds. See [Clean and remove MakerTags](using/maker-tag-maintenance.md) and [Connected Devices](using/connected-devices.md). **Previously in v1.4.5:** Paired MakerVault Terminal v0.7 supports verified single-scan NTAG215 NFC link writing, stable MakerTag URLs and cancellation-safe expiry. The native HTTPS listener is more resilient to slow connections. **Previously in v1.2.2:** custom and batch Maker Tag QR label printing, text visibility settings and target-type filters. **Previously in v1.2.0:** reusable spool hardware tracking, manufacturer and printable design catalogues, personal spool images, reviewed catalogue submissions and branded QR labels. The v1.5.0 application was published previously; confirm the v1.5.1 container image is available before deploying this maintenance release.
+!!! info "MakerVault v1.7.0"
+    MakerVault includes a separate **MakerVault Slicer** container with native **OrcaSlicer, Creality Print and Bambu Studio** integrations. Each engine is installed and verified separately; the common interface supports engine-native profiles, build-plate preparation, material/colour assignment, supported painting and G-code review. The same release retains private G-code storage and confirmed printer submission, MakerTags, connected terminal features, printer monitoring, workshop inventory and project management.
+
+## MakerVault Slicer
+
+The dedicated [MakerVault Slicer guide](slicer/index.md) covers [installation](slicer/installation.md) using the single `docker-compose.yml` file without extra profiles, [engine and profile management](slicer/engines.md), [painting and slicing](slicer/workbench.md), and [troubleshooting](slicer/troubleshooting.md). Native engine output and compatible printer firmware still require review before a physical print.
 
 ## G-code Library and printer submission
 
@@ -91,9 +97,6 @@ That separation is what lets MakerVault grow from a simple parts list into a use
   <div id="guide-search-results" class="guide-search__results" data-guide-search-results></div>
 </div>
 
-!!! info "MakerVault v1.6.0 — G-code Library and printer submission"
-    Version 1.6.0 adds owner-scoped plain-text G-code storage, bounded visual inspection, model/revision links and explicit upload/print workflows for compatible printer connections. Stock Creality K1 native print-start and completion, K2 file transfer, Moonraker start, and simultaneous K1/K2 same-origin camera previews have hardware evidence; some other printer/firmware operations, including proprietary K2 mapped-CFS starts, remain experimental. This guide documents the v1.6.0 feature set for its coordinated release; verify the image/tag you deploy. Earlier releases introduced the Terminal, MakerTags, reusable spools and the v1 platform/recovery foundations. See [G-code Library and printer submission](using/gcode-and-print-submission.md) and [scope and verification](reference/about.md).
-
 <div class="guide-grid" markdown>
 <div class="guide-card" markdown>
 ### Set up your own server
@@ -111,7 +114,7 @@ Find a board, add the units you own, plan a build and keep its files together.
 ### Organise 3D printing
 Keep track of printers, camera feeds, physical spools, models, print history and explicitly retained printed parts.
 
-[3D printing →](using/printing.md)
+[3D printing →](using/printing.md) · [MakerVault Slicer →](slicer/index.md)
 </div>
 <div class="guide-card" markdown>
 ### Keep your data safe
@@ -155,9 +158,8 @@ Use the interactive search above or the search icon in the header to find a feat
 
 <figure markdown>
   ![MakerVault dashboard showing workspace totals and live-printer information.](assets/screenshots/dashboard-overview.png)
-  <figcaption>MakerVault v1 release-candidate dashboard.</figcaption>
+  <figcaption>MakerVault dashboard showing workshop inventory, projects and printing.</figcaption>
 </figure>
-
 
 ## Contact MakerVault
 

@@ -24,7 +24,7 @@ In **Camera setup**, select the **Creality local** integration, choose **Camera 
 
 `http://PRINTER_HOST:8000/call/webrtc_local`
 
-Save the source and choose **Use for previews**. MakerVault obtains the printer video session over its local Creality connection, ingests WebRTC through the existing compatibility relay, and serves authenticated **same-origin HLS/fMP4** video to the browser. The browser need not reach the printer's raw camera port; the MakerVault server must reach it. The relay must be available for playback.
+Save the source and choose **Use for previews**. MakerVault obtains the printer video session over its local Creality connection, ingests WebRTC through the existing compatibility relay, and serves authenticated **same-origin HLS/fMP4** video to the browser. The browser need not reach the printer's raw camera port; the MakerVault server must reach it. The standard v1.7.0 Docker Compose file therefore does **not** expose a separate host port 8555. The authenticated K1/K2 camera compatibility path uses the existing MakerVault web port to serve HLS/fMP4. Direct generic WebRTC media routes, where needed, require separate network validation. The relay must be available for playback.
 
 **Clean stock K1 firmware may show live video in Creality Print while port 8080 MJPEG is unavailable.** Use the native WebRTC preset in that case. Installing Helper Script or rooting the K1 is not required to use MakerVault's existing relay.
 

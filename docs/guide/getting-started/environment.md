@@ -6,13 +6,13 @@ Work through this chapter at **step 3 of installation**, after downloading Maker
 
 ## What is .env?
 
-`.env` is a plain-text settings file in the same folder as `compose.yaml`. Docker Compose reads it to configure your installation. MakerVault's Compose file also passes settings from it to the application container.
+`.env` is a plain-text settings file in the same folder as `docker-compose.yml`. Docker Compose reads it to configure your installation. MakerVault's Compose file also passes settings from it to the application container.
 
 | File | Purpose | Should you edit it? |
 | --- | --- | --- |
 | `.env.example` | The project's example settings, updated with the source code | Normally no; use it as a reference |
 | `.env` | Your installation's real settings and secrets | Yes; this is your working configuration |
-| `compose.yaml` | Describes the services, ports and storage connections | Normally leave it alone for this setup |
+| `docker-compose.yml` | Describes the services, ports and storage connections | Normally leave it alone for this setup |
 
 The leading dot makes `.env` a hidden file on many systems. Its exact name matters: `.env.txt` is a different file. It is not a Python script and you do not need to run or `source` it.
 
@@ -71,10 +71,24 @@ ghcr.io/gavrd7/makervault:latest
 You normally do not need to add anything to `.env`. If you want to stay on a specific release until you deliberately upgrade, set:
 
 ```dotenv
-MAKERVAULT_IMAGE=ghcr.io/gavrd7/makervault:1.1.0
+MAKERVAULT_IMAGE=ghcr.io/gavrd7/makervault:1.7.0
 ```
 
-This setting controls only the MakerVault application image. It does not change your database or storage. Users following the build-it-yourself route use `compose.build.yaml`, which replaces the published image with a locally built one.
+This setting controls only the MakerVault application image. It does not change your database or storage. For the standard installation, use the published GHCR images; no local build is required.
+
+## MakerVault Slicer environment settings
+
+The standard installation includes a separate `makervault-slicer` container, alongside the application, PostgreSQL and Redis. All four use a single `docker-compose.yml` and one Docker network. PostgreSQL, Redis and the slicer have no host-published ports.
+
+For a new installation, `python3 scripts/generate_env_secrets.py` creates **four separate secrets**: the Django key, PostgreSQL password, slicer worker token and slicer installer token. Do not copy passwords or tokens from examples, commit your private `.env`, or share expanded Compose configuration.
+
+The combined slicer runs from the published `ghcr.io/gavrd7/makervault-slicer:1.7.0` GHCR image. The release workflow automatically publishes the slicer before the application image and embeds its immutable image digest into the application; no manual slicer image/digest entries are needed in `.env`. Administrators manage the actual OrcaSlicer, Creality Print and Bambu Studio engines in the application. Advanced deployments may pin the reviewed combined image digest or approved native engine identities in `.env`; see the [Slicer installation guide](../slicer/installation.md).
+
+The former `makervault-slicer:0.1.0` image is not compatible with the combined worker/installer. Use the reviewed v1.7.0 image.
+
+## Custom slicer and service storage
+
+All persistent data locations can be configured independently in your private `.env`: `MEDIA_STORAGE`, `KEY_STORAGE`, `BACKUP_STORAGE`, `POSTGRES_STORAGE`, `REDIS_STORAGE` and **`SLICER_ENGINE_STORAGE`**. Keep their Docker named-volume defaults or use absolute Linux host paths. A custom slicer engine folder needs ownership `10002:10002` and no group/world-write permissions. Read [storage setup](storage.md#prepare-a-custom-slicer-engine-directory) before changing paths on an existing installation.
 
 ## Generate the secrets
 
@@ -188,7 +202,7 @@ sudo docker compose config --quiet
 
 No output and a successful exit means Compose could parse the configuration. It does **not** prove the database credentials, network address or storage choices are correct.
 
-For the first launch, return to [installation step 4](install.md#4-pull-and-start-makervault-recommended) and build the app. For an existing installation after an ordinary settings edit:
+For the first launch, return to [installation step 4](install.md#4-pull-and-start-makervault-recommended) and start the published images. For an existing installation after an ordinary settings edit:
 
 ```bash
 sudo docker compose up -d
