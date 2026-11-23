@@ -6,7 +6,7 @@ The slicer service is an optional part of deployment. All existing model, filame
 
 ## Start here
 
-- [Install the slicer service](installation.md) — one `compose.yaml`, the opt-in `slicer` profile, separate secrets, persistent engine storage and safe upgrades.
+- [Install the slicer service](installation.md) — one `docker-compose.yml`, the opt-in `slicer` profile, separate secrets, persistent engine storage and safe upgrades.
 - [Install engines and select profiles](engines.md) — versions, official native catalogue searches, saved defaults, per-engine lifecycle and build plates.
 - [Prepare, paint and slice](workbench.md) — placement, per-object settings, colour/material painting, supports, seams, fuzzy skin, variable layers, flushing, towers and G-code review.
 - [Troubleshooting](troubleshooting.md) — credentials, engine health, profile inheritance, unsupported native settings and print submission.
