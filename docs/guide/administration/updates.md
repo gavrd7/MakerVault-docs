@@ -2,7 +2,7 @@
 
 **Goal:** move to the current deployable release while keeping a recoverable copy of your data.
 
-MakerVault can be updated either by pulling the published GHCR image or by rebuilding from source. Use the same route you chose for installation unless you deliberately want to switch.
+MakerVault uses published application and slicer images from GHCR, managed by one Compose file.
 
 1. Read the release notes/CHANGELOG for changes since your installed version.
 2. If upgrading from before v0.7, read [the migration chapter](../advanced/legacy-upgrade.md) first.
@@ -33,36 +33,20 @@ If you pin `MAKERVAULT_IMAGE` in `.env`, change that value to the release you in
 MAKERVAULT_IMAGE=ghcr.io/gavrd7/makervault:1.7.0
 ```
 
-## Build-it-yourself update
+## Upgrading with MakerVault Slicer
 
-The application supports source builds through the same **`compose.yaml`**. With `MAKERVAULT_IMAGE=makervault-local:dev` in your private `.env`:
-
-```bash
-git status --short
-git fetch --prune origin
-git switch main
-git pull --ff-only origin main
-sudo docker compose pull makervault
-sudo docker compose up -d
-sudo docker compose ps
-```
-
-If `git status --short` shows local changes, preserve them before switching branches or pulling.
-
-## Upgrading with the slicer service
-
-For installations using the verified combined slicer, use the **single Compose file** and retain its `slicer` profile:
+The standard `compose.yaml` includes four long-running services: MakerVault, its separate slicer container, PostgreSQL and Redis. No local builds, extra Compose files or profiles are needed.
 
 ```bash
 sudo docker compose config --quiet
-sudo docker compose pull makervault postgres redis
+sudo docker compose pull
 sudo docker compose up -d
 sudo docker compose ps
 ```
 
-For a local app build, run `sudo docker compose pull makervault` first. Engine updates and version switches are separate, administrator-initiated actions and must preserve other engines, profiles and stored G-code.
+Installed native engine binaries and their registry persist in the separate engine-store volume. Updates to MakerVault and its combined slicer image do not automatically authorise changing engine versions; use the engine manager for approved changes.
 
-Older deployment examples used several Compose overlays. Those files are retired for v1.7.0; review your actual private environment, named volumes, existing engine store and custom host settings before switching to the one-file configuration. Never run `docker compose down -v`: it can erase persistent MakerVault and slicer data.
+**Older staging deployments:** the previous Compose overlays are retired. Before upgrading, identify your existing private `.env`, any `.slicer-staging.env`, Docker volumes and installed engine identities. Preserve everything and verify the combined release image and permissions before removing legacy services. Do not run `docker compose down -v`: it can erase database, media, keys and slicer engine storage.
 
 ## Check the result
 
