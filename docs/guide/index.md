@@ -10,11 +10,11 @@ Learn to install MakerVault, record what you own and bring your projects, files 
 </div>
 
 !!! info "MakerVault v1.7.0"
-    MakerVault includes the optional **MakerVault Slicer** with native **OrcaSlicer, Creality Print and Bambu Studio** integrations. Each engine is installed and verified separately; the common interface supports engine-native profiles, build-plate preparation, material/colour assignment, supported painting and G-code review. The same release retains private G-code storage and confirmed printer submission, MakerTags, connected terminal features, printer monitoring, workshop inventory and project management.
+    MakerVault includes a separate **MakerVault Slicer** container with native **OrcaSlicer, Creality Print and Bambu Studio** integrations. Each engine is installed and verified separately; the common interface supports engine-native profiles, build-plate preparation, material/colour assignment, supported painting and G-code review. The same release retains private G-code storage and confirmed printer submission, MakerTags, connected terminal features, printer monitoring, workshop inventory and project management.
 
 ## MakerVault Slicer
 
-The dedicated [MakerVault Slicer guide](slicer/index.md) covers [installation](slicer/installation.md) using one Docker Compose file with a `slicer` profile, [engine and profile management](slicer/engines.md), [painting and slicing](slicer/workbench.md), and [troubleshooting](slicer/troubleshooting.md). Native engine output and compatible printer firmware still require review before a physical print.
+The dedicated [MakerVault Slicer guide](slicer/index.md) covers [installation](slicer/installation.md) using the single `docker-compose.yml` file without extra profiles, [engine and profile management](slicer/engines.md), [painting and slicing](slicer/workbench.md), and [troubleshooting](slicer/troubleshooting.md). Native engine output and compatible printer firmware still require review before a physical print.
 
 ## G-code Library and printer submission
 
@@ -95,9 +95,6 @@ That separation is what lets MakerVault grow from a simple parts list into a use
   </p>
   <div id="guide-search-results" class="guide-search__results" data-guide-search-results></div>
 </div>
-
-!!! info "MakerVault v1.6.0 — G-code Library and printer submission"
-    Version 1.6.0 adds owner-scoped plain-text G-code storage, bounded visual inspection, model/revision links and explicit upload/print workflows for compatible printer connections. Stock Creality K1 native print-start and completion, K2 file transfer, Moonraker start, and simultaneous K1/K2 same-origin camera previews have hardware evidence; some other printer/firmware operations, including proprietary K2 mapped-CFS starts, remain experimental. This guide documents the v1.6.0 feature set for its coordinated release; verify the image/tag you deploy. Earlier releases introduced the Terminal, MakerTags, reusable spools and the v1 platform/recovery foundations. See [G-code Library and printer submission](using/gcode-and-print-submission.md) and [scope and verification](reference/about.md).
 
 <div class="guide-grid" markdown>
 <div class="guide-card" markdown>
