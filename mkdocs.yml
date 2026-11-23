@@ -54,7 +54,7 @@ extra_javascript:
   - assets/guide-search.js
 extra:
   generator: false
-copyright: MakerVault · Guide for v1.6.0
+copyright: MakerVault · Guide for v1.7.0
 nav:
   - Welcome: index.md
   - Getting started:
@@ -81,7 +81,7 @@ nav:
       - Connected Devices: using/connected-devices.md
       - Terminal interoperability: using/terminal-interoperability.md
       - Interactive Wiring: using/interactive-wiring.md
-  - MakerVault Slicer (v1.7.0 Beta — unreleased):
+  - MakerVault Slicer:
       - Overview: slicer/index.md
       - Install the optional service: slicer/installation.md
       - Engines and native profiles: slicer/engines.md
