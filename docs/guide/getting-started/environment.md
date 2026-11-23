@@ -82,7 +82,7 @@ The standard installation includes a separate `makervault-slicer` container, alo
 
 For a new installation, `python3 scripts/generate_env_secrets.py` creates **four separate secrets**: the Django key, PostgreSQL password, slicer worker token and slicer installer token. Do not copy passwords or tokens from examples, commit your private `.env`, or share expanded Compose configuration.
 
-The combined slicer runs from the published `ghcr.io/gavrd7/makervault-slicer:1.7.0` GHCR image. Administrators manage the actual OrcaSlicer, Creality Print and Bambu Studio engines in the application. Advanced deployments may pin the reviewed combined image digest or approved native engine identities in `.env`; see the [Slicer installation guide](../slicer/installation.md).
+The combined slicer runs from the published `ghcr.io/gavrd7/makervault-slicer:1.7.0` GHCR image. The release workflow automatically publishes the slicer before the application image and embeds its immutable image digest into the application; no manual slicer image/digest entries are needed in `.env`. Administrators manage the actual OrcaSlicer, Creality Print and Bambu Studio engines in the application. Advanced deployments may pin the reviewed combined image digest or approved native engine identities in `.env`; see the [Slicer installation guide](../slicer/installation.md).
 
 The former `makervault-slicer:0.1.0` image is not compatible with the combined worker/installer. Use the reviewed v1.7.0 image.
 
