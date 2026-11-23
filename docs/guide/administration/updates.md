@@ -42,7 +42,7 @@ git status --short
 git fetch --prune origin
 git switch main
 git pull --ff-only origin main
-sudo docker compose build makervault
+sudo docker compose pull makervault
 sudo docker compose up -d
 sudo docker compose ps
 ```
@@ -54,13 +54,13 @@ If `git status --short` shows local changes, preserve them before switching bran
 For installations using the verified combined slicer, use the **single Compose file** and retain its `slicer` profile:
 
 ```bash
-sudo docker compose --profile slicer config --quiet
-sudo docker compose --profile slicer pull makervault postgres redis
-sudo docker compose --profile slicer up -d
-sudo docker compose --profile slicer ps
+sudo docker compose config --quiet
+sudo docker compose pull makervault postgres redis
+sudo docker compose up -d
+sudo docker compose ps
 ```
 
-For a local app build, run `sudo docker compose build makervault` first. Engine updates and version switches are separate, administrator-initiated actions and must preserve other engines, profiles and stored G-code.
+For a local app build, run `sudo docker compose pull makervault` first. Engine updates and version switches are separate, administrator-initiated actions and must preserve other engines, profiles and stored G-code.
 
 Older deployment examples used several Compose overlays. Those files are retired for v1.7.0; review your actual private environment, named volumes, existing engine store and custom host settings before switching to the one-file configuration. Never run `docker compose down -v`: it can erase persistent MakerVault and slicer data.
 
