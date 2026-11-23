@@ -13,8 +13,8 @@ MakerVault supports two image routes:
 
 Both routes use the same Compose stack, `.env`, database and persistent storage.
 
-!!! info "Optional MakerVault Slicer (in development)"
-    The slicer will be installed **after** the core application, using one optional container declared in the same `compose.yaml`. It will not be needed for normal 3D Printing or G-code management. See the dedicated [Slicer installation chapter](../slicer/installation.md) and [engine management guide](../slicer/engines.md). The supported installer is not yet available.
+!!! info "Optional MakerVault Slicer"
+    The slicer is part of v1.7.0. The same `compose.yaml` offers an optional combined `slicer` service with independently installed OrcaSlicer, Creality Print and Bambu Studio engines. See the [Slicer installation chapter](../slicer/installation.md) and [engine guide](../slicer/engines.md).
 
 ## 1. Install Docker and the basic tools
 
@@ -48,7 +48,7 @@ git clone https://github.com/gavrd7/MakerVault.git
 cd MakerVault
 ```
 
-The repository contains the Compose configuration, `.env.example`, the optional source-build override and the application source. The normal installation uses the published container image rather than compiling that source.
+The repository contains the Compose configuration, `.env.example`, the application and slicer source. The normal installation uses the published container image rather than compiling that source.
 
 The default image is:
 
@@ -129,19 +129,32 @@ Startup applies database changes, prepares the required roles and creates the pr
 
 Press **Ctrl+C** to stop following logs; this does not stop MakerVault.
 
-### Build MakerVault yourself instead
+### Build MakerVault from source instead
 
-If you do not want to use the pre-built GHCR image, use the optional source-build override:
+The only supported Compose file is `compose.yaml`. To build the checked-out application source rather than pull the published image, choose a local image tag and build the app:
 
 ```bash
-sudo docker compose -f compose.yaml -f compose.build.yaml config --quiet
-sudo docker compose -f compose.yaml -f compose.build.yaml up -d --build
-sudo docker compose -f compose.yaml -f compose.build.yaml ps
+export MAKERVAULT_IMAGE=makervault-local:dev
+sudo -E docker compose build makervault
+sudo -E docker compose up -d
+sudo -E docker compose ps
 ```
 
-This builds the checked-out source using the repository Dockerfile and tags the local application image as `makervault-local:dev`.
+For an ongoing source-build installation, put `MAKERVAULT_IMAGE=makervault-local:dev` in your private `.env`, then run `sudo docker compose build makervault` before `sudo docker compose up -d`. The same database, media, encryption keys, backup storage and ports are retained.
 
-The source-build route changes only how the MakerVault application image is obtained. It uses the **same** PostgreSQL database, Redis data, media, encryption keys, backups, ports and `.env` settings as the GHCR route.
+### MakerVault Slicer combined four-container deployment
+
+MakerVault's **`slicer` profile** adds exactly one long-running `makervault-slicer` container (worker and installer in separate restricted processes) to the three core containers. A one-time permissions helper runs and exits. No additional Compose overlays are required.
+
+Set two different strong slicer tokens, a reviewed combined-worker image and actual approved native-engine checksums in your private `.env` before enabling execution. See [environment settings](environment.md) and the [dedicated slicer installation guide](../slicer/installation.md). With verified configuration:
+
+```bash
+sudo docker compose --profile slicer config --quiet
+sudo docker compose --profile slicer up -d
+sudo docker compose --profile slicer ps
+```
+
+This does not automatically install a native engine or authorise a print. Use **MakerVault Slicer → View engine installations** and select a reviewed OrcaSlicer, Creality Print or Bambu Studio version, then compatible native printer/process/filament profiles.
 
 ## 5. Set up the first administrator
 
@@ -182,10 +195,11 @@ After changing `.env`, use:
 sudo docker compose up -d
 ```
 
-For a source-build deployment, include the override file whenever you need Compose to recreate or rebuild the application from source:
+For a source-build deployment, use the same Compose file with your local image tag:
 
 ```bash
-sudo docker compose -f compose.yaml -f compose.build.yaml up -d --build
+sudo docker compose build makervault
+sudo docker compose up -d
 ```
 
 Do not use `docker compose down -v` as a troubleshooting step. The `-v` option removes Compose-managed named volumes and can destroy your database, files and encryption key.
