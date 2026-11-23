@@ -171,11 +171,4 @@ After changing `.env`, use:
 sudo docker compose up -d
 ```
 
-For a source-build deployment, use the same Compose file with your local image tag:
-
-```bash
-sudo docker compose pull makervault
-sudo docker compose up -d
-```
-
 Do not use `docker compose down -v` as a troubleshooting step. The `-v` option removes Compose-managed named volumes and can destroy your database, files and encryption key.
