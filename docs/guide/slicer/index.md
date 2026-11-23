@@ -2,11 +2,11 @@
 
 **MakerVault v1.7.0 includes the integrated MakerVault Slicer**, a browser-based preparation, painting, native slicing and G-code review workspace. Supported native engine integrations are **OrcaSlicer**, **Creality Print** and **Bambu Studio**. Their executables are installed and verified individually in the combined slicer container rather than bundled into the MakerVault web application.
 
-The slicer service is an optional part of deployment. All existing model, filament/spool, G-code Library, live printer monitoring and explicit printer-submission features remain usable without it.
+The slicer runs in its own container as part of the standard four-container deployment. All existing model, filament/spool, G-code Library, live printer monitoring and explicit printer-submission features remain usable without it.
 
 ## Start here
 
-- [Install the slicer service](installation.md) — one `docker-compose.yml`, the opt-in `slicer` profile, separate secrets, persistent engine storage and safe upgrades.
+- [Install the slicer service](installation.md) — one `docker-compose.yml`, automatically generated separate secrets, persistent engine storage and safe upgrades.
 - [Install engines and select profiles](engines.md) — versions, official native catalogue searches, saved defaults, per-engine lifecycle and build plates.
 - [Prepare, paint and slice](workbench.md) — placement, per-object settings, colour/material painting, supports, seams, fuzzy skin, variable layers, flushing, towers and G-code review.
 - [Troubleshooting](troubleshooting.md) — credentials, engine health, profile inheritance, unsupported native settings and print submission.
