@@ -35,7 +35,7 @@ MAKERVAULT_IMAGE=ghcr.io/gavrd7/makervault:1.7.0
 
 ## Upgrading with MakerVault Slicer
 
-The standard `compose.yaml` includes four long-running services: MakerVault, its separate slicer container, PostgreSQL and Redis. No local builds, extra Compose files or profiles are needed.
+The standard `docker-compose.yml` includes four long-running services: MakerVault, its separate slicer container, PostgreSQL and Redis. No local builds, extra Compose files or profiles are needed.
 
 ```bash
 sudo docker compose config --quiet
