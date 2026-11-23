@@ -30,44 +30,39 @@ sudo docker compose logs --tail=100 makervault
 If you pin `MAKERVAULT_IMAGE` in `.env`, change that value to the release you intend to run before pulling. For example:
 
 ```dotenv
-MAKERVAULT_IMAGE=ghcr.io/gavrd7/makervault:1.0.0
+MAKERVAULT_IMAGE=ghcr.io/gavrd7/makervault:1.7.0
 ```
 
 ## Build-it-yourself update
 
-If your installation intentionally builds MakerVault locally, update the checkout and rebuild with the override file:
+The application supports source builds through the same **`compose.yaml`**. With `MAKERVAULT_IMAGE=makervault-local:dev` in your private `.env`:
 
 ```bash
 git status --short
-git rev-parse HEAD
 git fetch --prune origin
 git switch main
 git pull --ff-only origin main
-sudo docker compose -f compose.yaml -f compose.build.yaml up -d --build
-sudo docker compose -f compose.yaml -f compose.build.yaml ps
-sudo docker compose -f compose.yaml -f compose.build.yaml logs --tail=100 makervault
+sudo docker compose build makervault
+sudo docker compose up -d
+sudo docker compose ps
 ```
 
-If `git status --short` shows your own changes, stop before switching/pulling and preserve them. Do not use a hard reset to discard unknown local work.
+If `git status --short` shows local changes, preserve them before switching branches or pulling.
 
-## Switching between GHCR and local builds
+## Upgrading with the slicer service
 
-Both routes use the same service names and persistent storage. You can therefore switch image source without migrating your data.
-
-To switch from a local build to the published image:
+For installations using the verified combined slicer, use the **single Compose file** and retain its `slicer` profile:
 
 ```bash
-sudo docker compose pull makervault
-sudo docker compose up -d makervault
+sudo docker compose --profile slicer config --quiet
+sudo docker compose --profile slicer pull makervault postgres redis
+sudo docker compose --profile slicer up -d
+sudo docker compose --profile slicer ps
 ```
 
-To switch back to a source build:
+For a local app build, run `sudo docker compose build makervault` first. Engine updates and version switches are separate, administrator-initiated actions and must preserve other engines, profiles and stored G-code.
 
-```bash
-sudo docker compose -f compose.yaml -f compose.build.yaml up -d --build makervault
-```
-
-A database migration is not guaranteed to be reversible simply by switching to an older application image. Back up before changing versions.
+Older deployment examples used several Compose overlays. Those files are retired for v1.7.0; review your actual private environment, named volumes, existing engine store and custom host settings before switching to the one-file configuration. Never run `docker compose down -v`: it can erase persistent MakerVault and slicer data.
 
 ## Check the result
 
