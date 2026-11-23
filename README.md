@@ -22,7 +22,7 @@
 
 MakerVault includes a self-hosted **MakerVault Slicer** for **OrcaSlicer, Creality Print and Bambu Studio**. It provides engine-native profiles, build-plate and per-object settings, material/colour painting, supports, seam/fuzzy tools, selected variable-layer controls, flushing/prime-tower settings and G-code review. Native slicer engines must be installed and verified individually; printer submission requires separate confirmation.
 
-The supported installation uses **one `compose.yaml`** for both published-image and source-build routes, with a `slicer` profile adding one combined worker/installer container to the three core services. See the [dedicated Slicer guide](docs/guide/slicer/index.md), [installation](docs/guide/slicer/installation.md) and [engine manager](docs/guide/slicer/engines.md).
+The supported installation uses **one `compose.yaml`** and published GHCR images for four separate containers: MakerVault, MakerVault Slicer, PostgreSQL and Redis. See the [dedicated Slicer guide](docs/guide/slicer/index.md), [installation](docs/guide/slicer/installation.md) and [engine manager](docs/guide/slicer/engines.md).
 
 ## Related MakerVault repositories
 
@@ -110,7 +110,7 @@ Support and future development therefore depend on the capabilities of the avail
 
 This guide documents **MakerVault v1.6.0**, including:
 
-- beginner-friendly Docker installation from the pre-built GHCR image on Linux, Docker Desktop or WSL2, plus an optional build-it-yourself path and `.env` configuration;
+- beginner-friendly Docker installation from the pre-built GHCR image on Linux, Docker Desktop or WSL2, and a straightforward `.env` configuration;
 - Docker volumes, bind mounts, backups and restore;
 - Dashboard, Universal Search, Board Catalogue, Components and Inventory;
 - Projects, BOM allocation, Files and versioned assets;
@@ -134,7 +134,7 @@ The application and its documentation are kept separate so each can be maintaine
 | [gavrd7/MakerVault](https://github.com/gavrd7/MakerVault) | Application source, Docker deployment, GHCR publishing workflow, backend/frontend code and release history |
 | [gavrd7/MakerVault-docs](https://github.com/gavrd7/MakerVault-docs) | Public guide source, sanitised screenshots, MkDocs configuration and GitHub Pages publishing |
 
-The published guide is available at **https://gavrd7.github.io/MakerVault-docs/**. Normal MakerVault deployments pull `ghcr.io/gavrd7/makervault:latest`; users can deploy it on a Linux Docker host, Docker Desktop on Windows, Docker Desktop with WSL2 integration, or Docker Engine inside WSL2. Users who prefer to compile it themselves can use the source-build Compose override documented in the installation guide.
+The published guide is available at **https://gavrd7.github.io/MakerVault-docs/**. Normal MakerVault deployments pull `ghcr.io/gavrd7/makervault:latest`; users can deploy it on a Linux Docker host, Docker Desktop on Windows, Docker Desktop with WSL2 integration, or Docker Engine inside WSL2. The production setup uses a single Compose file and published images; it requires no extra overlays or local source builds.
 
 ## Repository layout
 
