@@ -130,7 +130,7 @@ The normal installation starts **four separate containers**: MakerVault, `makerv
 
 The initial setup script creates different secrets for the worker and engine installer. A new engine-store volume is prepared by the reviewed slicer image; the stack has exactly four services. Use [the separate slicer guide](../slicer/installation.md) to install and select your native engine.
 
-**Release prerequisite:** the new combined slicer GHCR image tagged `1.7.0` must be published and tested before release. The older `makervault-slicer:0.1.0` image is incompatible with the combined entry point.
+The deployment uses the combined `ghcr.io/gavrd7/makervault-slicer:1.7.0` image. The earlier `makervault-slicer:0.1.0` image is incompatible with the combined entry point.
 
 ## 5. Set up the first administrator
 
