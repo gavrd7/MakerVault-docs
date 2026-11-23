@@ -2,7 +2,7 @@
 
 ## Version and scope
 
-This guide describes **MakerVault v1.6.0**, including the G-code library, explicit file transfer and printer submission, stock K1/K2 local cameras, Connected Devices, and MakerTag management. Individual manufacturer protocols remain experimental where physical hardware validation is incomplete. Earlier features include v1.5.1 terminal reliability/MakerTag maintenance and v1.2.x reusable spools and QR label improvements.
+This guide describes **MakerVault v1.7.0**, including the independently installed **OrcaSlicer, Creality Print and Bambu Studio** engines in the optional MakerVault Slicer, G-code review, confirmed print submission, live printer/camera integrations, connected devices, MakerTag management and the established inventory/project workflow. Native engine verification and real printer compatibility are separately qualified; a passing test fixture is not certification of every machine or material combination. The deployment guide uses one `compose.yaml` with an optional `slicer` profile.
 
 Linux with the supplied Docker Compose configuration remains the preferred always-on server deployment. Windows users can also follow the documented Docker Desktop, Docker Desktop + WSL2 integration, or direct WSL2 Docker Engine routes. NAS/Portainer and macOS remain platform-adaptation cases rather than fully validated walkthroughs. No measured minimum hardware specification is claimed.
 
