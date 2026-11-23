@@ -4,6 +4,8 @@
 
 The slicer runs in its own container as part of the standard four-container deployment. All existing model, filament/spool, G-code Library, live printer monitoring and explicit printer-submission features remain usable without it.
 
+**Platform compatibility:** The v1.7.0 slicer container targets **Linux AMD64 (x86-64)**, including x86-64 Docker Desktop hosts running Linux containers. **ARM64 slicer images are not available** for Raspberry Pi, Apple Silicon or other ARM64 hosts, even though the main MakerVault application offers an ARM64 image. See [supported platforms and limitations](installation.md#supported-platforms-v170).
+
 ## Start here
 
 - [Install the slicer service](installation.md) — one `docker-compose.yml`, automatically generated separate secrets, persistent engine storage and safe upgrades.
